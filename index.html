@@ -3,55 +3,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpatico HR Consultancy</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; }
-        header { background-color: #004466; color: white; padding: 20px; }
-        section { padding: 20px; }
-        .container { max-width: 800px; margin: auto; }
-        img { width: 100%; max-width: 600px; }
-        footer { background-color: #004466; color: white; padding: 10px; margin-top: 20px; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Welcome to Simpatico HR Consultancy</h1>
-        <p>Your trusted HR partner since 2013</p>
-    </header><section class="container">
+        <p>Your trusted HR partner.</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#jobs">Job Listings</a></li>
+                <li><a href="#candidates">Candidate Registration</a></li>
+                <li><a href="#employers">Employer Portal</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header><section id="about">
     <h2>About Us</h2>
-    <img src="https://via.placeholder.com/600x300" alt="HR Consultancy Image">
-    <p>Simpatico HR Consultancy, based in Perintalmanna, has been providing expert HR services to businesses and job seekers since 2013.</p>
+    <p>Simpatico HR Consultancy is a leading online HR consultancy based in Perintalmanna, established in 2013. We specialize in recruitment, workforce planning, and HR solutions.</p>
+    <img src="assets/images/hr-team.jpg" alt="HR Consultancy Team">
 </section>
 
-<section class="container">
+<section id="services">
     <h2>Our Services</h2>
     <ul>
-        <li>Recruitment & Talent Acquisition</li>
-        <li>HR Consulting & Compliance</li>
-        <li>Employee Training & Development</li>
-        <li>Payroll & Benefits Management</li>
+        <li>Talent Acquisition</li>
+        <li>Workforce Planning</li>
+        <li>HR Policy Development</li>
+        <li>Training & Development</li>
     </ul>
 </section>
 
-<section class="container">
+<section id="jobs">
     <h2>Job Listings</h2>
-    <p>We update our job listings regularly. Check back soon for new opportunities.</p>
+    <p>We update our job listings regularly. Stay tuned for opportunities!</p>
 </section>
 
-<section class="container">
-    <h2>Contact Us</h2>
-    <p>Email: simpaticohrconsultancy@gmail.com</p>
-    <p>Phone: 9544842260</p>
+<section id="candidates">
+    <h2>Candidate Registration</h2>
     <form>
-        <input type="text" placeholder="Your Name" required><br><br>
-        <input type="email" placeholder="Your Email" required><br><br>
-        <textarea placeholder="Your Message" required></textarea><br><br>
-        <button type="submit">Send Message</button>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="resume">Upload Resume:</label>
+        <input type="file" id="resume" name="resume" required>
+        
+        <button type="submit">Register</button>
     </form>
 </section>
 
+<section id="employers">
+    <h2>Employer Portal</h2>
+    <form>
+        <label for="company">Company Name:</label>
+        <input type="text" id="company" name="company" required>
+        
+        <label for="contact">Contact Person:</label>
+        <input type="text" id="contact" name="contact" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: simpaticohrconsultancy@gmail.com</p>
+    <p>Phone: 9544842260</p>
+    <p><a href="https://www.facebook.com/share/1BARFBC6L4/">Facebook</a> | <a href="https://www.linkedin.com/company/simpatico-manpower/">LinkedIn</a></p>
+</section>
+
 <footer>
-    <p>&copy; 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
+    <p>&copy; 2025 Simpatico HR Consultancy. All rights reserved.</p>
 </footer>
 
-</body>
-</html>
+</
+
+    
