@@ -5,80 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpatico HR Consultancy</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Simpatico HR Consultancy - Your trusted HR partner.">
-    <meta name="keywords" content="HR, Consultancy, Jobs, Recruitment">
+    <meta name="description" content="Simpatico HR - Your trusted HR partner for recruitment and HR solutions.">
+    <meta name="keywords" content="HR, Consultancy, Jobs, Recruitment, Staffing">
 </head>
 <body>
     <header>
-        <h1>Simpatico HR Consultancy</h1>
         <nav>
-            <ul>
-                <li><a href="#home" aria-label="Home">Home</a></li>
-                <li><a href="#jobs" aria-label="Job Listings">Job Listings</a></li>
-                <li><a href="#candidates" aria-label="Candidate Registration">Candidate Registration</a></li>
-                <li><a href="#employers" aria-label="Employer Portal">Employer Portal</a></li>
-                <li><a href="#contact" aria-label="Contact">Contact</a></li>
-            </ul>
-        </nav>
+            <a href="#" class="logo">Simpatico HR</a>  </nav>
     </header>
 
     <main>
-        <section id="home">
-            <h2>Welcome to Simpatico HR Consultancy</h2>
-            <p>Your trusted HR partner.</p>
-            <img src="assets/images/hr-consultancy.jpg" alt="HR Consultancy Office">
+        <section id="hero">
+            <h2>Finding the Perfect Fit</h2>
+            <p>Connecting top talent with leading companies.</p>
+            <a href="#contact" class="button">Get Started</a>
         </section>
 
-        <section id="jobs">
-            <h2>Job Listings</h2>
-            <ul>
-                <li>Software Engineer - ABC Tech</li>
-                <li>Marketing Manager - XYZ Ltd</li>
-                <li>HR Executive - Simpatico HR</li>
-            </ul>
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service">
+                    <h3>Talent Acquisition</h3>
+                    <p>We specialize in finding the best candidates for your open positions.</p>
+                </div>
+                <div class="service">
+                    <h3>HR Consulting</h3>
+                    <p>Expert advice and solutions for all your HR needs.</p>
+                </div>
+                <div class="service">
+                    <h3>Executive Search</h3>
+                    <p>We identify and recruit top-tier executives for leadership roles.</p>
+                </div>
+            </div>
         </section>
 
-        <section id="candidates">
-            <h2>Candidate Registration</h2>
-            <form>
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" name="full-name" placeholder="Full Name" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-                
-                <label for="resume">Upload Resume</label>
-                <input type="file" id="resume" name="resume" accept=".pdf,.docx">
-                
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-
-        <section id="employers">
-            <h2>Employer Portal</h2>
-            <form>
-                <label for="company-name">Company Name</label>
-                <input type="text" id="company-name" name="company-name" placeholder="Company Name" required>
-                
-                <label for="contact-email">Contact Email</label>
-                <input type="email" id="contact-email" name="contact-email" placeholder="Contact Email" required>
-                
-                <label for="job-details">Job Details</label>
-                <textarea id="job-details" name="job-details" placeholder="Job Details"></textarea>
-                
-                <button type="submit">Post Job</button>
-            </form>
-        </section>
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
-            <p>Phone: <a href="tel:9544842260">9544842260</a></p>
+            <form>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Simpatico HR Consultancy</p>
     </footer>
-</body>
+
+    <script src="script.js"></script> </body>
 </html>
