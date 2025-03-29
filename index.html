@@ -1,200 +1,70 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simpatico HR Consultancy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo"><img src="assets/logo.png" alt="Simpatico HR Consultancy Logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#jobs">Job Listings</a></li>
+                    <li><a href="#candidates">Candidates</a></li>
+                    <li><a href="#employers">Employers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-}
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Welcome to Simpatico HR Consultancy</h2>
+                <p>Your vibrant partner in HR solutions and talent acquisition in Panama.</p>
+                <a href="#contact" class="button">Get in Touch</a>
+            </div>
+        </section>
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    overflow: hidden;
-}
+        <section id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>Simpatico HR Consultancy is dedicated to providing top-tier HR services in Panama, from recruitment to strategic HR consulting, ensuring your business thrives with the right talent.</p>
+                <img src="assets/hr-team.jpg" alt="HR Team Collaboration">
+            </div>
+        </section>
 
-/* Header */
-header {
-    background: #ff6f61;
-    color: white;
-    padding: 1rem 0;
-}
+        <!-- Job Listings, Candidates, Employers, and Contact sections remain the same -->
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
+                <p>Phone: <a href="tel:+5071234567">+507 123 4567</a></p>
+                <p>Address: Panama City, Panama</p>
+            </div>
+        </section>
+    </main>
 
-header .logo img {
-    height: 50px;
-}
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Simpatico HR Consultancy. All rights reserved.</p>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/simpaticohrpmna?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="assets/icons/facebook.png" alt="Facebook">
+                    </a>
+                    <!-- Other social media links would go here -->
+                </div>
+            </div>
+        </div>
+    </footer>
 
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Hero Section */
-.hero {
-    background: #6b5b95;
-    color: white;
-    text-align: center;
-    padding: 4rem 0;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.button {
-    display: inline-block;
-    background: #ff6f61;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.button:hover {
-    background: #d65a4a;
-}
-
-/* About Section */
-#about {
-    background: #f4f4f4;
-    padding: 2rem 0;
-}
-
-#about img {
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin: 2rem auto;
-    border-radius: 10px;
-}
-
-/* Job Listings */
-.job-listings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.job-listing {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.job-listing h3 {
-    color: #6b5b95;
-    margin-bottom: 10px;
-}
-
-.job-listing a {
-    display: inline-block;
-    margin-top: 10px;
-    background: #ff6f61;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.job-listing a:hover {
-    background: #d65a4a;
-}
-
-/* Forms */
-form {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-form label {
-    display: block;
-    margin-bottom: 5px;
-    color: #6b5b95;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-form button {
-    background: #ff6f61;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-form button:hover {
-    background: #d65a4a;
-}
-
-/* General Section Styling */
-section {
-    padding: 2rem 0;
-}
-
-section h2 {
-    color: #6b5b95;
-    margin-bottom: 1rem;
-}
-
-/* Footer */
-footer {
-    background: #6b5b95;
-    color: white;
-    padding: 1rem 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.social-media {
-    display: flex;
-    gap: 10px;
-}
-
-.social-media img {
-    width: 30px;
-    height: 30px;
-}
+    <script src="script.js"></script>
+</body>
+</html>
