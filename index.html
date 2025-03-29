@@ -1,121 +1,200 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simpatico HR Consultancy</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Simpatico HR - Your trusted HR partner for recruitment and HR solutions.">
-    <meta name="keywords" content="HR, Consultancy, Jobs, Recruitment, Staffing">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <a href="#" class="logo"><img src="assets/logo.png" alt="Simpatico HR Logo"></a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#jobs">Job Listings</a></li>
-                    <li><a href="#candidates">Candidates</a></li>
-                    <li><a href="#employers">Employers</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h2>Welcome to Simpatico HR Consultancy</h2>
-                <p>Your trusted partner in HR solutions and talent acquisition.</p>
-                <a href="#contact" class="button">Get in Touch</a>
-            </div>
-        </section>
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
 
-        <section id="about">
-            <div class="container">
-                <h2>About Us</h2>
-                <p>Simpatico HR Consultancy specializes in providing tailored HR services, from recruitment to strategic HR consulting, ensuring your business thrives with the right talent.</p>
-            </div>
-        </section>
+.container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
 
-        <section id="jobs">
-            <div class="container">
-                <h2>Current Job Listings</h2>
-                <div class="job-listings">
-                    <div class="job-listing">
-                        <h3>Software Engineer</h3>
-                        <p>ABC Tech - Full Time - Remote</p>
-                        <p>Looking for a skilled software engineer with experience in Python and Java.</p>
-                        <a href="mailto:simpaticohrconsultancy@gmail.com?subject=Application for Software Engineer at ABC Tech">Apply Now</a>
-                    </div>
-                    <div class="job-listing">
-                        <h3>Marketing Manager</h3>
-                        <p>XYZ Ltd - Full Time - On-site</p>
-                        <p>We need a dynamic marketing manager to lead our brand strategy.</p>
-                        <a href="mailto:simpaticohrconsultancy@gmail.com?subject=Application for Marketing Manager at XYZ Ltd">Apply Now</a>
-                    </div>
-                    <div class="job-listing">
-                        <h3>HR Executive</h3>
-                        <p>Simpatico HR - Part Time - Hybrid</p>
-                        <p>Join our team to help manage our HR operations and client relations.</p>
-                        <a href="mailto:simpaticohrconsultancy@gmail.com?subject=Application for HR Executive at Simpatico HR">Apply Now</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Header */
+header {
+    background: #ff6f61;
+    color: white;
+    padding: 1rem 0;
+}
 
-        <section id="candidates">
-            <div class="container">
-                <h2>Candidate Registration</h2>
-                <form>
-                    <label for="candidate-name">Full Name:</label>
-                    <input type="text" id="candidate-name" name="candidate-name" required>
-                    
-                    <label for="candidate-email">Email:</label>
-                    <input type="email" id="candidate-email" name="candidate-email" required>
-                    
-                    <label for="candidate-phone">Phone Number:</label>
-                    <input type="tel" id="candidate-phone" name="candidate-phone" required>
-                    
-                    <label for="candidate-resume">Upload Resume:</label>
-                    <input type="file" id="candidate-resume" name="candidate-resume" accept=".pdf,.docx" required>
-                    
-                    <label for="candidate-message">Message:</label>
-                    <textarea id="candidate-message" name="candidate-message" required></textarea>
-                    
-                    <button type="submit">Register</button>
-                </form>
-            </div>
-        </section>
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        <section id="employers">
-            <div class="container">
-                <h2>Employer Portal</h2>
-                <form>
-                    <label for="company-name">Company Name:</label>
-                    <input type="text" id="company-name" name="company-name" required>
-                    
-                    <label for="contact-name">Contact Name:</label>
-                    <input type="text" id="contact-name" name="contact-name" required>
-                    
-                    <label for="contact-email">Contact Email:</label>
-                    <input type="email" id="contact-email" name="contact-email" required>
-                    
-                    <label for="job-title">Job Title:</label>
-                    <input type="text" id="job-title" name="job-title" required>
-                    
-                    <label for="job-description">Job Description:</label>
-                    <textarea id="job-description" name="job-description" required></textarea>
-                    
-                    <button type="submit">Submit Job Listing</button>
-                </form>
-            </div>
-        </section>
+header .logo img {
+    height: 50px;
+}
 
-        <section id="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
-                <p>Phone: <a href="tel:954484226<span class="ml-2" /><span class="inline-block w-3 h-3 rounded-full bg-neutral-a12 align-middle mb-[0.1rem]" />
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    background: #6b5b95;
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.button {
+    display: inline-block;
+    background: #ff6f61;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: #d65a4a;
+}
+
+/* About Section */
+#about {
+    background: #f4f4f4;
+    padding: 2rem 0;
+}
+
+#about img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+
+/* Job Listings */
+.job-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.job-listing {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.job-listing h3 {
+    color: #6b5b95;
+    margin-bottom: 10px;
+}
+
+.job-listing a {
+    display: inline-block;
+    margin-top: 10px;
+    background: #ff6f61;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.job-listing a:hover {
+    background: #d65a4a;
+}
+
+/* Forms */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6b5b95;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    background: #ff6f61;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #d65a4a;
+}
+
+/* General Section Styling */
+section {
+    padding: 2rem 0;
+}
+
+section h2 {
+    color: #6b5b95;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: #6b5b95;
+    color: white;
+    padding: 1rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.social-media {
+    display: flex;
+    gap: 10px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+}
