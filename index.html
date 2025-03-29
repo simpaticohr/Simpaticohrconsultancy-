@@ -1,129 +1,45 @@
-<!DOCTYPE html><html lang="en">
+/* Theme Name: Simpatico HR Consultancy Theme URI: https://www.vwthemes.com/products/free-hr-wordpress-theme/ Author: Simpatico HR Consultancy Author URI: https://www.linkedin.com/company/simpatico-manpower/ Description: A WordPress theme tailored for HR consultancy services, integrating RPO services and job listings. Version: 1.0 License: GNU General Public License v2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html Text Domain: simpatico-hr */
+
+<!DOCTYPE html><html <?php language_attributes(); ?>>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simpatico HR Consultancy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #0073e6;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 24px;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            font-weight: bold;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #0073e6;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #005bb5;
-        }
-    </style>
+    <title><?php bloginfo('name'); ?></title>
+    <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
     <header>
-        Simpatico HR Consultancy
+        <h1><?php bloginfo('name'); ?></h1>
+        <p><?php bloginfo('description'); ?></p>
     </header>
-    <div class="container">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
-        <p>Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
-        <p>Facebook: <a href="https://www.facebook.com/share/1BARFBC6L4/" target="_blank">Follow us on Facebook</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank">Connect on LinkedIn</a></p>
-        <form>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <div class="container">
-        <h2>Candidate Registration</h2>
-        <form>
-            <div class="form-group">
-                <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="resume">Upload Resume</label>
-                <input type="file" id="resume" name="resume" required>
-            </div>
-            <button type="submit">Register</button>
-        </form>
-    </div>
-    <div class="container">
-        <h2>Employer Contact</h2>
-        <form>
-            <div class="form-group">
-                <label for="company">Company Name</label>
-                <input type="text" id="company" name="company" required>
-            </div>
-            <div class="form-group">
-                <label for="contact">Contact Person</label>
-                <input type="text" id="contact" name="contact" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="job">Job Requirements</label>
-                <textarea id="job" name="job" rows="4" required></textarea>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <div class="container">
-        <h2>Job Listings</h2>
-        <ul>
-            <li>Job Title 1 - Location - <strong>Apply Now</strong></li>
-            <li>Job Title 2 - Location - <strong>Apply Now</strong></li>
-            <li>Job Title 3 - Location - <strong>Apply Now</strong></li>
-        </ul>
-    </div>
+    <nav>
+        <?php wp_nav_menu(array('theme_location' => 'primary')); ?>
+    </nav>
+    <main>
+        <section>
+            <h2>Welcome to Simpatico HR Consultancy</h2>
+            <p>Location: Perintalmanna</p>
+            <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
+            <p>Facebook: <a href="https://www.facebook.com/share/1BARFBC6L4/" target="_blank">Follow us on Facebook</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank">Connect on LinkedIn</a></p>
+        </section>
+        <section>
+            <h2>Recruitment Process Outsourcing (RPO) Services</h2>
+            <p>We provide end-to-end RPO solutions, ensuring top-quality talent acquisition, screening, and onboarding for businesses of all sizes.</p>
+        </section>
+        <section>
+            <h2>Job Listings</h2>
+            <ul>
+                <li>Job Title 1 - Location - <strong>Apply Now</strong></li>
+                <li>Job Title 2 - Location - <strong>Apply Now</strong></li>
+                <li>Job Title 3 - Location - <strong>Apply Now</strong></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <?php echo date('Y'); ?> Simpatico HR Consultancy. All rights reserved.</p>
+    </footer>
+    <?php wp_footer(); ?>
 </body>
 </html>
