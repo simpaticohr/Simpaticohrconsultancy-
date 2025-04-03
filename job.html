@@ -1,111 +1,65 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html>
+<head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="HR, Jobs, Recruitment, Consultancy" />
-  <meta name="description" content="Simpatico HR Consultancy - Connecting talent with opportunities" />
-  <meta name="author" content="Simpatico HR Consultancy" />  <title>Simpatico HR Consultancy</title>  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simpatico HR Consultancy - Jobs</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link href="css/style.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
-</head><body class="sub_page">
-  <div class="hero_area">
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container">
-          <a class="navbar-brand" href="index.html">
-            <span>Simpatico HR</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class=""> </span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-              <li class="nav-item active"><a class="nav-link" href="job.html">Job Listings</a></li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user"></i> Login</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user"></i> Sign Up</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
-  </div>  <section class="job_section layout_padding">
+</head>
+<body>
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="index.html">Simpatico HR Consultancy</a>
+      </nav>
+    </div>
+  </header>  <section class="job_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>Recent Job Openings</h2>
+        <h2>Available Job Openings</h2>
       </div>
-      <div class="job_container">
-        <h4 class="job_heading">Featured Jobs</h4>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="box">
-              <div class="job_content-box">
-                <div class="img-box">
-                  <img src="images/job_logo1.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>HR Manager</h5>
-                  <div class="detail-info">
-                    <h6><i class="fa fa-map-marker"></i> <span>Perintalmanna, India</span></h6>
-                    <h6><i class="fa fa-money"></i> <span>Negotiable</span></h6>
-                  </div>
-                </div>
-              </div>
-              <div class="option-box">
-                <button class="fav-btn"><i class="fa fa-heart-o"></i></button>
-                <a href="" class="apply-btn">Apply Now</a>
-              </div>
-            </div>
-          </div>
+      <div class="job_list">
+        <div class="job_item">
+          <h4>Development Team Lead</h4>
+          <p>Location: Washington, D.C. | Salary: $1200 - $1300</p>
+          <button onclick="openForm('Development Team Lead')">Apply Now</button>
         </div>
-      </div>
-      <div class="btn-box">
-        <a href="">View All Jobs</a>
-      </div>
-    </div>
-  </section>  <section class="info_section ">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 info_links">
-          <h4>Menu</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a class="active" href="job.html">Jobs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h4>About Us</h4>
-          <p>Simpatico HR Consultancy has been connecting talented professionals with top employers since 2013.</p>
-        </div>
-        <div class="col-md-3">
-          <div class="info_social">
-            <h4>Follow Us</h4>
-            <div class="social_container">
-              <a href="https://www.facebook.com/share/1BARFBC6L4/"><i class="fa fa-facebook"></i></a>
-              <a href="https://www.linkedin.com/company/simpatico-manpower/"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="info_form">
-            <h4>Newsletter</h4>
-            <form action="">
-              <input type="text" placeholder="Enter Your Email" />
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
+        <div class="job_item">
+          <h4>Graphic Designer</h4>
+          <p>Location: New York | Salary: $200 - $340</p>
+          <button onclick="openForm('Graphic Designer')">Apply Now</button>
         </div>
       </div>
     </div>
-  </section>  <footer class="footer_section">
-    <div class="container">
-      <p>&copy; <span id="displayYear"></span> Simpatico HR Consultancy. All Rights Reserved.</p>
-    </div>
-  </footer>  <script src="js/jquery-3.4.1.min.js"></script>  <script src="js/bootstrap.js"></script>  <script src="js/custom.js"></script></body></html>
+  </section>  <div id="applicationForm" class="form-popup">
+    <form action="send_email.php" method="post" enctype="multipart/form-data" class="form-container">
+      <h2>Job Application</h2>
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required><label for="email">Email</label>
+  <input type="email" name="email" required>
+  
+  <label for="phone">Phone Number</label>
+  <input type="tel" name="phone" required>
+  
+  <label for="resume">Upload Resume</label>
+  <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+  
+  <label for="cover_letter">Cover Letter</label>
+  <textarea name="cover_letter" required></textarea>
+  
+  <input type="hidden" name="job_title" id="jobTitle">
+  
+  <button type="submit">Submit Application</button>
+  <button type="button" onclick="closeForm()">Close</button>
+</form>
+
+  </div>  <script>
+    function openForm(jobTitle) {
+      document.getElementById('applicationForm').style.display = 'block';
+      document.getElementById('jobTitle').value = jobTitle;
+    }
+    function closeForm() {
+      document.getElementById('applicationForm').style.display = 'none';
+    }
+  </script></body>
+</html>
