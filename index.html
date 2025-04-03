@@ -3,72 +3,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpatico HR Consultancy</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hugo-future-imperfect@latest/style.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+        form input, form button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        form button {
+            background-color: #ffd700;
+            border: none;
+            color: #000;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Simpatico HR Consultancy</h1>
-        <p>Providing HR solutions since 2013</p>
-    </header><nav>
-    <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#jobs">Job Listings</a></li>
-        <li><a href="#candidates">Register as Candidate</a></li>
-        <li><a href="#employers">Employer Contact</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#jobs">Job Listings</a></li>
+                <li><a href="#employers">For Employers</a></li>
+                <li><a href="#candidates">For Candidates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header><section id="home">
+    <h2>Connecting Top Talent with Leading Companies</h2>
+    <p>We specialize in recruitment solutions that bridge the gap between skilled professionals and top employers.</p>
+</section>
 
 <section id="about">
     <h2>About Us</h2>
-    <p>Simpatico HR Consultancy is a leading online HR consultancy based in Perintalmanna, offering recruitment services to businesses and job seekers.</p>
+    <p>Since 2013, Simpatico HR Consultancy has been a trusted name in recruitment, helping businesses find the best talent.</p>
 </section>
 
 <section id="jobs">
     <h2>Job Listings</h2>
-    <p>Latest job opportunities available:</p>
+    <p>Check out the latest job opportunities:</p>
     <ul>
-        <li>Software Engineer - Location: Bangalore</li>
-        <li>HR Manager - Location: Chennai</li>
-        <li>Marketing Executive - Location: Mumbai</li>
+        <li>Software Developer - Bangalore</li>
+        <li>Marketing Manager - Kochi</li>
+        <li>HR Executive - Chennai</li>
     </ul>
 </section>
 
-<section id="candidates">
-    <h2>Register as a Candidate</h2>
-    <form action="mailto:simpaticohrconsultancy@gmail.com" method="post" enctype="text/plain">
-        <label>Name:</label>
-        <input type="text" name="name" required><br>
-        <label>Email:</label>
-        <input type="email" name="email" required><br>
-        <label>Resume:</label>
-        <input type="file" name="resume" required><br>
+<section id="employers">
+    <h2>For Employers</h2>
+    <p>Need the best talent? Fill out our employer form.</p>
+    <form>
+        <input type="text" placeholder="Company Name" required>
+        <input type="text" placeholder="Job Role" required>
+        <input type="email" placeholder="Contact Email" required>
         <button type="submit">Submit</button>
     </form>
 </section>
 
-<section id="employers">
-    <h2>Employer Contact Form</h2>
-    <form action="mailto:simpaticohrconsultancy@gmail.com" method="post" enctype="text/plain">
-        <label>Company Name:</label>
-        <input type="text" name="company" required><br>
-        <label>Contact Email:</label>
-        <input type="email" name="email" required><br>
-        <label>Message:</label>
-        <textarea name="message" required></textarea><br>
-        <button type="submit">Send Inquiry</button>
+<section id="candidates">
+    <h2>For Candidates</h2>
+    <p>Looking for a job? Register now.</p>
+    <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="file" required>
+        <button type="submit">Apply Now</button>
     </form>
 </section>
 
 <section id="contact">
     <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
+    <p>Email: simpaticohrconsultancy@gmail.com</p>
     <p>Phone: 9544842260</p>
-    <p><a href="https://www.facebook.com/share/1BARFBC6L4/">Facebook</a> | <a href="https://www.linkedin.com/company/simpatico-manpower/">LinkedIn</a></p>
 </section>
 
 <footer>
-    <p>&copy; 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
+    <p>&copy; 2025 Simpatico HR Consultancy</p>
 </footer>
 
 </body>
