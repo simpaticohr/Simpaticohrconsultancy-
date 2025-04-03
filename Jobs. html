@@ -1,35 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Listings</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simpatico HR Consultancy - Jobs</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <h1>Job Listings</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html" target="_blank">Home</a></li>
-                <li><a href="about.html" target="_blank">About Us</a></li>
-                <li><a href="jobs.html" target="_blank">Job Listings</a></li>
-                <li><a href="employers.html" target="_blank">For Employers</a></li>
-                <li><a href="candidates.html" target="_blank">For Candidates</a></li>
-                <li><a href="contact.html" target="_blank">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="index.html">Simpatico HR Consultancy</a>
+      </nav>
+    </div>
+  </header>  <section class="job_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>Available Job Openings</h2>
+      </div>
+      <div class="job_list">
+        <div class="job_item">
+          <h4>Development Team Lead</h4>
+          <p>Location: Washington, D.C. | Salary: $1200 - $1300</p>
+          <button onclick="openForm('Development Team Lead')">Apply Now</button>
+        </div>
+        <div class="job_item">
+          <h4>Graphic Designer</h4>
+          <p>Location: New York | Salary: $200 - $340</p>
+          <button onclick="openForm('Graphic Designer')">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </section>  <div id="applicationForm" class="form-popup">
+    <form action="send_email.php" method="post" enctype="multipart/form-data" class="form-container">
+      <h2>Job Application</h2>
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required><label for="email">Email</label>
+  <input type="email" name="email" required>
+  
+  <label for="phone">Phone Number</label>
+  <input type="tel" name="phone" required>
+  
+  <label for="resume">Upload Resume</label>
+  <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+  
+  <label for="cover_letter">Cover Letter</label>
+  <textarea name="cover_letter" required></textarea>
+  
+  <input type="hidden" name="job_title" id="jobTitle">
+  
+  <button type="submit">Submit Application</button>
+  <button type="button" onclick="closeForm()">Close</button>
+</form>
 
-    <main>
-        <section>
-            <h2>Available Job Opportunities</h2>
-            <p>List of jobs will go here.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Simpatico HR Consultancy. All Rights Reserved.</p>
-    </footer>
-</body>
+  </div>  <script>
+    function openForm(jobTitle) {
+      document.getElementById('applicationForm').style.display = 'block';
+      document.getElementById('jobTitle').value = jobTitle;
+    }
+    function closeForm() {
+      document.getElementById('applicationForm').style.display = 'none';
+    }
+  </script></body>
 </html>
