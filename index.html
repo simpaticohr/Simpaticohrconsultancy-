@@ -1,101 +1,76 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simpatico HR Consultancy</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: #2a2a2a;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .form-section input, .form-section textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .form-section button {
-      padding: 0.75rem 1.5rem;
-      background: #2a2a2a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      background: #2a2a2a;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Simpatico HR Consultancy</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#jobs">Job Listings</a>
-      <a href="#candidates">Candidate Registration</a>
-      <a href="#employers">Employer Contact</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>  <section class="section" id="about">
-    <h2>About Us</h2>
-    <p>Established in 2013, Simpatico HR Consultancy is a trusted HR partner based in Perintalmanna, offering tailored recruitment solutions to businesses and job seekers.</p>
-  </section>  <section class="section" id="jobs">
-    <h2>Current Job Listings</h2>
-    <ul>
-      <li><strong>Job Title 1:</strong> Short description here</li>
-      <li><strong>Job Title 2:</strong> Short description here</li>
-      <li><strong>Job Title 3:</strong> Short description here</li>
-    </ul>
-  </section>  <section class="section form-section" id="candidates">
-    <h2>Candidate Registration Form</h2>
-    <form>
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <input type="text" placeholder="Phone Number" required />
-      <textarea rows="4" placeholder="Brief Bio or Experience"></textarea>
-      <button type="submit">Register</button>
-    </form>
-  </section>  <section class="section form-section" id="employers">
-    <h2>Employer Contact Form</h2>
-    <form>
-      <input type="text" placeholder="Company Name" required />
-      <input type="email" placeholder="Contact Email" required />
-      <input type="text" placeholder="Phone Number" required />
-      <textarea rows="4" placeholder="Your Requirements"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </section>  <section class="section form-section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: simpaticohrconsultancy@gmail.com</p>
-    <p>Phone: 9544842260</p>
-    <p><a href="https://www.facebook.com/share/1BARFBC6L4/" target="_blank">Facebook</a> | <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank">LinkedIn</a></p>
-  </section>  <footer>
-    &copy; 2025 Simpatico HR Consultancy. All rights reserved.
-  </footer>
-</body>
-</html>
+export default function SimpaticoJobPortal() {
+  return (
+    <main className="min-h-screen bg-white text-gray-900">
+      <header className="bg-blue-900 text-white p-6 shadow-md">
+        <h1 className="text-3xl font-bold">Simpatico HR Consultancy</h1>
+        <p className="text-sm mt-1">
+          Recruitment Process Outsourcing for European & Western Region Companies
+        </p>
+      </header>
+
+      <section className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-blue-50 rounded-2xl p-4 shadow">
+          <h2 className="text-xl font-semibold mb-2">Job Seekers</h2>
+          <p className="mb-4">
+            Register, create your profile, and get job alerts directly in your inbox.
+          </p>
+          <button className="bg-blue-900 text-white py-2 px-4 rounded-xl">Register Now</button>
+        </div>
+
+        <div className="bg-blue-50 rounded-2xl p-4 shadow">
+          <h2 className="text-xl font-semibold mb-2">Employers</h2>
+          <p className="mb-4">
+            Find the best candidates across Europe and the West with our expert RPO services.
+          </p>
+          <button className="bg-blue-900 text-white py-2 px-4 rounded-xl">Post a Job</button>
+        </div>
+      </section>
+
+      <section className="p-6">
+        <h2 className="text-2xl font-bold mb-4">Latest Job Listings</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="border p-4 rounded-xl shadow">
+            <h3 className="font-semibold">Software Engineer - Remote (Germany)</h3>
+            <p className="text-sm">Posted: Apr 20, 2025</p>
+          </div>
+          <div className="border p-4 rounded-xl shadow">
+            <h3 className="font-semibold">Marketing Specialist - Netherlands</h3>
+            <p className="text-sm">Posted: Apr 18, 2025</p>
+          </div>
+          <div className="border p-4 rounded-xl shadow">
+            <h3 className="font-semibold">Finance Manager - London</h3>
+            <p className="text-sm">Posted: Apr 17, 2025</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blue-100 p-6 mt-6 rounded-2xl mx-4 md:mx-10">
+        <h2 className="text-xl font-bold mb-2">RPO Services</h2>
+        <p className="mb-4">
+          Simpatico HR Consultancy handles end-to-end recruitment for companies across Europe and the Western region.
+          Save time, reduce costs, and hire better talent with our proven RPO model.
+        </p>
+        <a
+          href="mailto:simpaticohrconsultancy@gmail.com"
+          className="bg-blue-900 text-white py-2 px-4 rounded-xl inline-block"
+        >
+          Contact Us
+        </a>
+      </section>
+
+      <footer className="bg-blue-900 text-white text-center p-4 mt-6">
+        <p>
+          &copy; 2025 Simpatico HR Consultancy |{' '}
+          <a href="https://www.linkedin.com/company/simpatico-manpower/" className="underline">
+            LinkedIn
+          </a>{' '}
+          |{' '}
+          <a href="https://www.facebook.com/share/1BARFBC6L4/" className="underline">
+            Facebook
+          </a>{' '}
+          | Phone: 9544842260
+        </p>
+      </footer>
+    </main>
+  );
+}
