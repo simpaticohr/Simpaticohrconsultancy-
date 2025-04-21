@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/style.css"> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
-    <link rel="stylesheet" href="styles.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Simpatico HR Consultancy</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link your existing CSS -->
 </head>
 <body>
-    <header>
-        <h1>Page Title</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html" target="_blank">Home</a></li>
-                <li><a href="about.html" target="_blank">About Us</a></li>
-                <li><a href="jobs.html" target="_blank">Job Listings</a></li>
-                <li><a href="employers.html" target="_blank">For Employers</a></li>
-                <li><a href="candidates.html" target="_blank">For Candidates</a></li>
-                <li><a href="contact.html" target="_blank">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Contact Us</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-    <main>
-        <section>
-            <h2>Section Title</h2>
-            <p>Content goes here.</p>
-        </section>
-    </main>
+  <main>
+    <section>
+      <h2>Get in Touch</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required>
 
-    <footer>
-        <p>&copy; 2023 Simpatico HR Consultancy. All Rights Reserved.</p>
-    </footer>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Message:</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Contact Details</h2>
+      <p><strong>Email:</strong> <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:9544842260">9544842260</a></p>
+      <p><strong>Location:</strong> Perintalmanna, Kerala</p>
+      <p>
+        <strong>Follow us:</strong><br>
+        <a href="https://www.facebook.com/share/1BARFBC6L4/" target="_blank">Facebook</a> |
+        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank">LinkedIn</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Simpatico HR Consultancy. All rights reserved.</p>
+  </footer>
 </body>
 </html>
