@@ -4,54 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpatico HR Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f5f5f5;
             color: #333;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Navigation Styles */
         nav {
             background-color: #004c8c;
-            color: white;
-            padding: 10px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             width: 100%;
+            z-index: 1000;
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
+            display: flex;
+            justify-content: center;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
 
         nav ul li {
-            display: inline;
-            margin-right: 20px;
+            margin: 0 20px;
         }
 
         nav ul li a {
             color: white;
-            text-decoration: none;
             font-size: 18px;
+            padding: 8px 16px;
+            transition: all 0.3s;
         }
 
         nav ul li a:hover {
-            color: #ff9900;
+            background-color: #ff9900;
+            border-radius: 4px;
+            color: white;
         }
 
+        /* Header Section */
         header {
             background: url('FB_IMG_1743667548556.jpg') no-repeat center center/cover;
             color: white;
-            padding: 100px 20px;
             text-align: center;
+            padding: 120px 20px;
         }
 
         header h1 {
             font-size: 48px;
+            font-weight: 500;
             margin: 0;
         }
 
@@ -60,24 +79,26 @@
             margin-top: 10px;
         }
 
+        /* Contact Section */
         #contact-info {
             background-color: #004c8c;
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
         }
 
         #contact-info a {
             color: #ff9900;
-            text-decoration: none;
+            font-weight: bold;
         }
 
         #contact-info a:hover {
             color: #ffffff;
         }
 
+        /* Section Styles */
         section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             background-color: white;
             text-align: center;
         }
@@ -85,6 +106,7 @@
         section h3 {
             font-size: 36px;
             color: #004c8c;
+            font-weight: 500;
         }
 
         section p, section ul li {
@@ -93,55 +115,83 @@
             color: #555;
         }
 
+        /* Footer Styles */
         footer {
             background-color: #333;
             color: white;
-            padding: 20px 0;
+            padding: 30px 20px;
             text-align: center;
         }
 
         footer a {
             color: #ff9900;
-            text-decoration: none;
+            font-weight: bold;
         }
 
         footer a:hover {
             text-decoration: underline;
         }
 
+        /* Form Styling */
         form {
-            width: 50%;
+            width: 80%;
             margin: 20px auto;
-            padding: 20px;
+            padding: 30px;
             background-color: #f9f9f9;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         form input, form textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
             border-radius: 5px;
+            border: 1px solid #ddd;
         }
 
         form button {
             background-color: #004c8c;
             color: white;
-            padding: 10px 20px;
+            padding: 14px 24px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%;
         }
 
         form button:hover {
             background-color: #ff9900;
         }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 60px 20px;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            form {
+                width: 90%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
@@ -154,6 +204,7 @@
         </ul>
     </nav>
 
+    <!-- Header -->
     <header>
         <h1>Simpatico HR Consultancy</h1>
         <h2>Your Partner in Recruitment Process Outsourcing</h2>
@@ -165,11 +216,13 @@
         <p>Phone: <a href="tel:9544842260">9544842260</a></p>
     </section>
 
+    <!-- About Section -->
     <section id="about">
         <h3>About Simpatico HR Consultancy</h3>
-        <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world...</p>
+        <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world. Our approach ensures that the right talent meets the right opportunity.</p>
     </section>
 
+    <!-- Services Section -->
     <section id="services">
         <h3>Our Services</h3>
         <ul>
@@ -181,6 +234,7 @@
         </ul>
     </section>
 
+    <!-- How It Works Section -->
     <section id="how-it-works">
         <h3>How It Works</h3>
         <ul>
@@ -192,6 +246,7 @@
         </ul>
     </section>
 
+    <!-- Recent Projects Section -->
     <section id="projects">
         <h3>Recent Projects</h3>
         <ul>
@@ -201,50 +256,33 @@
         </ul>
     </section>
 
+    <!-- Candidate Registration Form -->
     <section id="candidate-registration">
         <h3>Candidate Registration</h3>
         <form>
-            <label for="full-name">Full Name:</label>
-            <input type="text" id="full-name" name="full-name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required>
-
-            <label for="resume">Upload Resume:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Full Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
             <input type="file" id="resume" name="resume" required>
-
-            <label for="cover-letter">Cover Letter (Optional):</label>
-            <textarea id="cover-letter" name="cover-letter"></textarea>
-
+            <textarea id="cover-letter" name="cover-letter" placeholder="Cover Letter (Optional)"></textarea>
             <button type="submit">Submit Registration</button>
         </form>
     </section>
 
+    <!-- Employer Contact Form -->
     <section id="employer-contact">
         <h3>Employer Contact</h3>
         <form>
-            <label for="company-name">Company Name:</label>
-            <input type="text" id="company-name" name="company-name" required>
-
-            <label for="your-name">Your Name:</label>
-            <input type="text" id="your-name" name="your-name" required>
-
-            <label for="employer-email">Email:</label>
-            <input type="email" id="employer-email" name="employer-email" required>
-
-            <label for="employer-phone">Phone Number:</label>
-            <input type="text" id="employer-phone" name="employer-phone" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
+            <input type="text" id="company-name" name="company-name" placeholder="Company Name" required>
+            <input type="text" id="your-name" name="your-name" placeholder="Your Name" required>
+            <input type="email" id="employer-email" name="employer-email" placeholder="Email" required>
+            <input type="text" id="employer-phone" name="employer-phone" placeholder="Phone Number" required>
+            <textarea id="message" name="message" placeholder="Message" required></textarea>
             <button type="submit">Submit Inquiry</button>
         </form>
     </section>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
         <p>Contact us at: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
