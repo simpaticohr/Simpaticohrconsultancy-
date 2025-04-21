@@ -14,7 +14,7 @@ header * {
   z-index: 1;
 }
 header {
-    background: url('/FB_IMG_1743667548556.jpg') no-repeat center center/cover;
+background: url('../FB_IMG_1743667548556.jpg') no-repeat center center/cover;
     padding: 100px 20px;
     text-align: center;
     color: white;
