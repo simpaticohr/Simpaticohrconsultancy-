@@ -1,247 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpatico HR Consultancy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
             color: #333;
-        }
+        }nav {
+        background-color: #2d2d2d;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+    nav ul li {
+        margin: 0 15px;
+    }
 
-        
-        }
+    nav ul li a {
+        color: #fff;
+        font-size: 18px;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
 
-        /* Header Section */
-        header {
-            background: url('FB_IMG_1743667548556.jpg') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-            position: relative;
-        }
+    nav ul li a:hover {
+        color: #ff6600;
+        background-color: #fff;
+        border-radius: 4px;
+    }
 
-        header h1 {
-            font-size: 52px;
-            font-weight: 600;
-            margin: 0;
-        }
+    header {
+        background-color: #2d2d2d;
+        color: white;
+        text-align: center;
+        padding: 120px 20px;
+    }
 
-        header h2 {
-            font-size: 24px;
-            margin-top: 15px;
-        }
+    section {
+        padding: 60px 20px;
+        background-color: #fff;
+        margin-top: 20px;
+    }
 
-        /* Contact Section */
-        * Navigation Styles */
-        nav {
-            background-color: #2d2d2d;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+    section h3 {
+        font-size: 36px;
+        color: #2d2d2d;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
+    section p, section ul li {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #555;
+    }
 
-        nav ul li {
-            margin: 0 30px;
-        }
+    ul {
+        padding-left: 0;
+    }
 
-        nav ul li a {
-            color: #fff;
-            font-size: 18px;
-            padding: 10px 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
+    ul li {
+        list-style: none;
+        margin-bottom: 10px;
+    }
 
-        nav ul li a:hover {
-            color: #ff6600;
-            background-color: #fff;
-            border-radius: 4px;
-        #contact-info {
-            background-color: #2d2d2d;
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-        }
+    form {
+        width: 70%;
+        margin: 20px auto;
+        padding: 40px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        #contact-info a {
-            color: #ff6600;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
+    form input, form textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 12px 0;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+    }
 
-        #contact-info a:hover {
-            color: #fff;
-        }
+    form button {
+        background-color: #ff6600;
+        color: white;
+        padding: 16px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 100%;
+    }
 
-        /* Section Styles */
-        section {
-            padding: 80px 20px;
-            background-color: #fff;
-            text-align: center;
-            margin-top: 20px;
-        }
+    form button:hover {
+        background-color: #cc5200;
+    }
 
-        section h3 {
-            font-size: 40px;
-            color: #2d2d2d;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
+    footer {
+        background-color: #2d2d2d;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
 
-        section p, section ul li {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
+    footer a {
+        color: #ff6600;
+        font-weight: bold;
+    }
+</style>
 
-        /* Footer Styles */
-        footer {
-            background-color: #2d2d2d;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        footer a {
-            color: #ff6600;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Form Styling */
-        form {
-            width: 70%;
-            margin: 20px auto;
-            padding: 40px;
-            background-color: #f2f2f2;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        form:hover {
-            transform: translateY(-10px);
-        }
-
-        form input, form textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 12px 0;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 16px;
-            color: #333;
-        }
-
-        form button {
-            background-color: #ff6600;
-            color: white;
-            padding: 16px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        form button:hover {
-            background-color: #cc5200;
-        }
-
-        /* Responsive Design */
-        @media screen and (max-width: 1200px) {
-            header h1 {
-                font-size: 44px;
-            }
-
-            header h2 {
-                font-size: 20px;
-            }
-
-            section h3 {
-                font-size: 36px;
-            }
-
-            form {
-                width: 80%;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            header {
-                padding: 100px 20px;
-            }
-
-            section {
-                padding: 60px 20px;
-            }
-
-            form {
-                width: 90%;
-            }
-
-            header h1 {
-                font-size: 36px;
-            }
-
-            header h2 {
-                font-size: 18px;
-            }
-
-            section h3 {
-                font-size: 32px;
-            }
-
-            footer {
-                padding: 20px 10px;
-            }
-        }
-    </style>
 </head>
 <body>
-
-    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
@@ -252,91 +140,76 @@
             <li><a href="#candidate-registration">Candidate Registration</a></li>
             <li><a href="#employer-contact">Employer Contact</a></li>
         </ul>
-    </nav>
+    </nav><header id="home">
+    <h1>Simpatico HR Consultancy</h1>
+    <h2>Your Partner in Recruitment Process Outsourcing</h2>
+</header>
 
-    <!-- Header -->
-    <header>
-        <h1>Simpatico HR Consultancy</h1>
-        <h2>Your Partner in Recruitment Process Outsourcing</h2>
-    </header>
+<section id="about">
+    <h3>About Simpatico HR Consultancy</h3>
+    <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.</p>
+</section>
 
-    <!-- Contact Information Section -->
-    <section id="contact-info">
-        <h3>Contact Us</h3>
-        <p>Phone: <a href="tel:9544842260">9544842260</a></p>
-        <p>Email: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
-    </section>
+<section id="services">
+    <h3>Our Services</h3>
+    <ul>
+        <li><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</li>
+        <li><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</li>
+        <li><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</li>
+        <li><strong>Employer Branding:</strong> Positioning companies as desirable employers.</li>
+        <li><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</li>
+    </ul>
+</section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h3>About Simpatico HR Consultancy</h3>
-        <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world. Our approach ensures that the right talent meets the right opportunity, through strategic sourcing and efficient recruitment processes.</p>
-    </section>
+<section id="how-it-works">
+    <h3>How It Works</h3>
+    <ul>
+        <li><strong>Step 1:</strong> Consultation</li>
+        <li><strong>Step 2:</strong> Candidate Sourcing</li>
+        <li><strong>Step 3:</strong> Screening and Shortlisting</li>
+        <li><strong>Step 4:</strong> Interview and Selection</li>
+        <li><strong>Step 5:</strong> Onboarding</li>
+    </ul>
+</section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h3>Our Services</h3>
-        <ul>
-            <li><strong>Recruitment Process Outsourcing (RPO):</strong> Comprehensive recruitment services that help businesses streamline their hiring processes.</li>
-            <li><strong>Job Portal Development:</strong> Custom job listing platforms to connect candidates with opportunities.</li>
-            <li><strong>Candidate Sourcing:</strong> Specialized sourcing by region, industry, and skillset to find the best talent.</li>
-            <li><strong>Employer Branding:</strong> Helping companies build a strong reputation as an employer of choice.</li>
-            <li><strong>HR Consulting:</strong> Providing HR strategies and solutions that promote employee engagement and retention.</li>
-        </ul>
-    </section>
+<section id="projects">
+    <h3>Recent Projects</h3>
+    <ul>
+        <li>Healthcare Recruitment in Europe</li>
+        <li>IT & Tech Staffing</li>
+        <li>Manufacturing Sector Hiring</li>
+    </ul>
+</section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works">
-        <h3>How It Works</h3>
-        <ul>
-            <li><strong>Step 1:</strong> Consultation – We discuss your recruitment needs.</li>
-            <li><strong>Step 2:</strong> Candidate Sourcing – We source the best talent for you.</li>
-            <li><strong>Step 3:</strong> Screening & Shortlisting – We evaluate and shortlist candidates based on your criteria.</li>
-            <li><strong>Step 4:</strong> Interview & Selection – We conduct interviews to ensure the best match.</li>
-            <li><strong>Step 5:</strong> Onboarding – We assist with smooth onboarding for the selected candidate.</li>
-        </ul>
-    </section>
+<section id="candidate-registration">
+    <h3>Candidate Registration</h3>
+    <form>
+        <input type="text" name="full-name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <input type="file" name="resume" required>
+        <textarea name="cover-letter" placeholder="Cover Letter (Optional)"></textarea>
+        <button type="submit">Submit Registration</button>
+    </form>
+</section>
 
-    <!-- Recent Projects Section -->
-    <section id="projects">
-        <h3>Recent Projects</h3>
-        <ul>
-            <li>Healthcare Recruitment for European Market</li>
-            <li>IT & Tech Staffing for Startups</li>
-            <li>Recruitment for the Manufacturing Sector</li>
-        </ul>
-    </section>
+<section id="employer-contact">
+    <h3>Employer Contact</h3>
+    <form>
+        <input type="text" name="company-name" placeholder="Company Name" required>
+        <input type="text" name="your-name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit">Submit Inquiry</button>
+    </form>
+</section>
 
-    <!-- Candidate Registration Form -->
-    <section id="candidate-registration">
-        <h3>Candidate Registration</h3>
-        <form>
-            <input type="text" id="full-name" name="full-name" placeholder="Full Name" required>
-            <input type="email" id="email" name="email" placeholder="Email" required>
-            <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
-            <input type="file" id="resume" name="resume" required>
-            <textarea id="cover-letter" name="cover-letter" placeholder="Cover Letter (Optional)"></textarea>
-            <button type="submit">Submit Registration</button>
-        </form>
-    </section>
-
-    <!-- Employer Contact Form -->
-    <section id="employer-contact">
-        <h3>Employer Contact</h3>
-        <form>
-            <input type="text" id="company-name" name="company-name" placeholder="Company Name" required>
-            <input type="text" id="your-name" name="your-name" placeholder="Your Name" required>
-            <input type="email" id="employer-email" name="email" placeholder="Email" required>
-            <input type="text" id="employer-phone" name="phone" placeholder="Phone Number" required>
-            <textarea id="message" name="message" placeholder="Message" required></textarea>
-            <button type="submit">Submit Inquiry</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Simpatico HR Consultancy. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
+    <p>Contact us at: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
+    <p>Follow us on <a href="https://www.facebook.com/share/1BARFBC6L4/">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/">LinkedIn</a></p>
+</footer>
 
 </body>
 </html>
