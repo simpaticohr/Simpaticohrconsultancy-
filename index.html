@@ -2,129 +2,177 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Simpatico HR Consultancy</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
     }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
     nav {
-      background-color: #2d2d2d;
-      padding: 15px 0;
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: center;
       position: sticky;
       top: 0;
-      width: 100%;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
+      gap: 25px;
     }
-    nav ul li {
-      margin: 0 15px;
-    }
+
     nav ul li a {
-      color: #fff;
-      font-size: 18px;
-      padding: 10px 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
       text-decoration: none;
+      color: #2d2d2d;
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
     }
+
     nav ul li a:hover {
       color: #ff6600;
-      background-color: #fff;
-      border-radius: 4px;
     }
+
     header {
-      position: relative;
-      background: url('https://tse3.mm.bing.net/th?id=OIP.ozoTvSflv-Y-CCmnQ1-nLwHaFR&pid=Api') no-repeat center center/cover;
+      background: url(' https://images.unsplash.com/photo-1573164713737-220f7b266780?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
       color: white;
       text-align: center;
-      padding: 120px 20px;
+      padding: 150px 20px 100px;
+      position: relative;
     }
-    header::before {
+
+    header::after {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
-    header h1, header h2 {
+
+    header .content {
       position: relative;
       z-index: 2;
     }
+
+    header h1 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    header h2 {
+      font-size: 24px;
+      font-weight: 400;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
     section {
       padding: 60px 20px;
-      background-color: #fff;
-      margin-top: 20px;
+      max-width: 1200px;
+      margin: auto;
     }
+
     section h3 {
-      font-size: 36px;
+      font-size: 32px;
       color: #2d2d2d;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-align: center;
     }
-    section p, section ul li {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #555;
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
-    ul {
-      padding-left: 0;
-    }
-    ul li {
-      list-style: none;
-      margin-bottom: 10px;
-    }
-    form {
-      width: 70%;
-      margin: 20px auto;
-      padding: 40px;
-      background-color: #f2f2f2;
+
+    .card {
+      background: #fff;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
-    form input, form textarea {
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card strong {
+      color: #ff6600;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    form input,
+    form textarea {
       width: 100%;
-      padding: 15px;
-      margin: 12px 0;
-      border-radius: 8px;
-      border: 1px solid #ddd;
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
       font-size: 16px;
     }
+
     form button {
       background-color: #ff6600;
       color: white;
-      padding: 16px 24px;
+      padding: 14px;
       border: none;
-      border-radius: 8px;
-      font-size: 18px;
+      border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
       width: 100%;
+      transition: background 0.3s ease;
     }
+
     form button:hover {
       background-color: #cc5200;
     }
+
     footer {
       background-color: #2d2d2d;
       color: white;
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
     }
+
     footer a {
       color: #ff6600;
-      font-weight: bold;
       text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 32px;
+      }
+      header h2 {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -143,44 +191,48 @@
   </nav>
 
   <header id="home">
-    <h1>Simpatico HR Consultancy</h1>
-    <h2>Your Partner in Recruitment Process Outsourcing</h2>
+    <div class="content">
+      <h1>Simpatico HR Consultancy</h1>
+      <h2>Your Partner in Recruitment Process Outsourcing</h2>
+    </div>
   </header>
 
   <section id="about">
     <h3>About Simpatico HR Consultancy</h3>
-    <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services globally. We do not provide visa sponsorship or work permits. In addition to domestic recruitment, we offer sourcing support for companies based in Western, European, and Middle Eastern regions. Candidates must be citizens of these regions. ..</p>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.
+    </p>
   </section>
 
   <section id="services">
     <h3>Our Services</h3>
-    <ul>
-      <li><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</li>
-      <li><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</li>
-      <li><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</li>
-      <li><strong>Employer Branding:</strong> Positioning companies as desirable employers.</li>
-      <li><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</li>
-    </ul>
+    <div class="cards">
+      <div class="card"><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</div>
+      <div class="card"><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</div>
+      <div class="card"><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</div>
+      <div class="card"><strong>Employer Branding:</strong> Positioning companies as desirable employers.</div>
+      <div class="card"><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</div>
+    </div>
   </section>
 
   <section id="how-it-works">
     <h3>How It Works</h3>
-    <ul>
-      <li><strong>Step 1:</strong> Consultation</li>
-      <li><strong>Step 2:</strong> Candidate Sourcing</li>
-      <li><strong>Step 3:</strong> Screening and Shortlisting</li>
-      <li><strong>Step 4:</strong> Interview and Selection</li>
-      <li><strong>Step 5:</strong> Onboarding</li>
-    </ul>
+    <div class="cards">
+      <div class="card"><strong>Step 1:</strong> Consultation</div>
+      <div class="card"><strong>Step 2:</strong> Candidate Sourcing</div>
+      <div class="card"><strong>Step 3:</strong> Screening and Shortlisting</div>
+      <div class="card"><strong>Step 4:</strong> Interview and Selection</div>
+      <div class="card"><strong>Step 5:</strong> Onboarding</div>
+    </div>
   </section>
 
   <section id="projects">
     <h3>Recent Projects</h3>
-    <ul>
-      <li>Healthcare Recruitment in Europe</li>
-      <li>IT & Tech Staffing</li>
-      <li>Manufacturing Sector Hiring</li>
-    </ul>
+    <div class="cards">
+      <div class="card">Healthcare Recruitment in Europe</div>
+      <div class="card">IT & Tech Staffing</div>
+      <div class="card>Manufacturing Sector Hiring</div>
+    </div>
   </section>
 
   <section id="candidate-registration">
@@ -190,7 +242,7 @@
       <input type="email" name="email" placeholder="Email" required>
       <input type="text" name="phone" placeholder="Phone Number" required>
       <input type="file" name="resume" required>
-      <textarea name="cover-letter" placeholder="Cover Letter (Optional)"></textarea>
+      <textarea name="cover-letter" placeholder="Cover Letter (Optional)" rows="4"></textarea>
       <button type="submit">Submit Registration</button>
     </form>
   </section>
@@ -202,15 +254,16 @@
       <input type="text" name="your-name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Email" required>
       <input type="text" name="phone" placeholder="Phone Number" required>
-      <textarea name="message" placeholder="Message" required></textarea>
+      <textarea name="message" placeholder="Message" rows="4" required></textarea>
       <button type="submit">Submit Inquiry</button>
     </form>
   </section>
 
   <footer>
     <p>&copy; 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
-    <p>Contact us at: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>phone.9544842260
-    <p>Follow us on <a href="https://www.facebook.com/share/1BARFBC6L4/">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/">LinkedIn</a></p>
+    <p>Contact us at: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
+    <p>Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
+    <p>Follow us on <a href=" https://www.facebook.com/share/1BARFBC6L4/ " target="_blank">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/ " target="_blank">LinkedIn</a></p>
   </footer>
 
 </body>
