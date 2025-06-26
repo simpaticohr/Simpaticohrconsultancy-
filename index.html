@@ -2,154 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simpatico HR Consultancy offers recruitment process outsourcing, job portal development, candidate sourcing, and employer branding services globally." />
   <title>Simpatico HR Consultancy</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
       color: #333;
-      line-height: 1.6;
     }
-
     nav {
-      background-color: #ffffff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: center;
+      background-color: #2d2d2d;
+      padding: 15px 0;
       position: sticky;
       top: 0;
+      width: 100%;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
     }
-
+    nav ul li {
+      margin: 0 15px;
+    }
     nav ul li a {
-      text-decoration: none;
-      color: #2d2d2d;
-      font-weight: 500;
+      color: #fff;
+      font-size: 18px;
+      padding: 10px 15px;
       text-transform: uppercase;
-      transition: color 0.3s ease;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
-
     nav ul li a:hover {
       color: #ff6600;
+      background-color: #fff;
+      border-radius: 4px;
     }
 
     header {
-  background: url('Simpatico HR consultancy_20250509_144608_0000.jpg') no-repeat center center/cover;
-  color: white;
-  text-align: center;
-  padding: 150px 20px 100px;
-  position: relative;
-}
+      position: relative;
+      background: url(' https://images.unsplash.com/photo-1573164713714-18eb209d8a4e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
     }
-
-    header::after {
+    header::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
-
-    header .content {
+    header h1, header h2 {
       position: relative;
       z-index: 2;
     }
 
-    header h1 {
-      font-size: 48px;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    header h2 {
-      font-size: 24px;
-      font-weight: 400;
-      max-width: 800px;
-      margin: 0 auto 30px;
-    }
-
     section {
       padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
+      background-color: #fff;
+      margin-top: 20px;
     }
-
     section h3 {
-      font-size: 32px;
+      font-size: 36px;
       color: #2d2d2d;
       font-weight: 600;
-      margin-bottom: 30px;
-      text-align: center;
+      margin-bottom: 20px;
     }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+    section p, section ul li {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
     }
-
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    ul {
+      padding-left: 0;
     }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card strong {
-      color: #ff6600;
+    ul li {
+      list-style: none;
+      margin-bottom: 10px;
     }
 
     form {
-      background: #fff;
-      padding: 30px;
+      width: 70%;
+      margin: 20px auto;
+      padding: 40px;
+      background-color: #f2f2f2;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      max-width: 800px;
-      margin: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-
-    form input,
-    form textarea {
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+    form input, form textarea {
       width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 12px 0 20px 0;
+      border-radius: 8px;
+      border: 1px solid #ddd;
       font-size: 16px;
     }
-
     form button {
       background-color: #ff6600;
       color: white;
-      padding: 14px;
+      padding: 16px 24px;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 8px;
+      font-size: 18px;
       cursor: pointer;
       width: 100%;
-      transition: background 0.3s ease;
     }
-
     form button:hover {
       background-color: #cc5200;
     }
@@ -157,29 +130,32 @@
     footer {
       background-color: #2d2d2d;
       color: white;
-      padding: 40px 20px;
+      padding: 30px 20px;
       text-align: center;
     }
-
     footer a {
       color: #ff6600;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
 
+    /* Responsive Styles */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 32px;
+      form {
+        width: 90%;
       }
-      header h2 {
-        font-size: 18px;
+      nav ul {
+        flex-direction: column;
+      }
+      header h1, header h2 {
+        font-size: 28px;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav>
+  <nav role="navigation" aria-label="Main navigation">
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -192,58 +168,64 @@
   </nav>
 
   <header id="home">
-    <div class="content">
-      <h1>Simpatico HR Consultancy</h1>
-      <h2>Your Partner in Recruitment Process Outsourcing</h2>
-    </div>
+    <h1>Simpatico HR Consultancy</h1>
+    <h2>Your Partner in Recruitment Process Outsourcing</h2>
   </header>
 
   <section id="about">
     <h3>About Simpatico HR Consultancy</h3>
-    <p style="text-align:center; max-width:800px; margin:auto;">
-      Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.
-    </p>
+    <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.</p>
   </section>
 
   <section id="services">
     <h3>Our Services</h3>
-    <div class="cards">
-      <div class="card"><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</div>
-      <div class="card"><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</div>
-      <div class="card"><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</div>
-      <div class="card"><strong>Employer Branding:</strong> Positioning companies as desirable employers.</div>
-      <div class="card"><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</div>
-    </div>
+    <ul>
+      <li><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</li>
+      <li><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</li>
+      <li><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</li>
+      <li><strong>Employer Branding:</strong> Positioning companies as desirable employers.</li>
+      <li><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</li>
+    </ul>
   </section>
 
   <section id="how-it-works">
     <h3>How It Works</h3>
-    <div class="cards">
-      <div class="card"><strong>Step 1:</strong> Consultation</div>
-      <div class="card"><strong>Step 2:</strong> Candidate Sourcing</div>
-      <div class="card"><strong>Step 3:</strong> Screening and Shortlisting</div>
-      <div class="card"><strong>Step 4:</strong> Interview and Selection</div>
-      <div class="card"><strong>Step 5:</strong> Onboarding</div>
-    </div>
+    <ul>
+      <li><strong>Step 1:</strong> Consultation</li>
+      <li><strong>Step 2:</strong> Candidate Sourcing</li>
+      <li><strong>Step 3:</strong> Screening and Shortlisting</li>
+      <li><strong>Step 4:</strong> Interview and Selection</li>
+      <li><strong>Step 5:</strong> Onboarding</li>
+    </ul>
   </section>
 
   <section id="projects">
     <h3>Recent Projects</h3>
-    <div class="cards">
-      <div class="card">Healthcare Recruitment in Europe</div>
-      <div class="card">IT & Tech Staffing</div>
-      <div class="card>Manufacturing Sector Hiring</div>
-    </div>
+    <ul>
+      <li>Healthcare Recruitment in Europe</li>
+      <li>IT & Tech Staffing</li>
+      <li>Manufacturing Sector Hiring</li>
+    </ul>
   </section>
 
   <section id="candidate-registration">
     <h3>Candidate Registration</h3>
     <form>
-      <input type="text" name="full-name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
-      <input type="file" name="resume" required>
-      <textarea name="cover-letter" placeholder="Cover Letter (Optional)" rows="4"></textarea>
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" name="full-name" placeholder="Full Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+
+      <label for="resume">Upload Resume</label>
+      <input type="file" id="resume" name="resume" required>
+
+      <label for="cover-letter">Cover Letter (Optional)</label>
+      <textarea id="cover-letter" name="cover-letter" placeholder="Cover Letter (Optional)"></textarea>
+
       <button type="submit">Submit Registration</button>
     </form>
   </section>
@@ -251,11 +233,21 @@
   <section id="employer-contact">
     <h3>Employer Contact</h3>
     <form>
-      <input type="text" name="company-name" placeholder="Company Name" required>
-      <input type="text" name="your-name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
-      <textarea name="message" placeholder="Message" rows="4" required></textarea>
+      <label for="company-name">Company Name</label>
+      <input type="text" id="company-name" name="company-name" placeholder="Company Name" required>
+
+      <label for="your-name">Your Name</label>
+      <input type="text" id="your-name" name="your-name" placeholder="Your Name" required>
+
+      <label for="email-employer">Email</label>
+      <input type="email" id="email-employer" name="email" placeholder="Email" required>
+
+      <label for="phone-employer">Phone Number</label>
+      <input type="text" id="phone-employer" name="phone" placeholder="Phone Number" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Message" required></textarea>
+
       <button type="submit">Submit Inquiry</button>
     </form>
   </section>
@@ -264,7 +256,7 @@
     <p>&copy; 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
     <p>Contact us at: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a></p>
     <p>Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
-    <p>Follow us on <a href=" https://www.facebook.com/share/1BARFBC6L4/ " target="_blank">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/ " target="_blank">LinkedIn</a></p>
+    <p>Follow us on <a href=" https://www.facebook.com/share/1BARFBC6L4/ ">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/ ">LinkedIn</a></p>
   </footer>
 
 </body>
