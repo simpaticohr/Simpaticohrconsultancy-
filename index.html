@@ -3,40 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Simpatico HR Consultancy offers recruitment process outsourcing, job portal development, candidate sourcing, and employer branding services globally." />
+  <meta name="description" content="Simpatico HR Consultancy - Your Partner in Recruitment Process Outsourcing" />
   <title>Simpatico HR Consultancy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* -------- Hero Banner Section -------- */
-    .hero-banner {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      animation: fadeIn 2s ease-in-out; /* fade-in effect for section */
-    }
-
-    .banner-image {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-      border-bottom: 4px solid #004a7c;
-      opacity: 0;
-      animation: fadeInImage 2s ease-in-out forwards;
-    }
-
-    /* Animation keyframes */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInImage {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* -------- General Page Styles -------- */
+    /* Base Styles */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -45,6 +19,7 @@
       color: #333;
     }
 
+    /* Navbar */
     nav {
       background-color: #2d2d2d;
       padding: 15px 0;
@@ -53,6 +28,7 @@
       width: 100%;
       z-index: 1000;
     }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -61,150 +37,97 @@
       padding: 0;
       flex-wrap: wrap;
     }
+
     nav ul li {
       margin: 0 15px;
     }
+
     nav ul li a {
-      color: #fff;
-      font-size: 18px;
-      padding: 10px 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
+      color: white;
       text-decoration: none;
-    }
-    nav ul li a:hover {
-      color: #ff6600;
-      background-color: #fff;
-      border-radius: 4px;
-    }
-
-    header {
-      position: relative;
-      background: url('https://images.unsplash.com/photo-1573164713714-18eb209d8a4e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      padding: 120px 20px;
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-    header h1, header h2 {
-      position: relative;
-      z-index: 2;
-    }
-
-    section {
-      padding: 60px 20px;
-      background-color: #fff;
-      margin-top: 20px;
-    }
-    section h3 {
-      font-size: 36px;
-      color: #2d2d2d;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-    section p, section ul li {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #555;
-    }
-
-    ul {
-      padding-left: 0;
-    }
-    ul li {
-      list-style: none;
-      margin-bottom: 10px;
-    }
-
-    form {
-      width: 70%;
-      margin: 20px auto;
-      padding: 40px;
-      background-color: #f2f2f2;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    form label {
-      display: block;
-      margin-bottom: 8px;
       font-weight: 500;
-      color: #333;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 15px;
-      margin: 12px 0 20px 0;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 16px;
-    }
-    form button {
-      background-color: #ff6600;
-      color: white;
-      padding: 16px 24px;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      cursor: pointer;
-      width: 100%;
-    }
-    form button:hover {
-      background-color: #cc5200;
+      transition: color 0.3s ease;
     }
 
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: zoomIn 10s ease-in-out infinite alternate;
+    }
+
+    .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 10px;
+      animation: fadeUp 1.5s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    /* Footer */
     footer {
+      text-align: center;
+      padding: 20px;
       background-color: #2d2d2d;
       color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    footer a {
-      color: #ff6600;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      form { width: 90%; }
-      nav ul { flex-direction: column; }
-      header h1, header h2 { font-size: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Add Banner Image Here -->
-  <div class="hero-banner">
-    <img src="banner.png" alt="Simpatico HR Consultancy Banner" class="banner-image">
-  </div>
-
-  <nav role="navigation" aria-label="Main navigation">
+  <!-- Navigation -->
+  <nav>
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#candidate-registration">Candidate Registration</a></li>
-      <li><a href="#employer-contact">Employer Contact</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">How It Works</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Employer Contact</a></li>
+      <li><a href="#" style="background-color:#ff9800; padding:8px 15px; border-radius:5px; color:white;">Candidate Registration</a></li>
     </ul>
   </nav>
 
-  <header id="home">
-    <h1>Simpatico HR Consultancy</h1>
-    <h2>Your Partner in Recruitment Process Outsourcing</h2>
-  </header>
+  <!-- Hero Banner Section -->
+  <section class="hero-banner">
+    <img src="IMG_20251028_120222.jpg" alt="Simpatico HR Consultancy Banner" class="banner-image">
+    <div class="banner-text">
+      <h1>Simpatico HR Consultancy</h1>
+      <p>Your Partner in Recruitment Process Outsourcing</p>
+    </div>
+  </section>
 
-  <!-- Your sections continue below -->
-  <!-- ... (rest of your HTML remains unchanged) ... -->
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
+  </footer>
 
 </body>
 </html>
