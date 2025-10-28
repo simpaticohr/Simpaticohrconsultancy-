@@ -3,130 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Simpatico HR Consultancy - Your Partner in Recruitment Process Outsourcing" />
+  <meta name="description" content="Simpatico HR Consultancy - Recruitment Process Outsourcing, Job Portal Development, and HR Services." />
   <title>Simpatico HR Consultancy</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* Base Styles */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
+      background: #f7f7f7;
       color: #333;
     }
 
     /* Navbar */
     nav {
-      background-color: #2d2d2d;
+      background-color: #003366;
       padding: 15px 0;
       position: sticky;
       top: 0;
-      width: 100%;
       z-index: 1000;
     }
-
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       margin: 0;
       padding: 0;
-      flex-wrap: wrap;
     }
-
     nav ul li {
       margin: 0 15px;
     }
-
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      font-size: 16px;
+      transition: 0.3s;
     }
-
     nav ul li a:hover {
-      color: #00bcd4;
+      color: #ffcc00;
     }
 
-    /* Hero Banner */
+    /* Hero Section */
     .hero-banner {
       position: relative;
       width: 100%;
-      height: 400px;
+      height: 420px;
       overflow: hidden;
     }
-
-    .banner-image {
+    .hero-banner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      animation: zoomIn 10s ease-in-out infinite alternate;
+      animation: zoomIn 12s ease-in-out infinite alternate;
     }
-
-    .banner-text {
+    @keyframes zoomIn {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+    .hero-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      text-align: center;
       color: white;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px 40px;
+      text-align: center;
+      background: rgba(0,0,0,0.55);
+      padding: 25px 40px;
       border-radius: 10px;
-      animation: fadeUp 1.5s ease-in-out;
+      animation: fadeIn 2s ease-in-out;
     }
-
-    @keyframes zoomIn {
-      from { transform: scale(1); }
-      to { transform: scale(1.05); }
+    .hero-text h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translate(-50%, -40%); }
+    .hero-text h2 {
+      font-weight: 300;
+      font-size: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
       to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      background-color: white;
+      margin: 20px auto;
+      max-width: 1100px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      animation: fadeUp 1s ease-in-out;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section h3 {
+      text-align: center;
+      font-size: 28px;
+      color: #003366;
+      margin-bottom: 20px;
+    }
+    section p, section li {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #444;
+    }
+    ul {
+      padding-left: 20px;
+    }
+
+    /* Forms */
+    form {
+      background: #f2f2f2;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    form label {
+      font-weight: 600;
+      display: block;
+      margin: 10px 0 5px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    form button {
+      background: #003366;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    form button:hover {
+      background: #0055aa;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #2d2d2d;
+      background-color: #003366;
       color: white;
+      padding: 30px 15px;
+      font-size: 15px;
+    }
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-text h1 { font-size: 28px; }
+      .hero-text h2 { font-size: 16px; }
+      section { margin: 10px; padding: 30px 15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">How It Works</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Employer Contact</a></li>
-      <li><a href="#" style="background-color:#ff9800; padding:8px 15px; border-radius:5px; color:white;">Candidate Registration</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#candidate">Candidate Registration</a></li>
+      <li><a href="#employer">Employer Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Banner Section -->
-  <section class="hero-banner">
-    <img src="IMG_20251028_120222.jpg" alt="Simpatico HR Consultancy Banner" class="banner-image">
-    <div class="banner-text">
+  <!-- Hero Banner -->
+  <section id="home" class="hero-banner">
+    <img src="IMG_20251028_120222.jpg" alt="Simpatico HR Consultancy Banner">
+    <div class="hero-text">
       <h1>Simpatico HR Consultancy</h1>
-      <p>Your Partner in Recruitment Process Outsourcing</p>
+      <h2>Your Partner in Recruitment Process Outsourcing</h2>
     </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h3>About Simpatico HR Consultancy</h3>
+    <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.</p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h3>Our Services</h3>
+    <ul>
+      <li><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</li>
+      <li><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</li>
+      <li><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</li>
+      <li><strong>Employer Branding:</strong> Positioning companies as desirable employers.</li>
+      <li><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</li>
+    </ul>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how">
+    <h3>How It Works</h3>
+    <ul>
+      <li><strong>Step 1:</strong> Consultation</li>
+      <li><strong>Step 2:</strong> Candidate Sourcing</li>
+      <li><strong>Step 3:</strong> Screening and Shortlisting</li>
+      <li><strong>Step 4:</strong> Interview and Selection</li>
+      <li><strong>Step 5:</strong> Onboarding</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h3>Recent Projects</h3>
+    <ul>
+      <li>Healthcare Recruitment in Europe</li>
+      <li>IT & Tech Staffing</li>
+      <li>Manufacturing Sector Hiring</li>
+    </ul>
+  </section>
+
+  <!-- Candidate Registration -->
+  <section id="candidate">
+    <h3>Candidate Registration</h3>
+    <form>
+      <label>Full Name</label>
+      <input type="text" placeholder="Enter your full name" required>
+      <label>Email</label>
+      <input type="email" placeholder="Enter your email" required>
+      <label>Phone Number</label>
+      <input type="text" placeholder="Enter phone number" required>
+      <label>Upload Resume</label>
+      <input type="file" required>
+      <label>Cover Letter (Optional)</label>
+      <textarea rows="4" placeholder="Write a cover letter..."></textarea>
+      <button type="submit">Submit Registration</button>
+    </form>
+  </section>
+
+  <!-- Employer Contact -->
+  <section id="employer">
+    <h3>Employer Contact</h3>
+    <form>
+      <label>Company Name</label>
+      <input type="text" placeholder="Company name" required>
+      <label>Your Name</label>
+      <input type="text" placeholder="Your name" required>
+      <label>Email</label>
+      <input type="email" placeholder="Email" required>
+      <label>Phone Number</label>
+      <input type="text" placeholder="Phone number" required>
+      <label>Message</label>
+      <textarea rows="4" placeholder="Write your message..." required></textarea>
+      <button type="submit">Submit Inquiry</button>
+    </form>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>© 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
+    <p>Contact: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a> | Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
+    <p>Follow us on <a href="https://www.facebook.com/share/1BARFBC6L4/">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/">LinkedIn</a></p>
   </footer>
 
 </body>
