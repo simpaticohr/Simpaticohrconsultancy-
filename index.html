@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -59,36 +56,48 @@
       background: #ffcc00;
       transition: 0.3s;
     }
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-    nav ul li a:hover {
-      color: #ffcc00;
-    }
+    nav ul li a:hover::after { width: 100%; }
+    nav ul li a:hover { color: #ffcc00; }
 
     /* Hero Section */
     .hero {
       position: relative;
       height: 90vh;
-      overflow: hidden;
-      background: url("header_banner_new.jpg") center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      background: #e0e0e0;
     }
-    .hero::after {
-      content: "";
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: zoomIn 20s ease-in-out infinite alternate;
+    }
+    .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .hero-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
     }
     .hero-text {
       position: relative;
       z-index: 2;
       text-align: center;
       color: white;
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.1);
       padding: 40px 60px;
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -104,6 +113,15 @@
       opacity: 0.9;
     }
 
+    @keyframes zoomIn {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     /* Sections */
     section {
       max-width: 1100px;
@@ -113,6 +131,10 @@
       border-radius: 20px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       animation: fadeUp 1s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     section h3 {
       text-align: center;
@@ -135,11 +157,9 @@
       line-height: 1.8;
       color: #444;
     }
-    ul {
-      padding-left: 20px;
-    }
+    ul { padding-left: 20px; }
 
-    /* Cards layout for Services */
+    /* Services */
     #services ul {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -207,46 +227,27 @@
       padding: 40px 15px;
       margin-top: 100px;
     }
-    footer p {
-      margin: 8px 0;
-    }
+    footer p { margin: 8px 0; }
     footer a {
       color: #ffcc00;
       text-decoration: none;
       font-weight: 600;
     }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    footer .social {
-      margin-top: 15px;
-    }
+    footer a:hover { text-decoration: underline; }
+    footer .social { margin-top: 15px; }
     footer .social a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       transition: 0.3s;
     }
-    footer .social a:hover {
-      color: #ffcc00;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    footer .social a:hover { color: #ffcc00; }
 
     @media (max-width: 768px) {
       .hero-text {
         padding: 25px 20px;
       }
-      .hero-text h1 {
-        font-size: 32px;
-      }
+      .hero-text h1 { font-size: 32px; }
       section {
         margin: 70px 20px;
         padding: 40px 20px;
@@ -269,8 +270,11 @@
     </ul>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
+    <img src="simpatico_hr_banner.jpg" alt="Simpatico HR Consultancy Banner" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-gradient"></div>
     <div class="hero-text">
       <h1>Simpatico HR Consultancy</h1>
       <h2>Your Partner in Recruitment Process Outsourcing</h2>
