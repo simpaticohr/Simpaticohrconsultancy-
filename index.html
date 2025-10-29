@@ -6,106 +6,129 @@
   <meta name="description" content="Simpatico HR Consultancy - Recruitment Process Outsourcing, Job Portal Development, and HR Services." />
   <title>Simpatico HR Consultancy</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background: #f7f7f7;
-      color: #333;
+      background: #f8fafc;
+      color: #222;
     }
 
     /* Navbar */
     nav {
-      background-color: #003366;
-      padding: 15px 0;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 51, 102, 0.9);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
       z-index: 1000;
+      transition: 0.3s;
     }
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 25px;
+      padding: 15px 0;
       margin: 0;
-      padding: 0;
-    }
-    nav ul li {
-      margin: 0 15px;
+      flex-wrap: wrap;
     }
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: 500;
       font-size: 16px;
+      position: relative;
+      transition: color 0.3s;
+    }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #ffcc00;
       transition: 0.3s;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
     }
     nav ul li a:hover {
       color: #ffcc00;
     }
 
     /* Hero Section */
-    .hero-banner {
+    .hero {
       position: relative;
-      width: 100%;
-      height: 420px;
+      height: 90vh;
       overflow: hidden;
+      background: url("header_banner_new.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .hero-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      animation: zoomIn 12s ease-in-out infinite alternate;
-    }
-    @keyframes zoomIn {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
     }
     .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
+      position: relative;
+      z-index: 2;
       text-align: center;
-      background: rgba(0,0,0,0.55);
-      padding: 25px 40px;
-      border-radius: 10px;
-      animation: fadeIn 2s ease-in-out;
+      color: white;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease;
     }
     .hero-text h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+      font-size: 42px;
+      margin: 0 0 10px;
     }
     .hero-text h2 {
       font-weight: 300;
       font-size: 20px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -60%); }
-      to { opacity: 1; transform: translate(-50%, -50%); }
+      opacity: 0.9;
     }
 
     /* Sections */
     section {
-      padding: 60px 20px;
-      background-color: white;
-      margin: 20px auto;
       max-width: 1100px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      animation: fadeUp 1s ease-in-out;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      margin: 100px auto;
+      background: white;
+      padding: 60px 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      animation: fadeUp 1s ease;
     }
     section h3 {
       text-align: center;
-      font-size: 28px;
+      font-size: 30px;
       color: #003366;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    section h3::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: #ffcc00;
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 2px;
     }
     section p, section li {
       font-size: 17px;
@@ -116,62 +139,118 @@
       padding-left: 20px;
     }
 
+    /* Cards layout for Services */
+    #services ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 0;
+      list-style: none;
+    }
+    #services li {
+      background: #f1f6fb;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    #services li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
     /* Forms */
     form {
-      background: #f2f2f2;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: #f9fafc;
+      padding: 40px;
+      border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
     }
     form label {
       font-weight: 600;
-      display: block;
-      margin: 10px 0 5px;
     }
     form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 12px;
+      border-radius: 8px;
       border: 1px solid #ccc;
-      margin-bottom: 15px;
       font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #003366;
     }
     form button {
-      background: #003366;
+      background: linear-gradient(135deg, #003366, #0055aa);
       color: white;
-      padding: 12px 20px;
       border: none;
-      border-radius: 5px;
+      padding: 14px;
+      border-radius: 8px;
       cursor: pointer;
-      width: 100%;
       font-size: 18px;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
     form button:hover {
-      background: #0055aa;
+      background: linear-gradient(135deg, #004080, #0066cc);
     }
 
     /* Footer */
     footer {
-      text-align: center;
-      background-color: #003366;
+      background: linear-gradient(135deg, #003366, #002244);
       color: white;
-      padding: 30px 15px;
-      font-size: 15px;
+      text-align: center;
+      padding: 40px 15px;
+      margin-top: 100px;
+    }
+    footer p {
+      margin: 8px 0;
     }
     footer a {
       color: #ffcc00;
       text-decoration: none;
       font-weight: 600;
     }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer .social {
+      margin-top: 15px;
+    }
+    footer .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+    footer .social a:hover {
+      color: #ffcc00;
+    }
 
-    /* Responsive */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     @media (max-width: 768px) {
-      .hero-text h1 { font-size: 28px; }
-      .hero-text h2 { font-size: 16px; }
-      section { margin: 10px; padding: 30px 15px; }
+      .hero-text {
+        padding: 25px 20px;
+      }
+      .hero-text h1 {
+        font-size: 32px;
+      }
+      section {
+        margin: 70px 20px;
+        padding: 40px 20px;
+      }
     }
   </style>
 </head>
@@ -190,9 +269,8 @@
     </ul>
   </nav>
 
-  <!-- Hero Banner -->
-  <section id="home" class="hero-banner">
-    <img src="header_banner_new.jpg" alt="Simpatico HR Consultancy Banner - Professional man presenting global HR metrics">
+  <!-- Hero -->
+  <section id="home" class="hero">
     <div class="hero-text">
       <h1>Simpatico HR Consultancy</h1>
       <h2>Your Partner in Recruitment Process Outsourcing</h2>
@@ -279,7 +357,10 @@
   <footer>
     <p>© 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
     <p>Contact: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a> | Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
-    <p>Follow us on <a href="https://www.facebook.com/share/1BARFBC6L4/">Facebook</a> and <a href="https://www.linkedin.com/company/simpatico-manpower/">LinkedIn</a></p>
+    <div class="social">
+      <a href="https://www.facebook.com/share/1BARFBC6L4/"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.linkedin.com/company/simpatico-manpower/"><i class="fab fa-linkedin"></i></a>
+    </div>
   </footer>
 
 </body>
