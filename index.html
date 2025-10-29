@@ -9,10 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
       background: #f8fafc;
       color: #222;
     }
@@ -33,10 +32,10 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      flex-wrap: wrap;
+      gap: 20px;
       padding: 15px 0;
       margin: 0;
-      flex-wrap: wrap;
     }
     nav ul li a {
       color: white;
@@ -44,7 +43,7 @@
       font-weight: 500;
       font-size: 16px;
       position: relative;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
     nav ul li a::after {
       content: "";
@@ -59,7 +58,7 @@
     nav ul li a:hover::after { width: 100%; }
     nav ul li a:hover { color: #ffcc00; }
 
-    /* Hero Section */
+    /* HERO */
     .hero {
       position: relative;
       height: 90vh;
@@ -76,6 +75,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       animation: zoomIn 20s ease-in-out infinite alternate;
     }
     .hero-overlay {
@@ -105,7 +105,7 @@
     }
     .hero-text h1 {
       font-size: 42px;
-      margin: 0 0 10px;
+      margin-bottom: 10px;
     }
     .hero-text h2 {
       font-weight: 300;
@@ -157,7 +157,6 @@
       line-height: 1.8;
       color: #444;
     }
-    ul { padding-left: 20px; }
 
     /* Services */
     #services ul {
@@ -243,21 +242,55 @@
     }
     footer .social a:hover { color: #ffcc00; }
 
+    /* 📱 Mobile Optimization */
     @media (max-width: 768px) {
-      .hero-text {
-        padding: 25px 20px;
+      nav ul { gap: 10px; padding: 12px 0; }
+      .hero {
+        height: 70vh;
       }
-      .hero-text h1 { font-size: 32px; }
+      .hero-bg {
+        object-position: center top;
+      }
+      .hero-text {
+        padding: 20px;
+        border-radius: 15px;
+        width: 90%;
+      }
+      .hero-text h1 {
+        font-size: 26px;
+      }
+      .hero-text h2 {
+        font-size: 15px;
+      }
       section {
-        margin: 70px 20px;
+        margin: 70px 15px;
         padding: 40px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .hero {
+        height: 65vh;
+      }
+      .hero-bg {
+        object-position: center 25%;
+      }
+      .hero-text h1 {
+        font-size: 22px;
+      }
+      .hero-text h2 {
+        font-size: 14px;
       }
     }
   </style>
 </head>
-<body>
 
-  <!-- Navbar -->
+<body>
   <nav>
     <ul>
       <li><a href="#home">Home</a></li>
@@ -270,7 +303,6 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
   <section id="home" class="hero">
     <img src="simpatico_hr_banner.jpg" alt="Simpatico HR Consultancy Banner" class="hero-bg">
     <div class="hero-overlay"></div>
@@ -281,13 +313,11 @@
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <h3>About Simpatico HR Consultancy</h3>
     <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.</p>
   </section>
 
-  <!-- Services -->
   <section id="services">
     <h3>Our Services</h3>
     <ul>
@@ -299,7 +329,6 @@
     </ul>
   </section>
 
-  <!-- How It Works -->
   <section id="how">
     <h3>How It Works</h3>
     <ul>
@@ -311,7 +340,6 @@
     </ul>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <h3>Recent Projects</h3>
     <ul>
@@ -321,7 +349,6 @@
     </ul>
   </section>
 
-  <!-- Candidate Registration -->
   <section id="candidate">
     <h3>Candidate Registration</h3>
     <form>
@@ -339,7 +366,6 @@
     </form>
   </section>
 
-  <!-- Employer Contact -->
   <section id="employer">
     <h3>Employer Contact</h3>
     <form>
@@ -357,7 +383,6 @@
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
     <p>Contact: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a> | Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
@@ -366,6 +391,5 @@
       <a href="https://www.linkedin.com/company/simpatico-manpower/"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
-
 </body>
 </html>
