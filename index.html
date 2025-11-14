@@ -1,395 +1,286 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Simpatico HR Consultancy - Recruitment Process Outsourcing, Job Portal Development, and HR Services." />
-  <title>Simpatico HR Consultancy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; margin: 0; padding: 0; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f8fafc;
-      color: #222;
+  <title>Simpatico HR Consultancy</title>  <!-- Fonts & Icons -->  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <style>
+    :root{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f172a; /* deep navy */
+      --brand: #0b63ff; /* primary brand blue */
+      --accent-2: #00b894; /* green accent */
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(16,24,40,0.08);
     }
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 51, 102, 0.9);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-      transition: 0.3s;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 15px 0;
-      margin: 0;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 16px;
-      position: relative;
-      transition: 0.3s;
-    }
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: #ffcc00;
-      transition: 0.3s;
-    }
-    nav ul li a:hover::after { width: 100%; }
-    nav ul li a:hover { color: #ffcc00; }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #e0e0e0;
-    }
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      animation: zoomIn 20s ease-in-out infinite alternate;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    .hero-gradient {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
-    }
-    .hero-text {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      padding: 40px 60px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: fadeIn 2s ease;
-    }
-    .hero-text h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-    .hero-text h2 {
-      font-weight: 300;
-      font-size: 20px;
-      opacity: 0.9;
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
+      color: #0b1220;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
 
-    @keyframes zoomIn {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
+    /* ====== NAVBAR ====== */
+    .nav-wrap{
+      position:fixed;inset:0 0 auto 0;z-index:1100;display:flex;justify-content:center;backdrop-filter:blur(6px);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    nav{
+      width:100%;max-width:1100px;margin:14px;padding:10px 18px;background:transparent;display:flex;align-items:center;gap:12px;justify-content:space-between;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#7c93ff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;box-shadow:var(--shadow)}
+    .brand h1{font-size:16px;margin:0;color:var(--accent);}
+    .brand p{font-size:12px;margin:0;color:var(--muted)}
+
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--accent);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px}
+    .nav-links a:hover{background:rgba(11,99,255,0.06);color:var(--brand)}
+
+    .cta{background:linear-gradient(90deg,var(--brand),#7c93ff);color:white;padding:10px 14px;border-radius:12px;font-weight:600;box-shadow:0 6px 18px rgba(11,99,255,0.12);border:none}
+
+    /* Mobile nav button */
+    .menu-btn{display:none;border:none;background:transparent;font-size:20px;color:var(--accent)}
+
+    /* ====== HERO ====== */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:120px 18px 60px;max-width:1100px;margin:0 auto}
+    .hero-left{max-width:680px}
+    .eyebrow{display:inline-block;background:rgba(11,99,255,0.08);color:var(--brand);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px;margin-bottom:18px}
+    .hero h2{font-size:40px;line-height:1.03;margin:0 0 14px}
+    .hero p{color:var(--muted);font-size:16px;margin-bottom:18px}
+    .hero-cta{display:flex;gap:12px}
+    .btn-secondary{padding:10px 14px;border-radius:12px;border:1px solid rgba(11,99,255,0.08);background:transparent;font-weight:600}
+
+    /* Right card */
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.85),var(--card));padding:22px;border-radius:18px;box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+    .hero-card h3{margin:0 0 6px}
+    .stat-row{display:flex;gap:12px;margin-top:14px}
+    .stat{flex:1;background:linear-gradient(180deg,#fff,rgba(250,250,255,0.9));padding:12px;border-radius:12px;text-align:center}
+    .stat strong{display:block;font-size:18px}
+
+    /* ====== SERVICES ====== */
+    .section{max-width:1100px;margin:36px auto;padding:18px}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:20px;border-radius:14px;box-shadow:var(--shadow);border:1px solid rgba(12,18,30,0.03)}
+    .card h4{margin:6px 0}
+    .card p{color:var(--muted);font-size:14px}
+
+    /* ====== ABOUT & PROCESS ====== */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+
+    /* ====== CONTACT ====== */
+    .contact-form{display:grid;gap:12px}
+    .input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(12,18,30,0.06)}
+    textarea{min-height:110px;resize:vertical}
+
+    /* ====== FOOTER ====== */
+    footer{max-width:1100px;margin:36px auto 80px;padding:18px;text-align:center;color:var(--muted)}
+
+    /* ====== Responsive ====== */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding-top:100px}
+      .hero-card{order:2}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .two-col{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      nav{padding:8px}
+      .menu-btn{display:block}
+      .nav-links{display:none;position:fixed;inset:auto 18px auto 18px;background:var(--card);flex-direction:column;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+      .hero h2{font-size:28px}
+      .services-grid{grid-template-columns:1fr}
     }
 
-    /* Sections */
-    section {
-      max-width: 1100px;
-      margin: 100px auto;
-      background: white;
-      padding: 60px 40px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      animation: fadeUp 1s ease;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    section h3 {
-      text-align: center;
-      font-size: 30px;
-      color: #003366;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    section h3::after {
-      content: "";
-      width: 60px;
-      height: 3px;
-      background: #ffcc00;
-      display: block;
-      margin: 10px auto 0;
-      border-radius: 2px;
-    }
-    section p, section li {
-      font-size: 17px;
-      line-height: 1.8;
-      color: #444;
-    }
+    /* subtle animations */
+    .fade-up{transform:translateY(8px);opacity:0;animation:fadeUp .6s ease forwards}
+    @keyframes fadeUp{to{transform:none;opacity:1}}
 
-    /* Services */
-    #services ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 0;
-      list-style: none;
-    }
-    #services li {
-      background: #f1f6fb;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
-    #services li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+  </style></head>
+<body>  <div class="nav-wrap">
+    <nav class="fade-up" style="animation-delay:.05s">
+      <div class="brand">
+        <div class="logo">Si</div>
+        <div>
+          <h1>Simpatico HR</h1>
+          <p>Recruitment • HR Tech • Outsourcing</p>
+        </div>
+      </div><div class="nav-links" id="navLinks">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+    <button class="cta">Get Started</button>
+  </div>
 
-    /* Forms */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      background: #f9fafc;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: auto;
-    }
-    form label {
-      font-weight: 600;
-    }
-    form input, form textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      transition: border-color 0.3s;
-    }
-    form input:focus, form textarea:focus {
-      outline: none;
-      border-color: #003366;
-    }
-    form button {
-      background: linear-gradient(135deg, #003366, #0055aa);
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: background 0.3s;
-    }
-    form button:hover {
-      background: linear-gradient(135deg, #004080, #0066cc);
-    }
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i class="fa fa-bars"></i></button>
+</nav>
 
-    /* Footer */
-    footer {
-      background: linear-gradient(135deg, #003366, #002244);
-      color: white;
-      text-align: center;
-      padding: 40px 15px;
-      margin-top: 100px;
-    }
-    footer p { margin: 8px 0; }
-    footer a {
-      color: #ffcc00;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer a:hover { text-decoration: underline; }
-    footer .social { margin-top: 15px; }
-    footer .social a {
-      color: white;
-      margin: 0 10px;
-      font-size: 20px;
-      transition: 0.3s;
-    }
-    footer .social a:hover { color: #ffcc00; }
-
-    /* 📱 Mobile Optimization */
-    @media (max-width: 768px) {
-      nav ul { gap: 10px; padding: 12px 0; }
-      .hero {
-        height: 70vh;
-      }
-      .hero-bg {
-        object-position: center top;
-      }
-      .hero-text {
-        padding: 20px;
-        border-radius: 15px;
-        width: 90%;
-      }
-      .hero-text h1 {
-        font-size: 26px;
-      }
-      .hero-text h2 {
-        font-size: 15px;
-      }
-      section {
-        margin: 70px 15px;
-        padding: 40px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-      .hero {
-        height: 65vh;
-      }
-      .hero-bg {
-        object-position: center 25%;
-      }
-      .hero-text h1 {
-        font-size: 22px;
-      }
-      .hero-text h2 {
-        font-size: 14px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#candidate">Candidate Registration</a></li>
-      <li><a href="#employer">Employer Contact</a></li>
-    </ul>
-  </nav>
-
-  <section id="home" class="hero">
-    <img src="simpatico_hr_banner.jpg" alt="Simpatico HR Consultancy Banner" class="hero-bg">
-    <div class="hero-overlay"></div>
-    <div class="hero-gradient"></div>
-    <div class="hero-text">
-      <h1>Simpatico HR Consultancy</h1>
-      <h2>Your Partner in Recruitment Process Outsourcing</h2>
+  </div>  <!-- HERO -->  <main>
+    <section class="hero">
+      <div class="hero-left fade-up" style="animation-delay:.1s">
+        <div class="eyebrow">Trusted by growing teams</div>
+        <h2>End-to-end HR & recruitment solutions for fast-moving organisations</h2>
+        <p>We help companies hire faster, reduce operational HR overhead, and build a sustainable talent pipeline through tech-enabled RPO, bespoke job portals, and advisory services.</p><div class="hero-cta">
+      <a href="#contact" class="cta">Book a Consultation</a>
+      <a class="btn-secondary" href="#services">Our Services</a>
     </div>
-  </section>
 
-  <section id="about">
-    <h3>About Simpatico HR Consultancy</h3>
-    <p>Simpatico HR Consultancy is one of the leading online recruitment HR consultancies located in Perintalmanna, Kerala, providing various HR services across the world.</p>
-  </section>
-
-  <section id="services">
-    <h3>Our Services</h3>
-    <ul>
-      <li><strong>Recruitment Process Outsourcing (RPO):</strong> End-to-end recruitment services.</li>
-      <li><strong>Job Portal Development:</strong> Job listing and candidate management platforms.</li>
-      <li><strong>Candidate Sourcing:</strong> Specialized sourcing by region and industry.</li>
-      <li><strong>Employer Branding:</strong> Positioning companies as desirable employers.</li>
-      <li><strong>HR Consulting:</strong> Strategies for employee engagement and retention.</li>
-    </ul>
-  </section>
-
-  <section id="how">
-    <h3>How It Works</h3>
-    <ul>
-      <li><strong>Step 1:</strong> Consultation</li>
-      <li><strong>Step 2:</strong> Candidate Sourcing</li>
-      <li><strong>Step 3:</strong> Screening and Shortlisting</li>
-      <li><strong>Step 4:</strong> Interview and Selection</li>
-      <li><strong>Step 5:</strong> Onboarding</li>
-    </ul>
-  </section>
-
-  <section id="projects">
-    <h3>Recent Projects</h3>
-    <ul>
-      <li>Healthcare Recruitment in Europe</li>
-      <li>IT & Tech Staffing</li>
-      <li>Manufacturing Sector Hiring</li>
-    </ul>
-  </section>
-
-  <section id="candidate">
-    <h3>Candidate Registration</h3>
-    <form>
-      <label>Full Name</label>
-      <input type="text" placeholder="Enter your full name" required>
-      <label>Email</label>
-      <input type="email" placeholder="Enter your email" required>
-      <label>Phone Number</label>
-      <input type="text" placeholder="Enter phone number" required>
-      <label>Upload Resume</label>
-      <input type="file" required>
-      <label>Cover Letter (Optional)</label>
-      <textarea rows="4" placeholder="Write a cover letter..."></textarea>
-      <button type="submit">Submit Registration</button>
-    </form>
-  </section>
-
-  <section id="employer">
-    <h3>Employer Contact</h3>
-    <form>
-      <label>Company Name</label>
-      <input type="text" placeholder="Company name" required>
-      <label>Your Name</label>
-      <input type="text" placeholder="Your name" required>
-      <label>Email</label>
-      <input type="email" placeholder="Email" required>
-      <label>Phone Number</label>
-      <input type="text" placeholder="Phone number" required>
-      <label>Message</label>
-      <textarea rows="4" placeholder="Write your message..." required></textarea>
-      <button type="submit">Submit Inquiry</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© 2025 Simpatico HR Consultancy. All Rights Reserved.</p>
-    <p>Contact: <a href="mailto:simpaticohrconsultancy@gmail.com">simpaticohrconsultancy@gmail.com</a> | Phone: <a href="tel:+919544842260">+91 9544842260</a></p>
-    <div class="social">
-      <a href="https://www.facebook.com/share/1BARFBC6L4/"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/company/simpatico-manpower/"><i class="fab fa-linkedin"></i></a>
+    <div style="margin-top:22px;display:flex;gap:14px;align-items:center">
+      <div style="display:flex;gap:10px;align-items:center">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=200&auto=format&fit=crop&crop=faces" alt="team" style="width:46px;height:46px;border-radius:10px;object-fit:cover;box-shadow:var(--shadow)">
+        <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--accent);display:block">100+ hires</strong>in last 12 months</div>
+      </div>
     </div>
-  </footer>
-</body>
+  </div>
+
+  <aside class="hero-card fade-up" style="animation-delay:.15s">
+    <h3>Why companies choose Simpatico</h3>
+    <p style="color:var(--muted);font-size:14px">Flexible engagement models, measurable SLAs, and a product-minded approach to hiring and retention.</p>
+
+    <div class="stat-row" style="margin-top:12px">
+      <div class="stat"><small>Time to hire</small><strong>18 days</strong></div>
+      <div class="stat"><small>Client NPS</small><strong>78</strong></div>
+      <div class="stat"><small>Offer acceptance</small><strong>92%</strong></div>
+    </div>
+
+    <div style="margin-top:14px;display:flex;gap:12px;align-items:center;justify-content:space-between">
+      <div style="font-size:13px;color:var(--muted)"><i class="fa fa-check-circle" style="margin-right:8px;color:var(--accent-2)"></i>Dedicated account manager</div>
+      <a href="#contact" class="cta" style="padding:8px 12px">Start Project</a>
+    </div>
+  </aside>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section fade-up" style="animation-delay:.2s">
+  <h3 style="margin-bottom:12px">Our Services</h3>
+  <div class="services-grid">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px"><div style="width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#7c93ff);display:flex;align-items:center;justify-content:center;color:white"><i class="fa fa-briefcase"></i></div>
+      <div><h4>Recruitment Process Outsourcing</h4><p>End-to-end hiring with SLAs and dedicated teams, tailored to scale.</p></div></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px"><div style="width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#00b894,#60d394);display:flex;align-items:center;justify-content:center;color:white"><i class="fa fa-laptop-code"></i></div>
+        <div><h4>Job Portal Development</h4><p>Custom portals with ATS integrations, analytics, and employer branding features.</p></div></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px"><div style="width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#ff8a65,#ffcc80);display:flex;align-items:center;justify-content:center;color:white"><i class="fa fa-user-shield"></i></div>
+        <div><h4>HR Advisory & Compliance</h4><p>Policy design, employee handbook, payroll advisory, and local compliance support.</p></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT & PROCESS -->
+<section id="about" class="section fade-up" style="animation-delay:.25s">
+  <div class="two-col">
+    <div>
+      <h3>About Simpatico</h3>
+      <p style="color:var(--muted)">Simpatico HR Consultancy combines traditional HR expertise with modern product thinking. We partner with startups and SMEs to build hiring engines, reduce attrition and create repeatable people processes.</p>
+
+      <ul style="margin-top:12px;color:var(--muted);list-style:none;padding-left:0">
+        <li style="margin-bottom:8px"><i class="fa fa-check" style="color:var(--brand);margin-right:8px"></i>Custom hiring workflows</li>
+        <li style="margin-bottom:8px"><i class="fa fa-check" style="color:var(--brand);margin-right:8px"></i>ATS & integrations</li>
+        <li style="margin-bottom:8px"><i class="fa fa-check" style="color:var(--brand);margin-right:8px"></i>Data-driven talent insights</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 id="process">Our Process</h3>
+      <p style="color:var(--muted)">We follow a four-step approach to ensure quality and predictability.</p>
+      <ol style="color:var(--muted)">
+        <li><strong>Discovery</strong> — understand hiring KPIs & culture fit</li>
+        <li><strong>Setup</strong> — tools, ATS mapping & employer brand</li>
+        <li><strong>Delivery</strong> — active sourcing, screening & interviews</li>
+        <li><strong>Optimize</strong> — onboarding feedback & retention loops</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section fade-up" style="animation-delay:.3s">
+  <h3>Get in touch</h3>
+  <div class="two-col" style="margin-top:12px">
+    <div>
+      <p style="color:var(--muted)">Tell us about your hiring needs and we'll propose a tailored engagement model.</p>
+
+      <div style="display:grid;gap:10px;margin-top:18px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="width:46px;height:46px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)"><i class="fa fa-phone" style="color:var(--brand)"></i></div>
+          <div>
+            <div style="font-weight:700">Call us</div>
+            <div style="color:var(--muted);font-size:13px">+91 98765 43210</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="width:46px;height:46px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)"><i class="fa fa-envelope" style="color:var(--brand)"></i></div>
+          <div>
+            <div style="font-weight:700">Email</div>
+            <div style="color:var(--muted);font-size:13px">hello@simpaticohr.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="card contact-form" onsubmit="handleSubmit(event)" style="background:linear-gradient(180deg, #fff, rgba(250,250,255,0.92))">
+      <input class="input" id="name" placeholder="Your name" required />
+      <input class="input" id="email" type="email" placeholder="Email" required />
+      <input class="input" id="company" placeholder="Company (optional)" />
+      <textarea id="message" placeholder="How can we help?" required></textarea>
+      <div style="display:flex;gap:10px;justify-content:space-between;align-items:center">
+        <button class="cta" type="submit">Send message</button>
+        <div style="color:var(--muted);font-size:12px">We reply within 1-2 business days</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px">
+    <small style="color:var(--muted)">© "Simpatico HR Consultancy" — All rights reserved.</small>
+  </div>
+  <div style="color:var(--muted);font-size:13px">Designed for clarity — built for growth</div>
+</footer>
+
+  </main>  <script>
+    // mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    let open = false;
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      open = !open;
+      if(open){ navLinks.style.display = 'flex'; menuBtn.innerHTML = '<i class="fa fa-times"></i>' }
+      else { navLinks.style.display = 'none'; menuBtn.innerHTML = '<i class="fa fa-bars"></i>' }
+    });
+
+    // simple form handler (demo only)
+    function handleSubmit(e){
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        company: document.getElementById('company').value,
+        message: document.getElementById('message').value
+      };
+      // in a real site you'd POST to your server or use an email service
+      alert('Thanks, ' + (data.name || 'there') + '! We received your message.');
+      e.target.reset();
+    }
+
+    // small staggered reveal
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.fade-up').forEach((el,i)=>{ el.style.animationDelay = (i*0.06)+'s'; el.classList.add('fade-up'); });
+    });
+  </script></body>
 </html>
