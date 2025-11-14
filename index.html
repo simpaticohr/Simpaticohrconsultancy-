@@ -18,10 +18,9 @@
     --card-shadow: 0 12px 36px rgba(2,6,23,0.12);
     --radius:12px;
   }
-
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
-  a{color:inherit}
+  a{color:inherit;text-decoration:none}
 
   /* skip link */
   .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
@@ -36,7 +35,7 @@
   @keyframes logoFloat{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(3deg)}100%{transform:translateY(0) rotate(0)}}
 
   nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
-  nav a{color:#eaf4ff;text-decoration:none;font-weight:600;padding:8px;border-radius:8px}
+  nav a{color:#eaf4ff;font-weight:600;padding:8px;border-radius:8px}
   nav a:focus, nav a:hover{background:rgba(255,255,255,0.04);outline:none}
 
   .nav-right{display:flex;gap:8px;align-items:center}
@@ -46,14 +45,12 @@
   /* Buttons */
   .btn{background:linear-gradient(90deg,var(--accent),#0b6fb3);border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(6,38,79,0.12)}
   .btn:focus{outline:3px solid rgba(0,99,178,0.18)}
-  .btn[aria-expanded="true"]{transform:scale(.995)}
   .btn-ghost{background:transparent;border:1px solid rgba(7,36,51,0.08);padding:10px 12px;border-radius:10px;cursor:pointer}
   .btn-ghost:focus{outline:3px solid rgba(6,38,79,0.08)}
 
-  /* HERO */
+  /* HERO / Banner template area */
   .hero{position:relative;height:88vh;padding-top:var(--header-h);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  /* Use your banner - change path if needed (e.g. 'banner.jpg' or '/assets/banner.jpg') */
-  .hero-bg{position:absolute;inset:0;background-image:url('/mnt/data/banner.jpg');background-size:cover;background-position:center;filter:contrast(1.02) saturate(0.95);transform-origin:center;animation:zoom 30s ease-in-out infinite alternate;z-index:0;pointer-events:none}
+  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:contrast(1.02) saturate(0.95);transform-origin:center;animation:zoom 30s ease-in-out infinite alternate;z-index:0;pointer-events:none}
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.22),rgba(0,0,0,0.12));z-index:1;pointer-events:none}
   @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.06)}}
 
@@ -87,10 +84,14 @@
   .file-name{font-size:13px;color:#374151;margin-top:6px}
   label{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
 
+  /* How section cards */
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .how-card{background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7;text-align:left}
+  .how-card i{font-size:22px;margin-bottom:8px;color:var(--accent)}
+
   /* footer */
   footer{padding:24px 20px;background:#081224;color:#cbd5e1;margin-top:18px}
 
-  /* small screens */
   @media(max-width:1000px){
     .mobile-toggle{display:block}
     nav ul{display:none}
@@ -99,11 +100,8 @@
     .services{grid-template-columns:1fr}
     .floating{display:none}
     .job-board{grid-template-columns:1fr}
+    .how-grid{grid-template-columns:1fr}
   }
-
-  /* accessibility & visuals */
-  .visually-hidden{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-  .muted small{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -114,7 +112,6 @@
     <div class="nav-inner">
       <div class="brand">
         <div class="logo-wrap" aria-hidden="true">
-          <!-- animated inline SVG logo (keeps animation until you upload real logo) -->
           <svg class="animated-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
             <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#0063b2"/></linearGradient></defs>
             <rect width="100" height="100" rx="16" fill="url(#g)"/>
@@ -135,7 +132,7 @@
         <li role="none"><a role="menuitem" href="#home">Home</a></li>
         <li role="none"><a role="menuitem" href="#about">About</a></li>
         <li role="none"><a role="menuitem" href="#services">Services</a></li>
-        <li role="none"><a role="menuitem" href="#how">How</a></li>
+        <li role="none"><a role="menuitem" href="#how">How</a></li> <!-- now points to actual section -->
         <li role="none"><a role="menuitem" href="#projects">Projects</a></li>
         <li role="none"><a role="menuitem" href="#jobs">Jobs</a></li>
         <li role="none"><a role="menuitem" href="#contactTop">Contact</a></li>
@@ -150,121 +147,154 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <main id="main" tabindex="-1">
-  <header id="home" class="hero" role="banner" aria-label="Hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-
-    <div class="hero-content" aria-hidden="false">
-      <div class="hero-left">
-        <div class="glass" role="region" aria-label="Main introduction">
-          <h1 style="margin:0 0 8px">Simpatico HR Consultancy</h1>
-          <p style="margin:0 0 12px">We build recruitment systems and provide RPO services — from sourcing to onboarding.</p>
-
-          <div class="cta-row">
-            <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
-            <button class="btn" onclick="document.getElementById('employerForm').scrollIntoView({behavior:'smooth'})" style="background:#fff;color:#072433">Employer Contact</button>
-            <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
+  <!-- Template: Banner / Hero layout
+       - This <template> holds a reusable banner layout.
+       - To switch hero images, update the data-bg attribute on the template instance below,
+         or replace the background URL in the .hero-bg element created from the template.
+       - You can clone this template and insert it elsewhere by calling insertTemplate('banner-template', '#target')
+  -->
+  <template id="banner-template">
+    <section class="hero" role="banner" aria-label="Hero banner (template)">
+      <div class="hero-bg" style="background-image: url('/mnt/data/banner.jpg');" data-bg="/mnt/data/banner.jpg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content" aria-hidden="false">
+        <div class="hero-left">
+          <div class="glass" role="region" aria-label="Main introduction">
+            <h1 style="margin:0 0 8px">Simpatico HR Consultancy</h1>
+            <p style="margin:0 0 12px">We build recruitment systems and provide RPO services — from sourcing to onboarding.</p>
+            <div class="cta-row">
+              <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
+              <button class="btn" onclick="document.getElementById('employerForm').scrollIntoView({behavior:'smooth'})" style="background:#fff;color:#072433">Employer Contact</button>
+              <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
+            </div>
           </div>
+        </div>
+
+        <div style="width:420px;position:relative" aria-hidden="true">
+          <div class="floating float-1 float-anim" role="status" aria-live="polite"><strong>Open roles</strong><div class="muted" style="margin-top:6px">Engineering • Product • HR</div></div>
+          <div class="floating float-2 float-anim" role="status" aria-live="polite"><strong>Featured</strong><div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div></div>
+          <div class="floating float-3 float-anim" role="status" aria-live="polite"><strong>Get proposal</strong><div class="muted" style="margin-top:6px">Free consultation & SLA</div></div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <!-- MAIN: insert the banner template here (default) -->
+  <main id="main" tabindex="-1">
+    <div id="hero-container"></div> <!-- template will be inserted here -->
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About</h2>
+      <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver hiring systems.</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-title">
+      <h2 id="services-title" class="section-title">Services</h2>
+      <div class="services" role="list">
+        <div class="service" role="listitem"><h4>RPO</h4><p class="muted">End-to-end recruitment services.</p></div>
+        <div class="service" role="listitem"><h4>Job Portals</h4><p class="muted">Portals with ATS integration.</p></div>
+        <div class="service" role="listitem"><h4>Employer Branding</h4><p class="muted">Positioning & talent attraction.</p></div>
+      </div>
+    </section>
+
+    <!-- HOW (new and useful) -->
+    <section id="how" aria-labelledby="how-title">
+      <h2 id="how-title" class="section-title">How we work</h2>
+      <p class="muted">A simple, transparent hiring flow so you know what to expect.</p>
+
+      <div class="how-grid" role="list">
+        <div class="how-card" role="listitem">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h4>1. Understand requirements</h4>
+          <p class="muted">We start with a discovery call to understand culture, skills and SLA expectations.</p>
+        </div>
+
+        <div class="how-card" role="listitem">
+          <i class="fa-solid fa-people-roof"></i>
+          <h4>2. Source & shortlist</h4>
+          <p class="muted">Shortlist candidates using ATS filters, screening calls and skill assessments.</p>
+        </div>
+
+        <div class="how-card" role="listitem">
+          <i class="fa-solid fa-handshake"></i>
+          <h4>3. Interview & onboard</h4>
+          <p class="muted">Coordinate interviews, handle offers, and assist with onboarding and compliance.</p>
         </div>
       </div>
 
-      <!-- floating info (z-index above content) -->
-      <div style="width:420px;position:relative" aria-hidden="true">
-        <div class="floating float-1 float-anim" role="status" aria-live="polite"><strong>Open roles</strong><div class="muted" style="margin-top:6px">Engineering • Product • HR</div></div>
-        <div class="floating float-2 float-anim" role="status" aria-live="polite"><strong>Featured</strong><div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div></div>
-        <div class="floating float-3 float-anim" role="status" aria-live="polite"><strong>Get proposal</strong><div class="muted" style="margin-top:6px">Free consultation & SLA</div></div>
+      <div style="margin-top:18px">
+        <p class="muted" style="margin:0 0 12px">Want a sample SLA or proposal? Click below to request a tailored PDF.</p>
+        <button class="btn" onclick="requestProposal()">Request proposal</button>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" aria-labelledby="about-title">
-    <h2 id="about-title" class="section-title">About</h2>
-    <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver hiring systems.</p>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" aria-labelledby="services-title">
-    <h2 id="services-title" class="section-title">Services</h2>
-    <div class="services" role="list">
-      <div class="service" role="listitem"><h4>RPO</h4><p class="muted">End-to-end recruitment services.</p></div>
-      <div class="service" role="listitem"><h4>Job Portals</h4><p class="muted">Portals with ATS integration.</p></div>
-      <div class="service" role="listitem"><h4>Employer Branding</h4><p class="muted">Positioning & talent attraction.</p></div>
-    </div>
-  </section>
-
-  <!-- JOB BOARD -->
-  <section id="jobs" aria-labelledby="jobs-title">
-    <h2 id="jobs-title" class="section-title">Job Board</h2>
-
-    <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-      <input id="filterLocation" placeholder="Location (e.g. Kochi)" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
-      <select id="filterType" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
-        <option value="">All types</option><option>Full-time</option><option>Contract</option><option>Internship</option>
-      </select>
-      <button class="btn" onclick="renderJobs()">Filter</button>
-    </div>
-
-    <div class="job-board" style="margin-top:12px">
-      <div>
-        <div id="jobsList" class="jobs" aria-live="polite" aria-atomic="true"></div>
+    <!-- JOB BOARD + forms (kept from previous) -->
+    <section id="jobs" aria-labelledby="jobs-title">
+      <h2 id="jobs-title" class="section-title">Job Board</h2>
+      <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input id="filterLocation" placeholder="Location (e.g. Kochi)" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
+        <select id="filterType" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
+          <option value="">All types</option><option>Full-time</option><option>Contract</option><option>Internship</option>
+        </select>
+        <button class="btn" onclick="renderJobs()">Filter</button>
       </div>
 
-      <aside style="padding:12px">
-        <h4>Candidate Registration</h4>
-        <form id="candidateForm" onsubmit="registerCandidate(event)">
-          <label for="candName">Full name</label><input id="candName" required aria-required="true">
-          <label for="candEmail">Email</label><input id="candEmail" type="email" required aria-required="true">
-          <label for="candPhone">Phone</label><input id="candPhone" value="+91 9544842260" required aria-required="true">
-          <label for="candResumeFile">Resume (PDF / DOC)</label>
+      <div class="job-board" style="margin-top:12px">
+        <div>
+          <div id="jobsList" class="jobs" aria-live="polite" aria-atomic="true"></div>
+        </div>
 
-          <!-- File input with visible friendly label and clear button -->
-          <div style="display:flex;gap:8px;align-items:center">
-            <input id="candResumeFile" type="file" accept=".pdf,.doc,.docx" aria-describedby="candResumeName" />
-            <button type="button" class="btn-ghost" onclick="clearResume()">Clear</button>
-          </div>
+        <aside style="padding:12px">
+          <h4>Candidate Registration</h4>
+          <form id="candidateForm" onsubmit="registerCandidate(event)">
+            <label for="candName">Full name</label><input id="candName" required aria-required="true">
+            <label for="candEmail">Email</label><input id="candEmail" type="email" required aria-required="true">
+            <label for="candPhone">Phone</label><input id="candPhone" value="+91 9544842260" required aria-required="true">
+            <label for="candResumeFile">Resume (PDF / DOC)</label>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input id="candResumeFile" type="file" accept=".pdf,.doc,.docx" aria-describedby="candResumeName" />
+              <button type="button" class="btn-ghost" onclick="clearResume()">Clear</button>
+            </div>
+            <div id="candResumeName" class="file-name" aria-live="polite"></div>
+            <div style="margin-top:8px"><button class="btn" type="submit">Register</button></div>
+          </form>
 
-          <div id="candResumeName" class="file-name" aria-live="polite"></div>
+          <hr style="margin:12px 0;border:none;border-top:1px solid #eef2f7">
 
-          <div style="margin-top:8px"><button class="btn" type="submit">Register</button></div>
+          <h4>Employer Contact</h4>
+          <form id="employerForm" onsubmit="contactEmployer(event)">
+            <label for="empName">Your name</label><input id="empName" required>
+            <label for="empCompany">Company</label><input id="empCompany">
+            <label for="empEmail">Work email</label><input id="empEmail" type="email" required>
+            <label for="empPhone">Phone</label><input id="empPhone" value="+91 9544842260" required>
+            <label for="empMsg">Message</label><textarea id="empMsg" rows="3"></textarea>
+            <div style="margin-top:8px"><button class="btn" type="submit">Send Inquiry</button></div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contactTop" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Contact</h2>
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:12px">
+        <form id="contactForm" onsubmit="handleGeneralContact(event)">
+          <label for="gName">Name</label><input id="gName" required>
+          <label for="gEmail">Email</label><input id="gEmail" type="email" required>
+          <label for="gMsg">Message</label><textarea id="gMsg" rows="3"></textarea>
+          <div style="margin-top:8px"><button class="btn" type="submit">Send</button></div>
         </form>
 
-        <hr style="margin:12px 0;border:none;border-top:1px solid #eef2f7">
-
-        <h4>Employer Contact</h4>
-        <form id="employerForm" onsubmit="contactEmployer(event)">
-          <label for="empName">Your name</label><input id="empName" required>
-          <label for="empCompany">Company</label><input id="empCompany">
-          <label for="empEmail">Work email</label><input id="empEmail" type="email" required>
-          <label for="empPhone">Phone</label><input id="empPhone" value="+91 9544842260" required>
-          <label for="empMsg">Message</label><textarea id="empMsg" rows="3"></textarea>
-          <div style="margin-top:8px"><button class="btn" type="submit">Send Inquiry</button></div>
-        </form>
-      </aside>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contactTop" aria-labelledby="contact-title">
-    <h2 id="contact-title" class="section-title">Contact</h2>
-    <div style="display:grid;grid-template-columns:1fr 320px;gap:12px">
-      <form id="contactForm" onsubmit="handleGeneralContact(event)">
-        <label for="gName">Name</label><input id="gName" required>
-        <label for="gEmail">Email</label><input id="gEmail" type="email" required>
-        <label for="gMsg">Message</label><textarea id="gMsg" rows="3"></textarea>
-        <div style="margin-top:8px"><button class="btn" type="submit">Send</button></div>
-      </form>
-
-      <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7">
-        <h4>Office</h4>
-        <div class="muted">Perinthalmanna, Kerala — India</div>
-        <div style="margin-top:8px"><strong>Phone</strong><div class="muted">+91 9544842260</div></div>
-        <div style="margin-top:8px"><strong>Email</strong><div class="muted">simpaticohrconsultancy@gmail.com</div></div>
-      </aside>
-    </div>
-  </section>
+        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7">
+          <h4>Office</h4>
+          <div class="muted">Perinthalmanna, Kerala — India</div>
+          <div style="margin-top:8px"><strong>Phone</strong><div class="muted">+91 9544842260</div></div>
+          <div style="margin-top:8px"><strong>Email</strong><div class="muted">simpaticohrconsultancy@gmail.com</div></div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -283,6 +313,29 @@
   // year
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Insert template helper: clones <template id="..."> into targetSelector
+  function insertTemplate(templateId, targetSelector, options = {}) {
+    const t = document.getElementById(templateId);
+    const target = document.querySelector(targetSelector);
+    if(!t || !target) return;
+    const clone = t.content.cloneNode(true);
+    // apply overrides (e.g., change background)
+    if(options.backgroundUrl) {
+      const bgEl = clone.querySelector('.hero-bg');
+      if(bgEl) {
+        bgEl.style.backgroundImage = `url('${options.backgroundUrl}')`;
+        bgEl.setAttribute('data-bg', options.backgroundUrl);
+      }
+    }
+    target.appendChild(clone);
+  }
+
+  // default: insert banner template into #hero-container
+  insertTemplate('banner-template', '#hero-container', {
+    // change this path to your deployed banner if different
+    backgroundUrl: '/mnt/data/banner.jpg'
+  });
+
   // mobile nav toggle
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('nav-links');
@@ -300,7 +353,7 @@
     navLinks.style.zIndex = '1300';
   });
 
-  // nav links -> smooth offset scroll (already robust)
+  // nav links -> smooth offset scroll; ensures every nav link works (including #how)
   document.querySelectorAll('#nav-links a').forEach(a=>{
     a.addEventListener('click', function(e){
       e.preventDefault();
@@ -310,11 +363,13 @@
       const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
       const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
       window.scrollTo({top,behavior:'smooth'});
-      // if mobile open, close it
+      // close mobile menu if open
       if(window.innerWidth <= 1000){
         navLinks.style.display='none';
         mobileToggle.setAttribute('aria-expanded','false');
       }
+      // set focus for accessibility
+      setTimeout(()=>{ el.setAttribute('tabindex','-1'); el.focus(); }, 500);
     });
   });
 
@@ -343,18 +398,19 @@
 
   // candidate registration (handles file input locally)
   const candFileInput = document.getElementById('candResumeFile');
-  candFileInput.addEventListener('change', function(){
+  candFileInput && candFileInput.addEventListener('change', function(){
     const f = this.files[0];
     const el = document.getElementById('candResumeName');
     if(!f){ el.textContent=''; return; }
     el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`;
     // Optionally preview or send file to server using FormData
-    // For privacy/demo we do not upload anywhere here.
   });
 
   function clearResume(){
-    document.getElementById('candResumeFile').value = '';
-    document.getElementById('candResumeName').textContent = '';
+    const inp = document.getElementById('candResumeFile');
+    if(inp) inp.value = '';
+    const nameEl = document.getElementById('candResumeName');
+    if(nameEl) nameEl.textContent = '';
   }
 
   function registerCandidate(e){
@@ -366,7 +422,7 @@
     console.log('candidate', {name,email,phone,file: f?f.name:null});
     alert('Thanks '+name+' — we received your registration. We will reach out to '+email);
     e.target.reset();
-    document.getElementById('candResumeName').textContent='';
+    clearResume();
   }
 
   function contactEmployer(e){
@@ -385,10 +441,15 @@
 
   function handleGeneralContact(e){ e.preventDefault(); const name=document.getElementById('gName').value; const email=document.getElementById('gEmail').value; alert('Thanks '+name+' — we will reply to '+email); e.target.reset(); }
 
+  function requestProposal(){
+    // simple demo action — you can replace with a fetch to your backend or open a modal
+    alert('Thanks — we will prepare a tailored proposal and reach out shortly.');
+  }
+
   // small helper to escape content (avoid injection if content comes from external source later)
   function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
 
-  document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); });
+  document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); /* ensure candidate file listener attached if dynamic */ });
 </script>
 </body>
 </html>
