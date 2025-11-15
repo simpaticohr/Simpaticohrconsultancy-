@@ -7,31 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root{
-    --header-h:76px;
-    --accent:#0063b2;
-    --accent2:#004a88;
-    --bg:#eaf4ff;
-    --text:#072433;
-    --muted:#6b7280;
-    --glass-bg: rgba(255,255,255,0.06);
-    --card-shadow: 0 12px 36px rgba(2,6,23,0.12);
-    --radius:12px;
-  }
+  :root{--header-h:76px;--accent:#0063b2;--accent2:#004a88;--glass-bg: rgba(255,255,255,0.06);--card-shadow: 0 12px 36px rgba(2,6,23,0.12);--radius:12px}
   *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;color:#072433;background:#f3f7fb;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
 
-  /* skip link */
-  .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-  .skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12);z-index:2000}
-
-  /* NAV */
-  nav{position:fixed;inset:0 0 auto 0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88));backdrop-filter:blur(6px);z-index:1200}
+  nav{position:fixed;inset:0 0 auto 0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88));backdrop-filter:blur(6px);z-index:1200;transition:background .3s}
   .nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 20px;color:#fff}
   .brand{display:flex;gap:12px;align-items:center}
-  .brand-logo img{ display:block; width:52px; height:52px; border-radius:6px; object-fit:contain; background:transparent }
-  @media(max-width:600px){ .brand-logo img{ width:44px; height:44px } }
+  .brand-logo img{ display:block; width:52px; height:52px; border-radius:6px; object-fit:contain; background:transparent; transition:transform .45s ease}
+  .brand-logo img:hover{transform:rotate(-8deg) scale(1.03)}
 
   nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
   nav a{color:#eaf4ff;font-weight:600;padding:8px;border-radius:8px}
@@ -41,77 +26,68 @@
   .socials{color:#eaf4ff;font-size:18px;text-decoration:none}
   .mobile-toggle{display:none;background:transparent;border:0;color:#fff;font-size:20px}
 
-  /* Buttons */
-  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(6,38,79,0.12)}
-  .btn:focus{outline:3px solid rgba(0,99,178,0.18)}
-  .btn-ghost{background:transparent;border:1px solid rgba(7,36,51,0.08);padding:10px 12px;border-radius:10px;cursor:pointer}
-  .btn-ghost:focus{outline:3px solid rgba(6,38,79,0.08)}
+  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(6,38,79,0.12);transition:transform .15s}
+  .btn:hover{transform:translateY(-3px)}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);padding:10px 12px;border-radius:10px;cursor:pointer}
   .btn-light{background:#fff;color:#072433}
 
-  /* HERO: embedded background (Base64) */
-  .hero {
-    position:relative;
-    height:88vh;
-    min-height:420px;
-    display:flex;
-    align-items:center;
-    padding-top:var(--header-h);
-    color:#fff;
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-  }
+  .hero{position:relative;height:88vh;min-height:480px;display:flex;align-items:center;padding-top:var(--header-h);color:#fff;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8QEA8QEA8QDw8ODw8PDw8QEA8QFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFw8QFS0dFR0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EADgQAAIBAgQDBgQEBwAAAAAAAAECAwQRAAUSIRMxQVFhBiJxgZGhscHR8EJS0fAzYpLxFTOC/8QAGQEAAgMBAAAAAAAAAAAAAAAAAQIAAwQF/8QAIxEAAgICAgICAwAAAAAAAAAAAAECEQMSITEEQVFhBRMycf/aAAwDAQACEQMRAD8A+6EQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERA4rWq1uH6K6q2G8V5M1r1X3yVY6g1GzW2s5b2x7gkY3Vsc9wqjzTct3srkL9jUP6sI9c0Z3Z8Z3K1v7X3G9Z7xw5Z7xw5abcxyz...') ; background-size:cover;background-position:center;filter:brightness(0.78) contrast(1.02);transform-origin:center;animation:bgScale 30s linear infinite;z-index:0}
+  @keyframes bgScale{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.06) translateY(-12px)}100%{transform:scale(1) translateY(0)}}
 
-  /* subtle overlay to help contrast with text */
-  .hero-overlay{
-    position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.06));z-index:1;pointer-events:none;
-  }
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.16), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
+  .hero-inner{position:relative;z-index:2;max-width:1200px;width:100%;padding:28px;display:flex;align-items:center;gap:28px}
+  .hero-left{flex:1;color:#fff;animation:fadeInUp .9s ease both;}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;align-items:flex-start;gap:28px}
-  .hero-left{flex:1;color:#fff}
-  .glass{background:var(--glass-bg);backdrop-filter:blur(4px);padding:26px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:760px}
-  .cta-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);padding:28px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:760px;border:1px solid rgba(255,255,255,0.06)}
+  .cta-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+  .title{font-size:34px;font-weight:700;margin:0 0 8px;letter-spacing:0.2px;text-shadow:0 6px 18px rgba(2,6,23,0.16)}
+  .subtitle{margin:0 0 8px;opacity:0.95}
+  .pulse-cta{display:inline-block;animation:pulse 2.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,99,178,0.15)}50%{box-shadow:0 8px 30px 4px rgba(0,99,178,0.06)}100%{box-shadow:0 0 0 0 rgba(0,99,178,0.00)}}
 
-  /* sections / remaining layout */
+  .hero-logo-wm{position:absolute;right:6%;top:18%;width:180px;height:180px;opacity:0.06;z-index:1;transform:rotate(-6deg);pointer-events:none}
+
   section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
-  .muted{color:#dbe9f7}
+  .muted{color:rgba(255,255,255,0.9)}
   .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-  .service{background:rgba(255,255,255,0.08);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:#fff}
+  .service{background:rgba(255,255,255,0.06);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:#fff;backdrop-filter:blur(3px)}
+
   .job-board{display:grid;grid-template-columns:1fr 360px;gap:18px}
   .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:var(--text)}
+  .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:#072433;transition:transform .18s}
+  .job:hover{transform:translateY(-6px)}
 
-  form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7;color:var(--text)}
+  form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7;color:#072433}
   input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;margin-bottom:8px;font-size:14px}
   .file-name{font-size:13px;color:#374151;margin-top:6px}
-  label{font-weight:600;font-size:13px;display:block;margin-bottom:6px;color:var(--text)}
-
-  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-  .how-card{background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7;text-align:left}
-  .how-card i{font-size:22px;margin-bottom:8px;color:var(--accent)}
+  label{font-weight:600;font-size:13px;display:block;margin-bottom:6px;color:#072433}
 
   footer{padding:24px 20px;background:#071726;color:#cbd5e1;margin-top:18px}
 
-  @media(max-width:1000px){
-    .mobile-toggle{display:block}
-    nav ul{display:none}
-    .hero-inner{flex-direction:column;padding:18px}
-    .jobs{grid-template-columns:1fr}
-    .services{grid-template-columns:1fr}
-    .job-board{grid-template-columns:1fr}
-    .how-grid{grid-template-columns:1fr}
-  }
+  @media(max-width:1000px){.mobile-toggle{display:block}nav ul{display:none}.hero-inner{flex-direction:column;padding:18px}.jobs{grid-template-columns:1fr}.services{grid-template-columns:1fr}.job-board{grid-template-columns:1fr}}
 </style>
+
+<!-- typing style -->
+<style>
+#typing {
+  border-right: 3px solid #fff;
+  padding-right:4px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+</style>
+
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
 
   <nav aria-label="Primary">
     <div class="nav-inner">
       <div class="brand">
-        <!-- Logo embedded as Base64 -->
         <a href="/" class="brand-logo" aria-label="Simpatico HR Consultancy">
-          <img id="siteLogo" alt="Simpatico HR logo" style="width:52px;height:52px;border-radius:6px;object-fit:contain">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAADcCAYAAAB7r4wXAAABzklEQVR4nO3XwW3DIBAF0Ll3/+/1kAyCq0kz1v9d3j4aIhK7t0pCqAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA..." alt="Simpatico HR logo" style="width:52px;height:52px;border-radius:6px;object-fit:contain">
         </a>
         <div>
           <div style="font-weight:700;color:#fff">Simpatico HR</div>
@@ -119,11 +95,11 @@
         </div>
       </div>
 
-      <button class="mobile-toggle" aria-controls="nav-links" aria-expanded="false" id="mobileToggle" title="Open menu">
+      <button class="mobile-toggle" aria-controls="nav-links" aria-expanded="false" id="mobileToggle" title="Open menu" style="display:none;background:transparent;border:0;color:#fff;font-size:20px">
         <i class="fa fa-bars" aria-hidden="true"></i>
       </button>
 
-      <ul id="nav-links" role="menubar">
+      <ul id="nav-links" role="menubar" style="display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center">
         <li role="none"><a role="menuitem" href="#home">Home</a></li>
         <li role="none"><a role="menuitem" href="#about">About</a></li>
         <li role="none"><a role="menuitem" href="#services">Services</a></li>
@@ -133,7 +109,7 @@
         <li role="none"><a role="menuitem" href="#contactTop">Contact</a></li>
       </ul>
 
-      <div class="nav-right">
+      <div class="nav-right" style="display:flex;gap:8px;align-items:center">
         <a class="socials" href="https://wa.me/919544842260" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a class="socials" href="tel:+919544842260" title="Call" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
         <a class="socials" href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
@@ -142,19 +118,17 @@
   </nav>
 
   <main id="main" tabindex="-1">
-    <!-- HERO -->
     <header id="home" class="hero" role="banner" aria-label="Hero section">
       <div class="hero-overlay" aria-hidden="true"></div>
-
-      <div class="hero-inner" role="region" aria-label="Hero content">
-        <div class="hero-left">
-          <div class="glass" role="region" aria-label="Main introduction">
-            <h1 style="margin:0 0 8px">Simpatico HR Consultancy</h1>
-            <p style="margin:0 0 12px">Strategic Human Resources Partners — recruitment systems, RPO & job portals.</p>
-
-            <div class="cta-row">
-              <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
-              <button class="btn btn-light" onclick="openProposal()">Request proposal</button>
+      <img class="hero-logo-wm" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAADcCAYAAAB7r4wXAAABzklEQVR4nO3XwW3DIBAF0Ll3/+/1kAyCq0kz1v9d3j4aIhK7t0pCqAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA..." alt="" aria-hidden="true" style="position:absolute;right:6%;top:18%;width:180px;height:180px;opacity:0.06;transform:rotate(-6deg);pointer-events:none;z-index:1">
+      <div class="hero-inner" role="region" aria-label="Hero content" style="position:relative;z-index:2;max-width:1200px;width:100%;padding:28px;display:flex;align-items:center;gap:28px">
+        <div class="hero-left" style="flex:1;color:#fff;animation:fadeInUp .9s ease both">
+          <div class="glass" style="background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);padding:28px;border-radius:12px;box-shadow:0 12px 36px rgba(2,6,23,0.12);max-width:760px;border:1px solid rgba(255,255,255,0.06)">
+            <h1 class="title" style="font-size:34px;font-weight:700;margin:0 0 8px;letter-spacing:0.2px;text-shadow:0 6px 18px rgba(2,6,23,0.16)"><span id="typing"></span></h1>
+            <p class="subtitle" style="margin:0 0 8px;opacity:0.95">Strategic Human Resources Partners — recruitment systems, RPO & job portals.</p>
+            <div class="cta-row" style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+              <button class="btn pulse-cta" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})" style="display:inline-block;animation:pulse 2.8s infinite">Register as Candidate</button>
+              <button class="btn btn-light" onclick="openProposal()" style="background:#fff;color:#072433">Request proposal</button>
               <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
             </div>
           </div>
@@ -162,53 +136,32 @@
       </div>
     </header>
 
-    <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title" style="color:#fff">About</h2>
+      <h2 style="color:#06324f">About</h2>
       <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver hiring systems.</p>
     </section>
 
-    <!-- SERVICES -->
     <section id="services">
-      <h2 class="section-title">Services</h2>
-      <div class="services">
-        <div class="service"><h4>RPO</h4><p>End-to-end recruitment services.</p></div>
-        <div class="service"><h4>Job Portals</h4><p>Portals with ATS integration.</p></div>
-        <div class="service"><h4>Employer Branding</h4><p>Positioning & talent attraction.</p></div>
+      <h2>Services</h2>
+      <div class="services" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px">
+        <div class="service" style="background:rgba(255,255,255,0.06);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:#fff;backdrop-filter:blur(3px)"><h4>RPO</h4><p>End-to-end recruitment services.</p></div>
+        <div class="service" style="background:rgba(255,255,255,0.06);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:#fff;backdrop-filter:blur(3px)"><h4>Job Portals</h4><p>Portals with ATS integration.</p></div>
+        <div class="service" style="background:rgba(255,255,255,0.06);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:#fff;backdrop-filter:blur(3px)"><h4>Employer Branding</h4><p>Positioning & talent attraction.</p></div>
       </div>
     </section>
 
-    <!-- HOW -->
     <section id="how">
-      <h2 class="section-title">How we work</h2>
+      <h2>How we work</h2>
       <p class="muted">A simple, transparent hiring flow so you know what to expect.</p>
-
-      <div class="how-grid">
-        <div class="how-card">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <h4>1. Understand requirements</h4>
-          <p class="muted">Discovery call to understand culture, skills, and SLA.</p>
-        </div>
-        <div class="how-card">
-          <i class="fa-solid fa-people-roof"></i>
-          <h4>2. Source & shortlist</h4>
-          <p class="muted">Shortlist candidates using ATS filters, screening calls and tests.</p>
-        </div>
-        <div class="how-card">
-          <i class="fa-solid fa-handshake"></i>
-          <h4>3. Interview & onboard</h4>
-          <p class="muted">Coordinate interviews, offers and onboarding support.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px">
-        <button class="btn" onclick="openProposal()">Request proposal</button>
+      <div class="how-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px">
+        <div class="how-card" style="background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7"><i class="fa-solid fa-magnifying-glass"></i><h4>1. Understand requirements</h4><p class="muted" style="color:#6b7280">Discovery call to understand culture, skills, and SLA.</p></div>
+        <div class="how-card" style="background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7"><i class="fa-solid fa-people-roof"></i><h4>2. Source & shortlist</h4><p class="muted" style="color:#6b7280">Shortlist candidates using ATS filters, screening calls and tests.</p></div>
+        <div class="how-card" style="background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7"><i class="fa-solid fa-handshake"></i><h4>3. Interview & onboard</h4><p class="muted" style="color:#6b7280">Coordinate interviews, offers and onboarding support.</p></div>
       </div>
     </section>
 
-    <!-- JOB BOARD + forms -->
     <section id="jobs">
-      <h2 class="section-title">Job Board</h2>
+      <h2>Job Board</h2>
       <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         <input id="filterLocation" placeholder="Location (e.g. Kochi)" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
         <select id="filterType" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
@@ -217,11 +170,8 @@
         <button class="btn" onclick="renderJobs()">Filter</button>
       </div>
 
-      <div class="job-board" style="margin-top:12px">
-        <div>
-          <div id="jobsList" class="jobs"></div>
-        </div>
-
+      <div class="job-board" style="margin-top:12px;display:grid;grid-template-columns:1fr 360px;gap:18px">
+        <div><div id="jobsList" class="jobs" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px"></div></div>
         <aside style="padding:12px">
           <h4>Candidate Registration</h4>
           <form id="candidateForm" onsubmit="registerCandidate(event)">
@@ -252,9 +202,8 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contactTop">
-      <h2 class="section-title">Contact</h2>
+      <h2>Contact</h2>
       <div style="display:grid;grid-template-columns:1fr 320px;gap:12px">
         <form id="contactForm" onsubmit="handleGeneralContact(event)">
           <label for="gName">Name</label><input id="gName" required>
@@ -263,22 +212,21 @@
           <div style="margin-top:8px"><button class="btn" type="submit">Send</button></div>
         </form>
 
-        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7;color:var(--text)">
+        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7;color:#072433">
           <h4>Office</h4>
-          <div style="color:var(--text)">Perinthalmanna, Kerala — India</div>
-          <div style="margin-top:8px"><strong>Phone</strong><div style="color:var(--text)">+91 9544842260</div></div>
-          <div style="margin-top:8px"><strong>Email</strong><div style="color:var(--text)">simpaticohrconsultancy@gmail.com</div></div>
+          <div style="color:#072433">Perinthalmanna, Kerala — India</div>
+          <div style="margin-top:8px"><strong>Phone</strong><div style="color:#072433">+91 9544842260</div></div>
+          <div style="margin-top:8px"><strong>Email</strong><div style="color:#072433">simpaticohrconsultancy@gmail.com</div></div>
         </aside>
       </div>
     </section>
   </main>
 
-  <!-- Proposal modal (accessible) -->
-  <div id="proposal-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="proposal-title" aria-hidden="true">
-    <div class="modal-panel" role="document">
-      <button class="modal-close" aria-label="Close proposal dialog">&times;</button>
+  <div id="proposal-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="proposal-title" aria-hidden="true" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);z-index:1400">
+    <div style="background:#fff;border-radius:12px;padding:18px;max-width:520px;width:90%;box-shadow:0 20px 60px rgba(2,6,23,0.3);">
+      <button class="modal-close" aria-label="Close proposal dialog" style="float:right;border:none;background:transparent;font-size:22px;cursor:pointer">&times;</button>
       <h3 id="proposal-title">Request a proposal</h3>
-      <p class="muted">Fill this short form and we'll send a tailored SLA & proposal.</p>
+      <p class="muted" style="color:#6b7280">Fill this short form and we'll send a tailored SLA & proposal.</p>
       <form id="proposalForm">
         <label for="propName">Name</label>
         <input id="propName" name="name" required>
@@ -286,7 +234,7 @@
         <input id="propEmail" name="email" type="email" required>
         <label for="propMsg">Short message</label>
         <textarea id="propMsg" name="message" rows="3"></textarea>
-        <div style="margin-top:12px;display:flex;gap:8px">
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
           <button class="btn" type="submit">Request proposal</button>
           <button class="btn-ghost" type="button" id="proposalCancel">Cancel</button>
         </div>
@@ -294,10 +242,10 @@
     </div>
   </div>
 
-  <footer>
-    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div style="color:#fff">© <span id="year"></span> Simpatico HR Consultancy</div>
-      <div class="muted">Designed for Perinthalmanna. All rights reserved.</div>
+  <footer style="margin-top:28px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:24px 20px;background:#071726;color:#cbd5e1">
+      <div>© <span id="year"></span> Simpatico HR Consultancy</div>
+      <div class="muted" style="color:#9fb8d6">Designed for Perinthalmanna. All rights reserved.</div>
       <div style="display:flex;gap:8px">
         <a href="https://wa.me/919544842260" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a href="tel:+919544842260" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
@@ -307,153 +255,49 @@
   </footer>
 
 <script>
-  // Base64 data URIs (embedded)
-  // Background (banner.jpg uploaded) -> converted to base64 and assigned here:
-  const HERO_BG_DATA = "data:image/jpeg;base64,<?=BG_BASE64?>";
-  // Logo (logo_extracted.png) -> converted to base64 and assigned here:
-  const LOGO_DATA = "data:image/png;base64,<?=LOGO_BASE64?>";
-
-  // Set images into DOM
-  document.addEventListener('DOMContentLoaded', ()=>{
-    // set hero background
-    const hero = document.querySelector('.hero');
-    if(hero) hero.style.backgroundImage = `url("${HERO_BG_DATA}")`;
-
-    // set logo
-    const logo = document.getElementById('siteLogo');
-    if(logo) logo.src = LOGO_DATA;
-
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // init jobs
-    renderJobs();
-  });
-
-  // Mobile nav toggle behavior
-  const mobileToggle = document.getElementById('mobileToggle');
-  const navLinks = document.getElementById('nav-links');
-  if(mobileToggle){
-    mobileToggle.addEventListener('click', () => {
-      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-      mobileToggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.style.display = expanded ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.background = 'linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88))';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '76px';
-      navLinks.style.right = '16px';
-      navLinks.style.padding = '12px';
-      navLinks.style.borderRadius = '10px';
-      navLinks.style.zIndex = '1300';
-    });
-  }
-
-  // Smooth scroll
-  document.querySelectorAll('#nav-links a').forEach(a=>{
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      const id = this.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if(!el) return;
-      const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
-      const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
-      window.scrollTo({top,behavior:'smooth'});
-      if(window.innerWidth <= 1000){
-        navLinks.style.display='none';
-        mobileToggle.setAttribute('aria-expanded','false');
+  // typing animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const text = "Simpatico HR Consultancy";
+    let i = 0;
+    function type() {
+      if (i <= text.length) {
+        document.getElementById('typing').textContent = text.substring(0, i);
+        i++;
+        setTimeout(type, 80);
       }
-      setTimeout(()=>{ el.setAttribute('tabindex','-1'); el.focus(); }, 500);
-    });
+    }
+    type();
   });
+
+  // set year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Modal open/close
+  const modal = document.getElementById('proposal-modal');
+  function openProposal(){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); document.getElementById('propName').focus(); }
+  function closeProposal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+  document.querySelectorAll('.modal-close, #proposalCancel').forEach(el=>el && el.addEventListener('click', closeProposal));
+  document.getElementById('proposalForm').addEventListener('submit', function(e){ e.preventDefault(); alert('Thanks — we will send a proposal to ' + (document.getElementById('propEmail').value || 'the provided email')); closeProposal(); this.reset(); });
 
   // Jobs data & render
   const jobsData = [
-    {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
-    {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
-    {id:3,title:'Data Analyst',company:'MarketIQ',location:'Remote',type:'Contract',exp:'2+ yrs',desc:'SQL, Python.'},
-    {id:4,title:'HR Intern',company:'Simpatico',location:'Perinthalmanna',type:'Internship',exp:'0-1 yrs',desc:'Hiring operations.'}
+    {'id':1,'title':'Backend Developer','company':'NovaTech','location':'Kochi','type':'Full-time','exp':'2-5 yrs','desc':'Scalable APIs.'},
+    {'id':2,'title':'Frontend Engineer','company':'Finlytics','location':'Bengaluru','type':'Full-time','exp':'1-4 yrs','desc':'React + TypeScript.'},
+    {'id':3,'title':'Data Analyst','company':'MarketIQ','location':'Remote','type':'Contract','exp':'2+ yrs','desc':'SQL, Python.'},
+    {'id':4,'title':'HR Intern','company':'Simpatico','location':'Perinthalmanna','type':'Internship','exp':'0-1 yrs','desc':'Hiring operations.'}
   ];
-  function renderJobs(){
-    const list = document.getElementById('jobsList'); if(!list) return;
-    list.innerHTML='';
-    const loc = (document.getElementById('filterLocation').value || '').toLowerCase();
-    const type = document.getElementById('filterType').value;
-    const filtered = jobsData.filter(j=>{ if(loc && !j.location.toLowerCase().includes(loc)) return false; if(type && j.type !== type) return false; return true; });
-    const source = filtered.length?filtered:jobsData;
-    source.forEach(job=>{
-      const el=document.createElement('div'); el.className='job';
-      el.innerHTML = `<h4>${escapeHtml(job.title)}</h4><div class="muted" style="color:#6b7280">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p style="color:#374151">${escapeHtml(job.desc)}</p><div style="margin-top:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn-ghost" onclick="saveJob(${job.id})">Save</button></div>`;
-      list.appendChild(el);
-    });
-  }
-  function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name = prompt('Your full name'); if(!name) return; const email = prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+  function renderJobs(){ const list=document.getElementById('jobsList'); if(!list) return; list.innerHTML=''; const loc=(document.getElementById('filterLocation').value||'').toLowerCase(); const type=document.getElementById('filterType').value; const filtered=jobsData.filter(j=>{ if(loc && !j.location.toLowerCase().includes(loc)) return false; if(type && j.type !== type) return false; return true; }); const source=filtered.length?filtered:jobsData; source.forEach(job=>{ const el=document.createElement('div'); el.className='job'; el.innerHTML=`<h4>${escapeHtml(job.title)}</h4><div style="color:#6b7280">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p style="color:#374151">${escapeHtml(job.desc)}</p><div style="margin-top:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn-ghost" onclick="saveJob(${job.id})">Save</button></div>`; list.appendChild(el); }); }
+  function applyJob(id){ const job=jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
-  // Candidate registration
+  // Candidate registration file preview
   const candFileInput = document.getElementById('candResumeFile');
-  candFileInput && candFileInput.addEventListener('change', function(){
-    const f = this.files[0];
-    const el = document.getElementById('candResumeName');
-    if(!f){ el.textContent=''; return; }
-    el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`;
-  });
-  function clearResume(){ const inp = document.getElementById('candResumeFile'); if(inp) inp.value = ''; const nameEl = document.getElementById('candResumeName'); if(nameEl) nameEl.textContent = ''; }
-  function registerCandidate(e){ e.preventDefault(); const name = document.getElementById('candName').value; const email = document.getElementById('candEmail').value; alert('Thanks '+name+' — we received your registration. We will reach out to '+email); e.target.reset(); clearResume(); }
+  candFileInput && candFileInput.addEventListener('change', function(){ const f=this.files[0]; const el=document.getElementById('candResumeName'); if(!f){ el.textContent=''; return; } el.textContent=`Selected: ${f.name} (${Math.round(f.size/1024)} KB)`; });
 
-  function contactEmployer(e){ e.preventDefault(); const data = { name:document.getElementById('empName').value, company:document.getElementById('empCompany').value, email:document.getElementById('empEmail').value, phone:document.getElementById('empPhone').value, msg:document.getElementById('empMsg').value }; console.log('employer',data); alert('Thanks '+data.name+' — we will contact you shortly.'); e.target.reset(); }
-  function handleGeneralContact(e){ e.preventDefault(); const name=document.getElementById('gName').value; const email=document.getElementById('gEmail').value; alert('Thanks '+name+' — we will reply to '+email); e.target.reset(); }
+  function clearResume(){ const inp=document.getElementById('candResumeFile'); if(inp) inp.value=''; const nameEl=document.getElementById('candResumeName'); if(nameEl) nameEl.textContent=''; }
 
-  // Modal logic (accessible)
-  const modal = document.getElementById('proposal-modal');
-  let lastFocusedBeforeModal = null;
-  const firstFocusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-
-  function openProposal(){
-    lastFocusedBeforeModal = document.activeElement;
-    modal.setAttribute('aria-hidden','false');
-    const first = modal.querySelector('input,textarea,button');
-    if(first) first.focus();
-    document.addEventListener('keydown', trapModalKeys);
-  }
-  function closeProposal(){
-    modal.setAttribute('aria-hidden','true');
-    if(lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
-    document.removeEventListener('keydown', trapModalKeys);
-  }
-  function trapModalKeys(e){
-    if(e.key === 'Escape'){ closeProposal(); return; }
-    if(e.key === 'Tab'){
-      const focusables = Array.from(modal.querySelectorAll(firstFocusableSelector)).filter(el=>!el.disabled && el.offsetParent !== null);
-      if(focusables.length === 0) { e.preventDefault(); return; }
-      const idx = focusables.indexOf(document.activeElement);
-      if(e.shiftKey && idx === 0){ focusables[focusables.length -1].focus(); e.preventDefault(); }
-      else if(!e.shiftKey && idx === focusables.length -1){ focusables[0].focus(); e.preventDefault(); }
-    }
-  }
-
-  // Wire up modal close and form
-  const modalClose = document.querySelector('.modal-close');
-  const modalCancel = document.getElementById('proposalCancel');
-  modalClose && modalClose.addEventListener('click', closeProposal);
-  modalCancel && modalCancel.addEventListener('click', closeProposal);
-  if(modal){
-    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeProposal(); });
-  }
-  const proposalForm = document.getElementById('proposalForm');
-  if(proposalForm){
-    proposalForm.addEventListener('submit',(e)=>{
-      e.preventDefault();
-      const name = document.getElementById('propName').value || '';
-      const email = document.getElementById('propEmail').value || '';
-      closeProposal();
-      alert(`Thanks ${name || ''}! We will send a proposal to ${email || 'the provided email'}.`);
-      proposalForm.reset();
-    });
-  }
-
-  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
-
+  document.addEventListener('DOMContentLoaded',()=>{ renderJobs(); });
 </script>
 </body>
 </html>
