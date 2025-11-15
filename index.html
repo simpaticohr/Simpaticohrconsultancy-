@@ -13,7 +13,7 @@
     --accent2:#004a88;
     --radius:12px;
     --max-width:1200px;
-    --hero-base-down:60px;
+    --hero-base-down:90px; /* increased per your request */
   }
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#072433;background:#f3f7fb}
@@ -91,7 +91,7 @@
     .jobs{grid-template-columns:1fr}
   }
   @media (max-width:600px){
-    :root{ --hero-base-down:36px; }
+    :root{ --hero-base-down:44px; } /* reduced for small screens */
     .hero{height:62vh;min-height:320px}
     .hero-inner{padding:12px}
     .hero-title{font-size:18px}
@@ -119,11 +119,11 @@
       </ul>
 
       <div class="nav-right" aria-hidden="false">
-        <a href="https://wa.me/919544842260" target="_blank" title="WhatsApp" style="color:#eaf4ff"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://wa.me/919544842260" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="color:#eaf4ff"><i class="fa-brands fa-whatsapp"></i></a>
         <a href="tel:+919544842260" title="Call" style="color:#eaf4ff;margin-left:6px"><i class="fa-solid fa-phone"></i></a>
-        <!-- LinkedIn & Facebook icons added -->
-        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" title="LinkedIn" style="color:#eaf4ff;margin-left:6px"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://www.facebook.com/simpaticohrpmna" target="_blank" title="Facebook" style="color:#eaf4ff;margin-left:6px"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="color:#eaf4ff;margin-left:6px"><i class="fa-brands fa-linkedin"></i></a>
+        <!-- fixed Facebook link + opens in new tab safely -->
+        <a href="https://www.facebook.com/simpaticohrpmna" target="_blank" rel="noopener noreferrer" title="Facebook" style="color:#eaf4ff;margin-left:6px"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </nav>
@@ -225,10 +225,10 @@
       <div>© <span id="year"></span> Simpatico HR Consultancy</div>
       <div style="color:#9fb8d6">Designed for Perinthalmanna. All rights reserved.</div>
       <div style="display:flex;gap:10px;align-items:center">
-        <a href="https://wa.me/919544842260" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://wa.me/919544842260" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a href="tel:+919544842260" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://www.facebook.com/simpaticohrpmna" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/simpaticohrpmna" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </footer>
@@ -240,7 +240,7 @@
     function getBaseDown(){
       const v = getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down');
       const parsed = parseInt(v);
-      return isNaN(parsed) ? 60 : parsed;
+      return isNaN(parsed) ? 90 : parsed;
     }
     function adjustHero(){
       const hero = document.querySelector('.hero');
