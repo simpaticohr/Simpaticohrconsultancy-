@@ -7,92 +7,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+  /* ---------- Root / baseline ---------- */
   :root{
-    --header-h:72px;
+    --header-h:72px;                 /* desktop header height */
+    --header-h-mobile:60px;          /* mobile header height (user requested 60px) */
     --accent:#0063b2;
     --accent2:#004a88;
     --radius:12px;
     --max-width:1200px;
 
-    /* Increased downward shift so glass NEVER overlaps menu */
-    --hero-base-down:140px;           /* desktop/tablet base (was 90px) */
+    /* vertical hero offsets (push the glass window down so it never overlaps nav) */
+    --hero-base-down:140px;           /* desktop/tablet base */
     --mobile-hero-base-down:120px;    /* mobile forced value */
-    --mobile-menu-w:280px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#072433;background:#f3f7fb}
-  a{color:inherit;text-decoration:none}
 
-  /* NAV always above hero */
-  nav, .nav-inner, .nav-right, .nav-right a {
-    position: relative;
-    z-index: 99999 !important;
-    pointer-events: auto !important;
+    --mobile-menu-w:260px;
+    --text-dark:#072433;
+    --muted:#6b7280;
   }
-  nav{left:0;right:0;top:0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.98), rgba(0,51,102,0.90));backdrop-filter:blur(6px);z-index:99999;position:fixed}
-  .nav-inner{max-width:var(--max-width);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 20px;color:#fff}
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:var(--text-dark);background:#f3f7fb}
+  a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  img{max-width:100%;height:auto;display:block}
+
+  /* ---------- NAV ---------- */
+  nav{position:fixed;inset:0 0 auto 0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.98), rgba(0,51,102,0.9));backdrop-filter:blur(6px);z-index:99999}
+  .nav-inner{max-width:var(--max-width);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:6px 20px;color:#fff}
   .brand{display:flex;gap:12px;align-items:center}
   .brand .title{font-weight:700;color:#fff;letter-spacing:0.2px}
-  ul#nav-links{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
+  ul#nav-links{display:flex;gap:12px;list-style:none;margin:0;padding:0;align-items:center}
   ul#nav-links a{color:#eaf4ff;font-weight:600;padding:8px;border-radius:8px}
 
-  /* mobile hamburger button */
-  .hamburger{
-    display:none;
-    width:44px;height:44px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;
-  }
-
+  .hamburger{display:none;width:44px;height:44px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer}
   .nav-right{display:flex;gap:12px;align-items:center}
+  .nav-right a{font-size:18px;color:#eaf4ff}
 
-  /* HERO */
+  /* ---------- HERO / BACKGROUND ---------- */
   .hero{position:relative;height:76vh;min-height:420px;padding-top:var(--header-h);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;color:#fff}
   .hero::before{
     content:"";
-    position:absolute;inset:0;background-image:url("simpatico_hr_banner.png");background-size:cover;background-position:center center;filter:brightness(0.94) contrast(1.02);transform-origin:center;z-index:0;pointer-events:none!important;
+    position:absolute;inset:0;
+    background-image:url("simpatico_hr_banner.png");
+    background-size:cover;
+    background-position:center center;
+    filter:brightness(0.94) contrast(1.02);
+    transform-origin:center;
+    z-index:0;pointer-events:none!important;
+    will-change:transform;
   }
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.17), rgba(2,6,23,0.06));z-index:1;pointer-events:none!important}
 
-  .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform: translateY(var(--hero-base-down));transition: transform 360ms cubic-bezier(.2,.9,.2,1);}
+  .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;padding:18px 24px;display:flex;gap:24px;align-items:flex-start;justify-content:flex-start;transform: translateY(var(--hero-base-down));transition: transform 360ms cubic-bezier(.2,.9,.2,1);}
 
-  .glass{background:rgba(255,255,255,0.085);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:760px;width:100%}
-  .hero-title{font-size:28px;font-weight:700;margin:0 0 8px;color:#fff;line-height:1.05;white-space:nowrap;overflow:hidden}
+  /* glass card inside hero */
+  .glass{background:rgba(255,255,255,0.085);backdrop-filter:blur(6px);padding:20px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:760px;width:100%}
+  .hero-title{font-size:28px;font-weight:700;margin:0 0 8px;color:#fff;line-height:1.05;letter-spacing:0.2px}
   .hero-sub{margin:0 0 12px;color:#e9f3ff}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
   .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(6,38,79,0.14)}
   .btn-light{background:#fff;color:#072433;padding:10px 14px;border-radius:10px;border:none}
 
-  /* sections */
+  /* ---------- CONTENT SECTIONS ---------- */
   section{padding:56px 20px;max-width:var(--max-width);margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
   h2{color:#06324f;margin:0 0 12px}
-  .muted{color:#6b7280}
+  .muted{color:var(--muted)}
 
-  /* job board & forms */
+  /* jobs / forms */
   .job-board{display:grid;grid-template-columns:1fr 360px;gap:18px}
   .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:#072433}
-  form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7;color:#072433}
+  .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:var(--text-dark)}
+  form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7;color:var(--text-dark)}
   input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;margin-bottom:8px;font-size:14px}
   .file-name{font-size:13px;color:#374151;margin-top:6px}
+  .small-muted{font-size:13px;color:var(--muted)}
 
+  /* footer */
   footer{padding:24px 20px;background:#071726;color:#cbd5e1;margin-top:18px}
 
-  /* mobile menu panel */
-  .mobile-panel{
-    position:fixed;
-    top:0;
-    left:-100%;
-    width:var(--mobile-menu-w);
-    height:100%;
-    background:linear-gradient(180deg,#06263f,#07293f);
-    box-shadow:12px 0 40px rgba(2,6,23,0.4);
-    z-index:100500;
-    transition:left 320ms cubic-bezier(.22,.9,.12,1);
-    padding:20px;
-    color:#fff;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
+  /* mobile slide-in panel */
+  .mobile-panel{position:fixed;top:0;left:-100%;width:var(--mobile-menu-w);height:100%;background:linear-gradient(180deg,#06263f,#07293f);box-shadow:12px 0 40px rgba(2,6,23,0.4);z-index:100500;transition:left 320ms cubic-bezier(.22,.9,.12,1);padding:20px;color:#fff;display:flex;flex-direction:column;gap:12px}
   .mobile-panel.open{left:0}
   .mobile-panel .close-btn{align-self:flex-end;background:transparent;border:0;color:#cfe8ff;font-size:20px;cursor:pointer}
   .mobile-panel nav a{display:block;padding:10px 8px;border-radius:8px;color:#e9f7ff;font-weight:600}
@@ -100,30 +93,60 @@
   .mobile-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.32);z-index:100400;opacity:0;pointer-events:none;transition:opacity 220ms}
   .mobile-backdrop.show{opacity:1;pointer-events:auto}
 
-  /* responsive */
+  /* ---------- ACCESSIBILITY / FOCUS ---------- */
+  .typing-cursor{border-right:3px solid rgba(255,255,255,0.95);padding-right:6px}
+  a:focus,button:focus,input:focus,select:focus,textarea:focus{outline:3px solid rgba(0,115,200,0.12);outline-offset:2px}
+  button{font-family:inherit}
+
+  /* ---------- RESPONSIVE RULES (MOBILE OPTIMIZATIONS) ---------- */
+
+  /* General small tablet / phone breakpoint */
   @media (max-width:900px){
     ul#nav-links{display:none}
     .hamburger{display:flex}
-    .nav-inner{padding:8px 12px}
-  }
-  @media (max-width:600px){
-    :root{ --mobile-menu-w:260px; }
-    .hero{height:62vh;min-height:320px}
-    .hero-inner{padding:12px}
-    .hero-title{font-size:18px}
-    .cta-row{gap:8px}
-    .btn{padding:8px 10px;font-size:14px}
-    /* force larger translate on small screens to keep glass well below nav */
-    .hero-inner{ transform: translateY(var(--mobile-hero-base-down)) !important; }
+    .nav-inner{padding:6px 12px}
+    .hero{height:68vh;min-height:360px}
+    .hero-inner{padding:14px}
   }
 
-  .typing-cursor{border-right:3px solid rgba(255,255,255,0.95);padding-right:6px}
-  a:focus,button:focus,input:focus,select:focus,textarea:focus{outline:3px solid rgba(0,115,200,0.12);outline-offset:2px}
+  /* Phone: stack columns, increase touch sizes, reduce hero height, ensure header smaller (60px) */
+  @media (max-width:600px){
+    :root{ --mobile-menu-w:240px }
+    nav{height:var(--header-h-mobile)}
+    .hero{height:62vh;min-height:320px;padding-top:var(--header-h-mobile)}
+    .hero-inner{padding:12px}
+    .hero-title{font-size:18px}
+    .btn{padding:10px 12px;font-size:15px;width:100%}
+    .cta-row{flex-direction:column;align-items:stretch}
+    section{padding:40px 16px}
+    .job-board{grid-template-columns:1fr;gap:14px}
+    .jobs{grid-template-columns:1fr;gap:12px}
+    .glass{padding:16px}
+    /* Force the glass window well below the nav on small screens */
+    .hero-inner{ transform: translateY(var(--mobile-hero-base-down)) !important; }
+    /* enlarge social icons and touch area */
+    .nav-right a{font-size:22px;padding:8px}
+    .hamburger{width:48px;height:48px}
+    /* forms full width buttons */
+    form button.btn, .btn { width:100% }
+  }
+
+  /* Very large screens */
+  @media (min-width:1400px){
+    .hero-inner{max-width:1400px}
+  }
+
+  /* small visual hint: reduce hero background movement on very small screens */
+  @media (prefers-reduced-motion:reduce){
+    .hero-inner{transition:none}
+  }
+
 </style>
 </head>
 <body>
+  <!-- NAV -->
   <nav aria-label="Primary">
-    <div class="nav-inner">
+    <div class="nav-inner" role="navigation">
       <div style="display:flex;gap:12px;align-items:center">
         <button id="hamburgerBtn" class="hamburger" aria-label="Open menu" aria-controls="mobilePanel" aria-expanded="false">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect y="0" width="18" height="2" rx="1" fill="white"/><rect y="6" width="18" height="2" rx="1" fill="white"/><rect y="12" width="18" height="2" rx="1" fill="white"/></svg>
@@ -135,7 +158,7 @@
         </div>
       </div>
 
-      <ul id="nav-links" role="menubar">
+      <ul id="nav-links" role="menubar" aria-label="Desktop links">
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
@@ -144,21 +167,18 @@
       </ul>
 
       <div class="nav-right" aria-hidden="false" style="align-items:center">
-        <a id="waLink" href="https://wa.me/919544842260" onclick="window.open('https://wa.me/919544842260','_blank','noopener,noreferrer');return false;" title="WhatsApp" style="color:#eaf4ff;margin-right:6px"><i class="fa-brands fa-whatsapp"></i></a>
-
-        <a id="telLink" href="tel:+919544842260" title="Call" style="color:#eaf4ff;margin-right:6px"><i class="fa-solid fa-phone"></i></a>
-
-        <a id="lnLink" href="https://www.linkedin.com/company/simpatico-manpower/" onclick="window.open('https://www.linkedin.com/company/simpatico-manpower/','_blank','noopener,noreferrer');return false;" title="LinkedIn" style="color:#eaf4ff;margin-right:6px"><i class="fa-brands fa-linkedin"></i></a>
-
-        <a id="fbLink" href="https://www.facebook.com/simpaticohrpmna" onclick="window.open('https://www.facebook.com/simpaticohrpmna','_blank','noopener,noreferrer');return false;" title="Facebook" style="color:#eaf4ff"><i class="fa-brands fa-facebook"></i></a>
+        <a id="waLink" href="https://wa.me/919544842260" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a id="telLink" href="tel:+91954484260" title="Call" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+        <a id="lnLink" href="https://www.linkedin.com/company/simpatico-manpower/" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a id="fbLink" href="https://www.facebook.com/simpaticohrpmna" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </nav>
 
-  <!-- Mobile slide-in panel -->
+  <!-- Mobile panel -->
   <div id="mobilePanel" class="mobile-panel" aria-hidden="true" role="dialog" aria-label="Mobile menu">
     <button id="mobileClose" class="close-btn" aria-label="Close menu">&times;</button>
-    <nav style="margin-top:6px">
+    <nav role="navigation" aria-label="Mobile links">
       <a href="#home" class="mobile-link">Home</a>
       <a href="#about" class="mobile-link">About</a>
       <a href="#services" class="mobile-link">Services</a>
@@ -166,26 +186,26 @@
       <a href="#contactTop" class="mobile-link">Contact</a>
     </nav>
     <div class="socials" style="margin-top:auto">
-      <a id="waMobile" href="https://wa.me/919544842260" onclick="window.open('https://wa.me/919544842260','_blank','noopener,noreferrer');return false;" title="WhatsApp" style="color:#cfe8ff"><i class="fa-brands fa-whatsapp"></i></a>
-      <a id="lnMobile" href="https://www.linkedin.com/company/simpatico-manpower/" onclick="window.open('https://www.linkedin.com/company/simpatico-manpower/','_blank','noopener,noreferrer');return false;" title="LinkedIn" style="color:#cfe8ff"><i class="fa-brands fa-linkedin"></i></a>
-      <a id="fbMobile" href="https://www.facebook.com/simpaticohrpmna" onclick="window.open('https://www.facebook.com/simpaticohrpmna','_blank','noopener,noreferrer');return false;" title="Facebook" style="color:#cfe8ff"><i class="fa-brands fa-facebook"></i></a>
+      <a id="waMobile" href="https://wa.me/919544842260" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a id="lnMobile" href="https://www.linkedin.com/company/simpatico-manpower/" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a id="fbMobile" href="https://www.facebook.com/simpaticohrpmna" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
     </div>
   </div>
   <div id="mobileBackdrop" class="mobile-backdrop" aria-hidden="true"></div>
 
+  <!-- MAIN -->
   <main id="main" tabindex="-1">
     <header id="home" class="hero" role="banner" aria-label="Hero">
       <div class="hero-overlay" aria-hidden="true"></div>
-
       <div class="hero-inner" role="region" aria-label="Hero content">
         <div class="glass" aria-live="polite">
           <h1 class="hero-title"><span id="typingText" class="typing-cursor" aria-hidden="false"></span></h1>
           <p class="hero-sub">We provide RPO, recruitment systems and job portals — from sourcing to onboarding.</p>
 
-          <div class="cta-row">
+          <div class="cta-row" role="group" aria-label="Primary actions">
             <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
             <button class="btn btn-light" onclick="openProposal()">Request Proposal</button>
-            <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
+            <button class="btn" onclick="openWhatsApp()">WhatsApp</button>
           </div>
         </div>
       </div>
@@ -216,7 +236,7 @@
       </div>
 
       <div class="job-board" style="margin-top:12px">
-        <div><div id="jobsList" class="jobs"></div></div>
+        <div><div id="jobsList" class="jobs" aria-live="polite"></div></div>
 
         <aside style="padding:12px">
           <h4>Candidate Registration</h4>
@@ -279,11 +299,11 @@
           <div style="margin-top:8px"><button class="btn" type="submit">Send</button></div>
         </form>
 
-        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7;color:#072433">
+        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7;color:var(--text-dark)">
           <h4>Office</h4>
-          <div style="color:#072433">Perinthalmanna, Kerala — India</div>
-          <div style="margin-top:8px"><strong>Phone</strong><div style="color:#072433">+91 9544842260</div></div>
-          <div style="margin-top:8px"><strong>Email</strong><div style="color:#072433">simpaticohrconsultancy@gmail.com</div></div>
+          <div style="color:var(--text-dark)">Perinthalmanna, Kerala — India</div>
+          <div style="margin-top:8px"><strong>Phone</strong><div style="color:var(--text-dark)">+91 9544842260</div></div>
+          <div style="margin-top:8px"><strong>Email</strong><div style="color:var(--text-dark)">simpaticohrconsultancy@gmail.com</div></div>
         </aside>
       </div>
     </section>
@@ -294,208 +314,163 @@
       <div>© <span id="year"></span> Simpatico HR Consultancy</div>
       <div style="color:#9fb8d6">Designed for Perinthalmanna. All rights reserved.</div>
       <div style="display:flex;gap:10px;align-items:center">
-        <a id="waFooter" href="https://wa.me/919544842260" onclick="window.open('https://wa.me/919544842260','_blank','noopener,noreferrer');return false;" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-
-        <a href="tel:+919544842260" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-
-        <a id="lnFooter" href="https://www.linkedin.com/company/simpatico-manpower/" onclick="window.open('https://www.linkedin.com/company/simpatico-manpower/','_blank','noopener,noreferrer');return false;" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-
-        <a id="fbFooter" href="https://www.facebook.com/simpaticohrpmna" onclick="window.open('https://www.facebook.com/simpaticohrpmna','_blank','noopener,noreferrer');return false;" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a id="waFooter" href="https://wa.me/919544842260" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+91954484260" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+        <a id="lnFooter" href="https://www.linkedin.com/company/simpatico-manpower/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a id="fbFooter" href="https://www.facebook.com/simpaticohrpmna" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </footer>
 
 <script>
-  // set year
-  document.getElementById('year').textContent = new Date().getFullYear();
+/* ------------------ Small helpers & interactions ------------------ */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // typing animation for hero title
-  (function typing(){
-    const text = "Simpatico HR Consultancy";
-    const el = document.getElementById('typingText');
-    if(!el) return;
-    let i=0;
-    function step(){
-      el.textContent = text.slice(0,i);
-      i++;
-      if(i<=text.length) setTimeout(step, 70);
-      else {
-        el.classList.remove('typing-cursor');
-        let visible = true;
-        setInterval(()=>{ el.style.opacity = visible ? '1' : '0.45'; visible = !visible; }, 700);
-      }
-    }
-    step();
-  })();
-
-  // Mobile menu behaviour
-  (function mobileMenu(){
-    const hamburger = document.getElementById('hamburgerBtn');
-    const panel = document.getElementById('mobilePanel');
-    const closeBtn = document.getElementById('mobileClose');
-    const backdrop = document.getElementById('mobileBackdrop');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    function openPanel(){
-      panel.classList.add('open');
-      backdrop.classList.add('show');
-      panel.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-      hamburger.setAttribute('aria-expanded','true');
-      setTimeout(()=> mobileLinks[0]?.focus(), 120);
-    }
-    function closePanel(){
-      panel.classList.remove('open');
-      backdrop.classList.remove('show');
-      panel.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-      hamburger.setAttribute('aria-expanded','false');
-      hamburger.focus();
-    }
-
-    hamburger.addEventListener('click', openPanel);
-    closeBtn.addEventListener('click', closePanel);
-    backdrop.addEventListener('click', closePanel);
-
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePanel(); });
-
-    mobileLinks.forEach(a=>{
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        closePanel();
-        setTimeout(()=>{ el && el.scrollIntoView({behavior:'smooth'}); }, 320);
-      });
-    });
-
-    document.querySelectorAll('.nav-link').forEach(a=>{
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        el && el.scrollIntoView({behavior:'smooth'});
-      });
-    });
-  })();
-
-  // Request Proposal helpers
-  function openProposal() {
-    document.getElementById('proposal').scrollIntoView({behavior:'smooth'});
+/* Typing effect (hero) */
+(function typing(){
+  const text = "Simpatico HR Consultancy";
+  const el = document.getElementById('typingText');
+  if(!el) return;
+  let i=0;
+  function step(){
+    el.textContent = text.slice(0,i);
+    i++;
+    if(i<=text.length) setTimeout(step, 60);
+    else { el.classList.remove('typing-cursor'); let visible=true; setInterval(()=>{ el.style.opacity = visible?'1':'0.5'; visible=!visible },700); }
   }
-  function submitProposal(e){
-    e.preventDefault();
-    alert("Thanks! We received your proposal request. We will get back to you shortly.");
-    e.target.reset();
+  step();
+})();
+
+/* Open WhatsApp */
+function openWhatsApp(){ window.open('https://wa.me/919544842260','_blank','noopener,noreferrer'); }
+
+/* Mobile menu behaviour */
+(function mobileMenu(){
+  const hamburger = document.getElementById('hamburgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  const closeBtn = document.getElementById('mobileClose');
+  const backdrop = document.getElementById('mobileBackdrop');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openPanel(){
+    panel.classList.add('open');
+    backdrop.classList.add('show');
+    panel.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-expanded','true');
+    setTimeout(()=> mobileLinks[0]?.focus(), 120);
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    backdrop.classList.remove('show');
+    panel.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    hamburger.setAttribute('aria-expanded','false');
+    hamburger.focus();
   }
 
-  // hero position adjustment (keeps behavior but CSS mobile override already applied)
-  (function(){
-    function getBaseDown(){ const v = getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down'); const parsed = parseInt(v); return isNaN(parsed) ? 140 : parsed; }
-    function adjustHero(){
-      const hero = document.querySelector('.hero'); const inner = document.querySelector('.hero-inner'); if(!hero || !inner) return;
-      const BASE_DOWN = getBaseDown();
-      const heroH = hero.clientHeight || window.innerHeight*0.7;
-      let lift = Math.round(heroH * 0.10);
-      const MAX_LIFT = 110, MIN_LIFT = 10;
-      if(lift > MAX_LIFT) lift = MAX_LIFT;
-      if(lift < MIN_LIFT) lift = MIN_LIFT;
-      let final;
-      if(window.innerWidth <= 600) final = Math.round(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-hero-base-down') || 120));
-      else if(window.innerWidth <= 1000) final = Math.round(BASE_DOWN - Math.round(lift * 0.7));
-      else final = BASE_DOWN - lift;
-      inner.style.transform = `translateY(${final}px)`;
-    }
-    function debounce(fn, wait=110){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), wait); }; }
-    window.addEventListener('load', adjustHero);
-    window.addEventListener('DOMContentLoaded', adjustHero);
-    window.addEventListener('resize', debounce(adjustHero,110));
-    setTimeout(adjustHero, 600);
-    setTimeout(adjustHero, 1200);
-  })();
+  hamburger.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+  backdrop.addEventListener('click', closePanel);
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePanel(); });
 
-  // jobs data & renderer
-  const jobsData = [
-    {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
-    {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
-    {id:3,title:'Data Analyst',company:'MarketIQ',location:'Remote',type:'Contract',exp:'2+ yrs',desc:'SQL, Python.'},
-    {id:4,title:'HR Intern',company:'Simpatico',location:'Perinthalmanna',type:'Internship',exp:'0-1 yrs',desc:'Hiring operations.'}
+  mobileLinks.forEach(a=>{
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      const id = this.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      closePanel();
+      setTimeout(()=>{ el && el.scrollIntoView({behavior:'smooth'}); }, 320);
+    });
+  });
+
+  // Desktop nav smooth scroll
+  document.querySelectorAll('.nav-link').forEach(a=>{
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      const id = this.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      el && el.scrollIntoView({behavior:'smooth'});
+    });
+  });
+})();
+
+/* Request Proposal helpers */
+function openProposal(){ document.getElementById('proposal').scrollIntoView({behavior:'smooth'}); }
+function submitProposal(e){ e.preventDefault(); alert("Thanks — your proposal request is received. We'll contact you soon."); e.target.reset(); }
+
+/* Basic candidate/employer form handlers */
+function registerCandidate(e){ e.preventDefault(); alert('Thanks ' + (document.getElementById('candName').value||'') + ' — we received your registration.'); e.target.reset(); document.getElementById('candResumeName').textContent=''; }
+function contactEmployer(e){ e.preventDefault(); alert('Thanks — we will contact you shortly.'); e.target.reset(); }
+function handleGeneralContact(e){ e.preventDefault(); alert('Thanks — we will reply to you soon.'); e.target.reset(); }
+
+/* Proposal form submit already above */
+
+/* Jobs renderer */
+const jobsData = [
+  {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
+  {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
+  {id:3,title:'Data Analyst',company:'MarketIQ',location:'Remote',type:'Contract',exp:'2+ yrs',desc:'SQL, Python.'},
+  {id:4,title:'HR Intern',company:'Simpatico',location:'Perinthalmanna',type:'Internship',exp:'0-1 yrs',desc:'Hiring operations.'}
+];
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+function renderJobs(){
+  const list = document.getElementById('jobsList'); if(!list) return; list.innerHTML='';
+  const loc = (document.getElementById('filterLocation')?.value || '').toLowerCase();
+  const type = document.getElementById('filterType')?.value;
+  const filtered = jobsData.filter(j=>{ if(loc && !j.location.toLowerCase().includes(loc)) return false; if(type && j.type !== type) return false; return true; });
+  const source = filtered.length ? filtered : jobsData;
+  source.forEach(job=>{
+    const el=document.createElement('div'); el.className='job';
+    el.innerHTML = `<h4>${escapeHtml(job.title)}</h4><div class="small-muted">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p style="color:#374151">${escapeHtml(job.desc)}</p><div style="margin-top:8px;display:flex;gap:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn" onclick="saveJob(${job.id})" style="background:transparent;border:1px solid #eef2f7;color:var(--text-dark)">Save</button></div>`;
+    list.appendChild(el);
+  });
+}
+function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
+function saveJob(id){ alert('Saved (demo)'); }
+
+/* Candidate file preview */
+const candFile = document.getElementById('candResumeFile');
+candFile && candFile.addEventListener('change', function(){ const f=this.files[0]; const el=document.getElementById('candResumeName'); if(!f){ el.textContent=''; return; } el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`; });
+
+/* Social opener safe binding (covers mobile browsers that block window.open from certain gestures) */
+(function bindSocials(){
+  const items = [
+    {sel:'#fbLink', url:'https://www.facebook.com/simpaticohrpmna'},
+    {sel:'#fbFooter', url:'https://www.facebook.com/simpaticohrpmna'},
+    {sel:'#lnLink', url:'https://www.linkedin.com/company/simpatico-manpower/'},
+    {sel:'#lnFooter', url:'https://www.linkedin.com/company/simpatico-manpower/'},
+    {sel:'#waLink', url:'https://wa.me/919544842260'},
+    {sel:'#waFooter', url:'https://wa.me/919544842260'}
   ];
-  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
-  function renderJobs(){
-    const list = document.getElementById('jobsList'); if(!list) return; list.innerHTML='';
-    const loc = (document.getElementById('filterLocation')?.value || '').toLowerCase();
-    const type = document.getElementById('filterType')?.value;
-    const filtered = jobsData.filter(j=>{ if(loc && !j.location.toLowerCase().includes(loc)) return false; if(type && j.type !== type) return false; return true; });
-    const source = filtered.length ? filtered : jobsData;
-    source.forEach(job=>{
-      const el=document.createElement('div'); el.className='job';
-      el.innerHTML = `<h4>${escapeHtml(job.title)}</h4><div style="color:#6b7280">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p style="color:#374151">${escapeHtml(job.desc)}</p><div style="margin-top:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn" onclick="saveJob(${job.id})" style="background:transparent;border:1px solid #eef2f7;color:#072433">Save</button></div>`;
-      list.appendChild(el);
-    });
+  items.forEach(it=>{
+    const el = document.querySelector(it.sel);
+    if(!el) return;
+    function openIt(e){ try{ if(e){ e.preventDefault(); e.stopImmediatePropagation(); } const w = window.open(it.url,'_blank','noopener,noreferrer'); if(!w) location.href = it.url; }catch(err){ location.href = it.url; } }
+    el.addEventListener('click', openIt, {passive:false});
+    el.addEventListener('touchend', openIt, {passive:false});
+  });
+})();
+
+/* Hero vertical fine-tune after load (keeps hero nicely placed for varied devices) */
+(function adjustHero(){
+  function update(){
+    const inner = document.querySelector('.hero-inner'); if(!inner) return;
+    if(window.innerWidth <= 600){
+      const mobileVal = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-hero-base-down')) || 120;
+      inner.style.transform = `translateY(${mobileVal}px)`;
+    } else {
+      const base = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down')) || 140;
+      inner.style.transform = `translateY(${base}px)`;
+    }
   }
-  function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
-  function saveJob(id){ alert('Saved (demo)'); }
+  window.addEventListener('resize', ()=>{ setTimeout(update,80); });
+  window.addEventListener('DOMContentLoaded', update);
+  setTimeout(update,400);
+})();
 
-  // candidate file preview
-  const candFile = document.getElementById('candResumeFile');
-  candFile && candFile.addEventListener('change', function(){ const f=this.files[0]; const el=document.getElementById('candResumeName'); if(!f){ el.textContent=''; return; } el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`; });
-
-  function registerCandidate(e){ e.preventDefault(); alert('Thanks '+document.getElementById('candName').value+' — we received your registration.'); e.target.reset(); const el=document.getElementById('candResumeName'); if(el) el.textContent=''; }
-  function contactEmployer(e){ e.preventDefault(); alert('Thanks — we will contact you shortly.'); e.target.reset(); }
-  function handleGeneralContact(e){ e.preventDefault(); alert('Thanks — we will reply to you soon.'); e.target.reset(); }
-
-  document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); document.getElementById('year').textContent = new Date().getFullYear(); });
-
-  /* Robust social opener: attach handlers that reliably open links in Chrome and log results */
-  (function robustSocialOpen(){
-    const socials = [
-      {sel:'#fbLink', url:'https://www.facebook.com/simpaticohrpmna'},
-      {sel:'#fbFooter', url:'https://www.facebook.com/simpaticohrpmna'},
-      {sel:'#lnLink', url:'https://www.linkedin.com/company/simpatico-manpower/'},
-      {sel:'#lnFooter', url:'https://www.linkedin.com/company/simpatico-manpower/'},
-      {sel:'#waLink', url:'https://wa.me/919544842260'},
-      {sel:'#waFooter', url:'https://wa.me/919544842260'}
-    ];
-    socials.forEach(item=>{
-      const el = document.querySelector(item.sel);
-      if(!el) return;
-      try{ el.onclick = null; } catch(e){}
-      function openNow(e){
-        try{
-          if (e && e.stopImmediatePropagation) e.stopImmediatePropagation();
-          if (e && e.preventDefault) e.preventDefault();
-          const win = window.open(item.url, '_blank', 'noopener,noreferrer');
-          if(!win) location.href = item.url;
-          console.log('Social opener: opened', item.url);
-        } catch(err){
-          console.error('Social opener error', err);
-          location.href = item.url;
-        }
-      }
-      el.addEventListener('click', openNow, {passive:false});
-      el.addEventListener('mousedown', openNow, {passive:false});
-      el.addEventListener('touchend', openNow, {passive:false});
-    });
-
-    setTimeout(()=>{
-      const nav = document.querySelector('nav');
-      if(nav){
-        const navRect = nav.getBoundingClientRect();
-        document.querySelectorAll('body *').forEach(el=>{
-          if(el === nav) return;
-          const r = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
-          if(!r) return;
-          if(r.top <= navRect.bottom && r.bottom >= navRect.top && r.left <= navRect.right && r.right >= navRect.left){
-            const z = parseInt(window.getComputedStyle(el).zIndex) || 0;
-            if(z > 1200){
-              console.warn('Possible overlay blocking nav clicks:', el, 'z-index:', z);
-            }
-          }
-        });
-      }
-    }, 800);
-  })();
+/* initialise */
+document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); });
 </script>
 </body>
 </html>
