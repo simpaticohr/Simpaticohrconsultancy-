@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   :root{
-    --header-h:76px;
+    --header-h:72px;
     --accent:#0063b2;
     --accent2:#004a88;
     --radius:12px;
-    --glass-max:760px;
+    --max-width:1100px;
   }
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#072433;background:#f3f7fb}
@@ -20,47 +20,45 @@
 
   /* NAV */
   nav{position:fixed;left:0;right:0;top:0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88));backdrop-filter:blur(6px);z-index:1200}
-  .nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 20px;color:#fff}
+  .nav-inner{max-width:var(--max-width);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 20px;color:#fff}
   .brand{display:flex;gap:12px;align-items:center}
-  .brand-logo img{width:52px;height:52px;border-radius:8px;object-fit:contain;display:block}
+  .brand .title{font-weight:700;color:#fff;letter-spacing:0.2px}
   ul#nav-links{display:flex;gap:14px;list-style:none;margin:0;padding:0}
   ul#nav-links a{color:#eaf4ff;font-weight:600;padding:8px;border-radius:8px}
   .nav-right{display:flex;gap:10px;align-items:center}
 
   /* HERO */
-  .hero{position:relative;height:84vh;min-height:420px;padding-top:var(--header-h);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;color:#fff}
-  /* <<< changed: shift background image down to hide built-in text inside the JPG */
+  .hero{position:relative;height:78vh;min-height:420px;padding-top:var(--header-h);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;color:#fff}
   .hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background-image:url("simpatico_hr_banner.jpg");
+    background-image:url("simpatico_hr_banner.png");
     background-size:cover;
-    background-position:center bottom; /* moved down so embedded text in image is out of view */
-    filter:brightness(0.78) contrast(1.02);
+    background-position:center center;
+    filter:brightness(0.9) contrast(1.02);
     transform-origin:center;
     animation:bgScale 28s linear infinite;
     z-index:0;
   }
-  @keyframes bgScale{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.05) translateY(-12px)}100%{transform:scale(1) translateY(0)}}
+  @keyframes bgScale{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.18), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
 
-  /* remove hard-coded lift; JS will compute a responsive lift */
-  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform:translateY(0);transition:transform 330ms cubic-bezier(.2,.9,.2,1)}
-  .glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:var(--glass-max);width:100%}
-  .title{font-size:36px;font-weight:700;margin:0 0 8px;line-height:1.05}
-  .subtitle{margin:0 0 12px;opacity:0.96;color:#e9f3ff}
+  /* hero content (glass panel) - lifted responsively by JS */
+  .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform:translateY(0);transition:transform 320ms cubic-bezier(.2,.9,.2,1)}
+  .glass{background:rgba(255,255,255,0.09);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:760px;width:100%}
+  .hero-title{font-size:30px;font-weight:700;margin:0 0 8px;color:#fff;line-height:1.05}
+  .hero-sub{margin:0 0 12px;color:#e9f3ff}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
   .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(6,38,79,0.14)}
-  .btn:hover{transform:translateY(-3px);transition:transform .12s}
   .btn-light{background:#fff;color:#072433;padding:10px 14px;border-radius:10px;border:none}
 
-  .hero-logo-wm{position:absolute;right:6%;top:6%;width:220px;height:220px;opacity:0.06;transform:rotate(-6deg);pointer-events:none;z-index:1}
-
-  section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
-  h2{color:#06324f}
+  /* site sections */
+  section{padding:56px 20px;max-width:var(--max-width);margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
+  h2{color:#06324f;margin:0 0 12px}
   .muted{color:#6b7280}
 
+  /* job board */
   .job-board{display:grid;grid-template-columns:1fr 360px;gap:18px}
   .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:#072433}
@@ -79,43 +77,31 @@
     .job-board{grid-template-columns:1fr}
   }
   @media(max-width:600px){
-    .hero{height:62vh;min-height:360px}
-    .title{font-size:22px}
-    .hero-logo-wm{display:none}
+    .hero{height:62vh;min-height:340px}
+    .hero-title{font-size:20px}
     .hero-inner{padding:10px}
   }
-
-  /* typing cursor */
-  #typing{border-right:3px solid rgba(255,255,255,0.95);padding-right:6px;white-space:nowrap;overflow:hidden}
 </style>
 </head>
 <body>
   <nav aria-label="Primary">
     <div class="nav-inner">
-      <div class="brand">
-        <a href="/" class="brand-logo" aria-label="Simpatico HR Consultancy">
-          <img id="siteLogo" src="Untitled design_20250509_145149_0000.png" alt="Simpatico HR logo">
-        </a>
-        <div>
-          <div style="font-weight:700;color:#fff">Simpatico HR</div>
-          <div style="font-size:12px;color:#cfe0ff">Recruitment • RPO • Job Portals</div>
-        </div>
+      <div class="brand" aria-hidden="false">
+        <div class="title">Simpatico HR</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.9)">Recruitment · RPO · Job Portals</div>
       </div>
 
       <ul id="nav-links" role="menubar">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#how">How</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#jobs">Jobs</a></li>
         <li><a href="#contactTop">Contact</a></li>
       </ul>
 
-      <div class="nav-right">
-        <a class="socials" href="https://wa.me/919544842260" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a class="socials" href="tel:+919544842260" title="Call" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
-        <a class="socials" href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <div class="nav-right" aria-hidden="false">
+        <a href="https://wa.me/919544842260" target="_blank" title="WhatsApp" style="color:#eaf4ff"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+919544842260" title="Call" style="color:#eaf4ff;margin-left:8px"><i class="fa-solid fa-phone"></i></a>
       </div>
     </div>
   </nav>
@@ -124,17 +110,17 @@
     <header id="home" class="hero" role="banner" aria-label="Hero">
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <!-- subtle watermark logo on top-right -->
-      <img class="hero-logo-wm" src="Untitled design_20250509_145149_0000.png" alt="" aria-hidden="true">
-
-      <div class="hero-inner">
-        <div class="glass" role="region" aria-label="Hero content">
-          <h1 class="title"><span id="typing"></span></h1>
-          <p class="subtitle">Strategic Human Resources Partners — recruitment systems, RPO & job portals.</p>
+      <!-- hero content / glass -->
+      <div class="hero-inner" role="region" aria-label="Hero content">
+        <div class="glass">
+          <!-- Note: the background banner already contains logo on the palm + people icon.
+               Do NOT add another logo here to avoid duplication. -->
+          <h1 class="hero-title">Strategic Human Resources Partners</h1>
+          <p class="hero-sub">We provide RPO, recruitment systems and job portals — from sourcing to onboarding.</p>
 
           <div class="cta-row">
             <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
-            <button class="btn btn-light" onclick="openProposal()">Request proposal</button>
+            <button class="btn btn-light" onclick="openProposal()">Request Proposal</button>
             <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
           </div>
         </div>
@@ -143,15 +129,15 @@
 
     <section id="about">
       <h2>About</h2>
-      <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver hiring systems.</p>
+      <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver efficient hiring systems.</p>
     </section>
 
     <section id="services">
       <h2>Services</h2>
-      <div class="services" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:12px">
-        <div class="service"><h4>RPO</h4><p>End-to-end recruitment services.</p></div>
-        <div class="service"><h4>Job Portals</h4><p>Portals with ATS integration.</p></div>
-        <div class="service"><h4>Employer Branding</h4><p>Positioning & talent attraction.</p></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+        <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7"><h4>RPO</h4><p>End-to-end recruitment services.</p></div>
+        <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7"><h4>Job Portals</h4><p>Portals with ATS integration.</p></div>
+        <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7"><h4>Employer Branding</h4><p>Positioning & talent attraction.</p></div>
       </div>
     </section>
 
@@ -175,10 +161,7 @@
             <label>Email</label><input id="candEmail" type="email" required>
             <label>Phone</label><input id="candPhone" value="+91 9544842260" required>
             <label>Resume (PDF / DOC)</label>
-            <div style="display:flex;gap:8px;align-items:center">
-              <input id="candResumeFile" type="file" accept=".pdf,.doc,.docx" aria-describedby="candResumeName" />
-              <button type="button" class="btn" onclick="clearResume()" style="background:transparent;border:1px solid #eef2f7;color:#072433;padding:8px;border-radius:8px">Clear</button>
-            </div>
+            <input id="candResumeFile" type="file" accept=".pdf,.doc,.docx" />
             <div id="candResumeName" class="file-name" aria-live="polite"></div>
             <div style="margin-top:8px"><button class="btn" type="submit">Register</button></div>
           </form>
@@ -218,32 +201,13 @@
     </section>
   </main>
 
-  <!-- proposal modal -->
-  <div id="proposal-modal" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);z-index:1400">
-    <div style="background:#fff;border-radius:12px;padding:18px;max-width:520px;width:90%;box-shadow:0 20px 60px rgba(2,6,23,0.3);">
-      <button class="modal-close" style="float:right;border:none;background:transparent;font-size:22px;cursor:pointer">&times;</button>
-      <h3 id="proposal-title">Request a proposal</h3>
-      <p class="muted" style="color:#6b7280">Fill this short form and we'll send a tailored SLA & proposal.</p>
-      <form id="proposalForm">
-        <label>Name</label><input id="propName" required>
-        <label>Email</label><input id="propEmail" type="email" required>
-        <label>Message</label><textarea id="propMsg" rows="3"></textarea>
-        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
-          <button class="btn" type="submit">Request proposal</button>
-          <button class="btn" type="button" id="proposalCancel" style="background:transparent;border:1px solid #eef2f7;color:#072433">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <footer>
-    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:24px 20px;background:#071726;color:#cbd5e1">
+    <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:24px 20px;background:#071726;color:#cbd5e1">
       <div>© <span id="year"></span> Simpatico HR Consultancy</div>
       <div style="color:#9fb8d6">Designed for Perinthalmanna. All rights reserved.</div>
       <div style="display:flex;gap:8px">
         <a href="https://wa.me/919544842260" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a href="tel:+919544842260" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
       </div>
     </div>
   </footer>
@@ -252,61 +216,31 @@
   // set year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // typing animation
-  document.addEventListener('DOMContentLoaded', () => {
-    const text = "Simpatico HR Consultancy";
-    let i = 0;
-    const typingEl = document.getElementById('typing');
-    function type() {
-      if (i <= text.length) {
-        typingEl && (typingEl.textContent = text.substring(0, i));
-        i++;
-        setTimeout(type, 70);
-      }
-    }
-    type();
-
-    // modal handlers
-    const modal = document.getElementById('proposal-modal');
-    document.querySelectorAll('.modal-close, #proposalCancel').forEach(btn=>{
-      if(btn) btn.addEventListener('click', ()=>{ modal.style.display='none'; });
-    });
-    document.getElementById('proposalForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      alert('Thanks — we will send a proposal to ' + (document.getElementById('propEmail').value || 'the provided email'));
-      modal.style.display='none';
-      this.reset();
-    });
-
-    // render jobs
-    renderJobs();
-  });
-
-  // responsive hero lift: compute a gentle, clamped upward shift so the wallpaper text hides
+  // hero auto-lift: compute gentle upward shift so glass does not overlap important visuals
   (function(){
-    function adjustHero() {
+    function adjustHero(){
       const hero = document.querySelector('.hero');
       const inner = document.querySelector('.hero-inner');
-      if (!hero || !inner) return;
-      const heroH = hero.clientHeight || window.innerHeight * 0.7;
-      let shift = Math.round(heroH * 0.11); // fraction of height to lift
-      const MAX_SHIFT = 120;
-      const MIN_SHIFT = 14;
-      if (shift > MAX_SHIFT) shift = MAX_SHIFT;
-      if (shift < MIN_SHIFT) shift = MIN_SHIFT;
-      if (window.innerWidth <= 600) shift = Math.round(shift * 0.35) || 8;
-      else if (window.innerWidth <= 1000) shift = Math.round(shift * 0.7);
+      if(!hero || !inner) return;
+      const heroH = hero.clientHeight || window.innerHeight*0.7;
+      let shift = Math.round(heroH * 0.10);
+      const MAX = 110, MIN = 10;
+      if(shift > MAX) shift = MAX;
+      if(shift < MIN) shift = MIN;
+      if(window.innerWidth <= 600) shift = Math.round(shift * 0.35) || 8;
+      else if(window.innerWidth <= 1000) shift = Math.round(shift * 0.7);
       inner.style.transform = `translateY(-${shift}px)`;
     }
-    function debounce(fn, wait=110){ let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), wait); }; }
+    function debounce(fn, w=110){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), w); }; }
     window.addEventListener('load', adjustHero);
     window.addEventListener('DOMContentLoaded', adjustHero);
-    window.addEventListener('resize', debounce(adjustHero, 110));
+    window.addEventListener('resize', debounce(adjustHero,110));
     setTimeout(adjustHero, 600);
     setTimeout(adjustHero, 1200);
   })();
 
-  // jobs data & render
+  // small typing effect removed intentionally to avoid duplicate title (banner already shows company identity)
+  // jobs sample data & renderer
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
@@ -317,29 +251,30 @@
   function renderJobs(){
     const list = document.getElementById('jobsList');
     if(!list) return;
-    list.innerHTML = '';
+    list.innerHTML='';
     const loc = (document.getElementById('filterLocation')?.value || '').toLowerCase();
     const type = document.getElementById('filterType')?.value;
     const filtered = jobsData.filter(j=>{ if(loc && !j.location.toLowerCase().includes(loc)) return false; if(type && j.type !== type) return false; return true; });
     const source = filtered.length ? filtered : jobsData;
     source.forEach(job=>{
-      const el = document.createElement('div'); el.className='job';
+      const el=document.createElement('div'); el.className='job';
       el.innerHTML = `<h4>${escapeHtml(job.title)}</h4><div style="color:#6b7280">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p style="color:#374151">${escapeHtml(job.desc)}</p><div style="margin-top:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn" onclick="saveJob(${job.id})" style="background:transparent;border:1px solid #eef2f7;color:#072433">Save</button></div>`;
       list.appendChild(el);
     });
   }
-  function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name = prompt('Your full name'); if(!name) return; const email = prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
+  function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
-  // candidate file preview & clear
-  const candFileInput = document.getElementById('candResumeFile');
-  candFileInput && candFileInput.addEventListener('change', function(){ const f=this.files[0]; const el=document.getElementById('candResumeName'); if(!f){ el.textContent=''; return; } el.textContent=`Selected: ${f.name} (${Math.round(f.size/1024)} KB)`; });
-  function clearResume(){ const inp=document.getElementById('candResumeFile'); if(inp) inp.value=''; const nameEl=document.getElementById('candResumeName'); if(nameEl) nameEl.textContent=''; }
+  // candidate file preview
+  const candFile = document.getElementById('candResumeFile');
+  candFile && candFile.addEventListener('change', function(){ const f=this.files[0]; const el=document.getElementById('candResumeName'); if(!f){ el.textContent=''; return; } el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`; });
 
-  // forms
-  function registerCandidate(e){ e.preventDefault(); alert('Thanks '+document.getElementById('candName').value+' — we received your registration.'); e.target.reset(); clearResume(); }
+  function registerCandidate(e){ e.preventDefault(); alert('Thanks '+document.getElementById('candName').value+' — we received your registration.'); e.target.reset(); const el=document.getElementById('candResumeName'); if(el) el.textContent=''; }
   function contactEmployer(e){ e.preventDefault(); alert('Thanks — we will contact you shortly.'); e.target.reset(); }
   function handleGeneralContact(e){ e.preventDefault(); alert('Thanks — we will reply to you soon.'); e.target.reset(); }
+
+  // init
+  document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); document.getElementById('year').textContent = new Date().getFullYear(); });
 </script>
 </body>
 </html>
