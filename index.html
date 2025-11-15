@@ -10,7 +10,7 @@
   /* ---------- Root / baseline ---------- */
   :root{
     --header-h:72px;                 /* desktop header height */
-    --header-h-mobile:60px;          /* mobile header height (user requested 60px) */
+    --header-h-mobile:60px;          /* mobile header height */
     --accent:#0063b2;
     --accent2:#004a88;
     --radius:12px;
@@ -99,8 +99,6 @@
   button{font-family:inherit}
 
   /* ---------- RESPONSIVE RULES (MOBILE OPTIMIZATIONS) ---------- */
-
-  /* General small tablet / phone breakpoint */
   @media (max-width:900px){
     ul#nav-links{display:none}
     .hamburger{display:flex}
@@ -108,8 +106,6 @@
     .hero{height:68vh;min-height:360px}
     .hero-inner{padding:14px}
   }
-
-  /* Phone: stack columns, increase touch sizes, reduce hero height, ensure header smaller (60px) */
   @media (max-width:600px){
     :root{ --mobile-menu-w:240px }
     nav{height:var(--header-h-mobile)}
@@ -122,24 +118,38 @@
     .job-board{grid-template-columns:1fr;gap:14px}
     .jobs{grid-template-columns:1fr;gap:12px}
     .glass{padding:16px}
-    /* Force the glass window well below the nav on small screens */
     .hero-inner{ transform: translateY(var(--mobile-hero-base-down)) !important; }
-    /* enlarge social icons and touch area */
     .nav-right a{font-size:22px;padding:8px}
     .hamburger{width:48px;height:48px}
-    /* forms full width buttons */
     form button.btn, .btn { width:100% }
   }
 
-  /* Very large screens */
   @media (min-width:1400px){
     .hero-inner{max-width:1400px}
   }
 
-  /* small visual hint: reduce hero background movement on very small screens */
   @media (prefers-reduced-motion:reduce){
     .hero-inner{transition:none}
   }
+
+  /* ---------- Services animated cards (kept lightweight) ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    margin-top:12px;
+  }
+  .service-card{
+    background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7;display:flex;gap:12px;align-items:flex-start;min-height:110px;color:var(--text-dark);
+    opacity:0;transform:translateY(14px) scale(0.995);will-change:transform,opacity;
+    transition: opacity 420ms cubic-bezier(.2,.9,.2,1) var(--delay,0ms), transform 420ms cubic-bezier(.2,.9,.2,1) var(--delay,0ms);
+  }
+  .service-card.animate{opacity:1;transform:translateY(0) scale(1)}
+  .service-icon{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,99,178,0.08), rgba(0,67,138,0.06));color:var(--accent);font-size:22px;flex:0 0 56px;box-shadow:0 8px 20px rgba(6,38,79,0.06)}
+  .service-body h4{margin:0 0 6px;font-size:16px}
+  .service-body p{margin:0;color:var(--muted);font-size:14px}
+  @media (max-width:600px){ .service-card{padding:14px;gap:10px;min-height:90px} .service-icon{width:48px;height:48px;font-size:20px;flex:0 0 48px} }
+  @media (prefers-reduced-motion:reduce){ .service-card{transition:none!important;transform:none!important;opacity:1!important} }
 
 </style>
 </head>
@@ -218,10 +228,47 @@
 
     <section id="services">
       <h2>Services</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
-        <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7"><h4>RPO</h4><p>End-to-end recruitment services.</p></div>
-        <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7"><h4>Job Portals</h4><p>Portals with ATS integration.</p></div>
-        <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7"><h4>Employer Branding</h4><p>Positioning & talent attraction.</p></div>
+
+      <div class="services-grid" role="list">
+        <article class="service-card" role="listitem" aria-labelledby="svc-rpo">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-people-roof"></i></div>
+          <div class="service-body">
+            <h4 id="svc-rpo">RPO</h4>
+            <p>End-to-end recruitment services tailored for your organisation.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" aria-labelledby="svc-jobportals">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></div>
+          <div class="service-body">
+            <h4 id="svc-jobportals">Job Portals</h4>
+            <p>Custom job portals with integrated ATS and hiring automation.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" aria-labelledby="svc-branding">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-bullhorn"></i></div>
+          <div class="service-body">
+            <h4 id="svc-branding">Employer Branding</h4>
+            <p>Brand positioning and talent attraction strategies.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" aria-labelledby="svc-coaching">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div class="service-body">
+            <h4 id="svc-coaching">Career Coaching</h4>
+            <p>Personalised career guidance, interview preparation and skill planning.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" aria-labelledby="svc-resume">
+          <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="service-body">
+            <h4 id="svc-resume">Resume Writing Service</h4>
+            <p>ATS-friendly resumes, cover letters and LinkedIn profile optimisation.</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -404,8 +451,6 @@ function registerCandidate(e){ e.preventDefault(); alert('Thanks ' + (document.g
 function contactEmployer(e){ e.preventDefault(); alert('Thanks — we will contact you shortly.'); e.target.reset(); }
 function handleGeneralContact(e){ e.preventDefault(); alert('Thanks — we will reply to you soon.'); e.target.reset(); }
 
-/* Proposal form submit already above */
-
 /* Jobs renderer */
 const jobsData = [
   {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
@@ -469,8 +514,28 @@ candFile && candFile.addEventListener('change', function(){ const f=this.files[0
   setTimeout(update,400);
 })();
 
-/* initialise */
+/* Animate service cards into view (staggered) */
+(function animateServices(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.service-card').forEach(el=> el.classList.add('animate'));
+    return;
+  }
+  const cards = Array.from(document.querySelectorAll('.service-card'));
+  if(!cards.length) return;
+  cards.forEach((c,i)=> c.style.setProperty('--delay', (i*80)+'ms'));
+  const io = new IntersectionObserver((entries, obs)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('animate');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.18});
+  cards.forEach(c=> io.observe(c));
+})();
+
 document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); });
 </script>
 </body>
 </html>
+```0
