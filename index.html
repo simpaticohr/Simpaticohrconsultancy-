@@ -12,6 +12,7 @@
     --accent:#0063b2;
     --accent2:#004a88;
     --radius:12px;
+    --glass-max:760px;
   }
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#072433;background:#f3f7fb}
@@ -27,19 +28,23 @@
   .nav-right{display:flex;gap:10px;align-items:center}
 
   /* HERO */
-  .hero{position:relative;height:88vh;min-height:480px;padding-top:var(--header-h);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#fff}
-  .hero::before{content:"";position:absolute;inset:0;background-image:url("simpatico_hr_banner.jpg");background-size:cover;background-position:center;filter:brightness(0.78) contrast(1.02);transform-origin:center;animation:bgScale 30s linear infinite;z-index:0}
-  @keyframes bgScale{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.06) translateY(-12px)}100%{transform:scale(1) translateY(0)}}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.16), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
-  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;gap:28px;align-items:flex-start}
-  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);padding:28px;border-radius:var(--radius);box-shadow:0 12px 36px rgba(2,6,23,0.12);border:1px solid rgba(255,255,255,0.06);max-width:760px}
-  .title{font-size:34px;font-weight:700;margin:0 0 8px}
-  .subtitle{margin:0 0 12px;opacity:0.96}
+  .hero{position:relative;height:84vh;min-height:420px;padding-top:var(--header-h);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;color:#fff}
+  .hero::before{content:"";position:absolute;inset:0;background-image:url("simpatico_hr_banner.jpg");background-size:cover;background-position:center;filter:brightness(0.78) contrast(1.02);transform-origin:center;animation:bgScale 28s linear infinite;z-index:0}
+  @keyframes bgScale{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.05) translateY(-12px)}100%{transform:scale(1) translateY(0)}}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.18), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
+
+  /* Move content upward: negative translate + top padding for small screens */
+  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform:translateY(-72px);transition:transform .28s cubic-bezier(.2,.9,.2,1)}
+  .glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:var(--glass-max);width:100%}
+  .title{font-size:36px;font-weight:700;margin:0 0 8px;line-height:1.05}
+  .subtitle{margin:0 0 12px;opacity:0.96;color:#e9f3ff}
   .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(6,38,79,0.12)}
+  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(6,38,79,0.14)}
   .btn:hover{transform:translateY(-3px);transition:transform .12s}
   .btn-light{background:#fff;color:#072433;padding:10px 14px;border-radius:10px;border:none}
-  .hero-logo-wm{position:absolute;right:6%;top:18%;width:180px;height:180px;opacity:0.06;transform:rotate(-6deg);pointer-events:none;z-index:1}
+
+  /* watermark logo at right, subtle */
+  .hero-logo-wm{position:absolute;right:6%;top:6%;width:220px;height:220px;opacity:0.06;transform:rotate(-6deg);pointer-events:none;z-index:1}
 
   section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
   h2{color:#06324f}
@@ -57,9 +62,16 @@
 
   @media(max-width:1000px){
     ul#nav-links{display:none}
-    .hero-inner{flex-direction:column}
+    .hero-inner{transform:translateY(-28px);padding:12px}
+    .glass{padding:18px}
     .jobs{grid-template-columns:1fr}
     .job-board{grid-template-columns:1fr}
+  }
+  @media(max-width:600px){
+    .hero{height:62vh;min-height:360px}
+    .hero-inner{transform:translateY(-8px)}
+    .title{font-size:22px}
+    .hero-logo-wm{display:none}
   }
 
   /* typing cursor */
@@ -101,11 +113,11 @@
     <header id="home" class="hero" role="banner" aria-label="Hero">
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <!-- faint watermark logo on right -->
+      <!-- subtle watermark logo on top-right -->
       <img class="hero-logo-wm" src="Untitled design_20250509_145149_0000.png" alt="" aria-hidden="true">
 
       <div class="hero-inner">
-        <div class="glass">
+        <div class="glass" role="region" aria-label="Hero content">
           <h1 class="title"><span id="typing"></span></h1>
           <p class="subtitle">Strategic Human Resources Partners — recruitment systems, RPO & job portals.</p>
 
@@ -142,7 +154,7 @@
         <button class="btn" onclick="renderJobs()">Filter</button>
       </div>
 
-      <div class="job-board" style="margin-top:12px;display:grid;grid-template-columns:1fr 360px;gap:18px">
+      <div class="job-board" style="margin-top:12px">
         <div><div id="jobsList" class="jobs"></div></div>
 
         <aside style="padding:12px">
@@ -226,7 +238,6 @@
   </footer>
 
 <script>
-  // set year
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // typing animation
@@ -238,7 +249,7 @@
       if (i <= text.length) {
         typingEl && (typingEl.textContent = text.substring(0, i));
         i++;
-        setTimeout(type, 80);
+        setTimeout(type, 70);
       }
     }
     type();
@@ -259,7 +270,7 @@
     renderJobs();
   });
 
-  // jobs data & render
+  // jobs data & render (same as before)
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
@@ -281,7 +292,7 @@
       list.appendChild(el);
     });
   }
-  function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name = prompt('Your full name'); if(!name) return; const email = prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
+  function applyJob(id){ const job=jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
   // candidate file preview & clear
