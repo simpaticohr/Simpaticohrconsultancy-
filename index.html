@@ -13,7 +13,10 @@
     --accent2:#004a88;
     --radius:12px;
     --max-width:1200px;
-    --hero-base-down:90px;
+
+    /* Increased downward shift so glass NEVER overlaps menu */
+    --hero-base-down:140px;           /* desktop/tablet base (was 90px) */
+    --mobile-hero-base-down:120px;    /* mobile forced value */
     --mobile-menu-w:280px;
   }
   *{box-sizing:border-box}
@@ -104,12 +107,14 @@
     .nav-inner{padding:8px 12px}
   }
   @media (max-width:600px){
-    :root{ --hero-base-down:44px; --mobile-menu-w:260px }
+    :root{ --mobile-menu-w:260px; }
     .hero{height:62vh;min-height:320px}
     .hero-inner{padding:12px}
     .hero-title{font-size:18px}
     .cta-row{gap:8px}
     .btn{padding:8px 10px;font-size:14px}
+    /* force larger translate on small screens to keep glass well below nav */
+    .hero-inner{ transform: translateY(var(--mobile-hero-base-down)) !important; }
   }
 
   .typing-cursor{border-right:3px solid rgba(255,255,255,0.95);padding-right:6px}
@@ -337,7 +342,6 @@
       panel.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
       hamburger.setAttribute('aria-expanded','true');
-      // move focus to first link
       setTimeout(()=> mobileLinks[0]?.focus(), 120);
     }
     function closePanel(){
@@ -353,10 +357,8 @@
     closeBtn.addEventListener('click', closePanel);
     backdrop.addEventListener('click', closePanel);
 
-    // close on Esc
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePanel(); });
 
-    // when a mobile link clicked -> navigate then close
     mobileLinks.forEach(a=>{
       a.addEventListener('click', function(e){
         e.preventDefault();
@@ -367,7 +369,6 @@
       });
     });
 
-    // ensure desktop nav links smoothly scroll (and close mobile if open)
     document.querySelectorAll('.nav-link').forEach(a=>{
       a.addEventListener('click', function(e){
         e.preventDefault();
@@ -388,9 +389,9 @@
     e.target.reset();
   }
 
-  // hero position adjustment
+  // hero position adjustment (keeps behavior but CSS mobile override already applied)
   (function(){
-    function getBaseDown(){ const v = getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down'); const parsed = parseInt(v); return isNaN(parsed) ? 90 : parsed; }
+    function getBaseDown(){ const v = getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down'); const parsed = parseInt(v); return isNaN(parsed) ? 140 : parsed; }
     function adjustHero(){
       const hero = document.querySelector('.hero'); const inner = document.querySelector('.hero-inner'); if(!hero || !inner) return;
       const BASE_DOWN = getBaseDown();
@@ -400,7 +401,7 @@
       if(lift > MAX_LIFT) lift = MAX_LIFT;
       if(lift < MIN_LIFT) lift = MIN_LIFT;
       let final;
-      if(window.innerWidth <= 600) final = Math.round(BASE_DOWN - Math.round(lift * 0.35));
+      if(window.innerWidth <= 600) final = Math.round(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-hero-base-down') || 120));
       else if(window.innerWidth <= 1000) final = Math.round(BASE_DOWN - Math.round(lift * 0.7));
       else final = BASE_DOWN - lift;
       inner.style.transform = `translateY(${final}px)`;
