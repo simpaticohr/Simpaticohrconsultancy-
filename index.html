@@ -13,22 +13,20 @@
     --accent2:#004a88;
     --radius:12px;
     --max-width:1200px;
-    --hero-base-down:60px; /* updated per request */
+    --hero-base-down:60px;
   }
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#072433;background:#f3f7fb}
   a{color:inherit;text-decoration:none}
 
-  /* NAV */
   nav{position:fixed;left:0;right:0;top:0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.98), rgba(0,51,102,0.90));backdrop-filter:blur(6px);z-index:1200}
   .nav-inner{max-width:var(--max-width);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 20px;color:#fff}
   .brand{display:flex;gap:12px;align-items:center}
   .brand .title{font-weight:700;color:#fff;letter-spacing:0.2px}
   ul#nav-links{display:flex;gap:14px;list-style:none;margin:0;padding:0}
   ul#nav-links a{color:#eaf4ff;font-weight:600;padding:8px;border-radius:8px}
-  .nav-right{display:flex;gap:10px;align-items:center}
+  .nav-right{display:flex;gap:12px;align-items:center}
 
-  /* HERO */
   .hero{position:relative;height:76vh;min-height:420px;padding-top:var(--header-h);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;color:#fff}
   .hero::before{
     content:"";
@@ -43,7 +41,6 @@
   }
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.17), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
 
-  /* hero-inner: base downward offset so glass sits BELOW logo/people on the banner */
   .hero-inner{
     position:relative;
     z-index:2;
@@ -65,12 +62,10 @@
   .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(6,38,79,0.14)}
   .btn-light{background:#fff;color:#072433;padding:10px 14px;border-radius:10px;border:none}
 
-  /* sections */
   section{padding:56px 20px;max-width:var(--max-width);margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
   h2{color:#06324f;margin:0 0 12px}
   .muted{color:#6b7280}
 
-  /* job board */
   .job-board{display:grid;grid-template-columns:1fr 360px;gap:18px}
   .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:#072433}
@@ -81,7 +76,6 @@
 
   footer{padding:24px 20px;background:#071726;color:#cbd5e1;margin-top:18px}
 
-  /* responsive improvements */
   @media (max-width:1200px){
     :root{ --max-width:1000px; }
     .hero-title{font-size:28px}
@@ -97,7 +91,7 @@
     .jobs{grid-template-columns:1fr}
   }
   @media (max-width:600px){
-    :root{ --hero-base-down:36px; } /* slightly reduce base down on small screens */
+    :root{ --hero-base-down:36px; }
     .hero{height:62vh;min-height:320px}
     .hero-inner{padding:12px}
     .hero-title{font-size:18px}
@@ -105,8 +99,6 @@
     .btn{padding:8px 10px;font-size:14px}
     .nav-inner{padding:8px 12px}
   }
-
-  /* small accessibility / focus */
   a:focus, button:focus, input:focus, select:focus, textarea:focus { outline: 3px solid rgba(0,115,200,0.12); outline-offset:2px; }
 </style>
 </head>
@@ -128,7 +120,10 @@
 
       <div class="nav-right" aria-hidden="false">
         <a href="https://wa.me/919544842260" target="_blank" title="WhatsApp" style="color:#eaf4ff"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="tel:+919544842260" title="Call" style="color:#eaf4ff;margin-left:8px"><i class="fa-solid fa-phone"></i></a>
+        <a href="tel:+919544842260" title="Call" style="color:#eaf4ff;margin-left:6px"><i class="fa-solid fa-phone"></i></a>
+        <!-- LinkedIn & Facebook icons added -->
+        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" title="LinkedIn" style="color:#eaf4ff;margin-left:6px"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/simpaticohrpmna" target="_blank" title="Facebook" style="color:#eaf4ff;margin-left:6px"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </nav>
@@ -139,7 +134,6 @@
 
       <div class="hero-inner" role="region" aria-label="Hero content">
         <div class="glass" aria-live="polite">
-          <!-- the banner image contains the palm people icon and the logo on top of it -->
           <h1 class="hero-title">Strategic Human Resources Partners</h1>
           <p class="hero-sub">We provide RPO, recruitment systems and job portals — from sourcing to onboarding.</p>
 
@@ -230,20 +224,19 @@
     <div style="max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:24px 20px;background:#071726;color:#cbd5e1">
       <div>© <span id="year"></span> Simpatico HR Consultancy</div>
       <div style="color:#9fb8d6">Designed for Perinthalmanna. All rights reserved.</div>
-      <div style="display:flex;gap:8px">
+      <div style="display:flex;gap:10px;align-items:center">
         <a href="https://wa.me/919544842260" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a href="tel:+919544842260" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/simpaticohrpmna" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </footer>
 
 <script>
-  // set year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // hero auto-lift: compute gentle upward shift but applied on top of base downward offset
   (function(){
-    // read computed base down from CSS variable (fallback to 60)
     function getBaseDown(){
       const v = getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down');
       const parsed = parseInt(v);
@@ -255,7 +248,6 @@
       if(!hero || !inner) return;
       const BASE_DOWN = getBaseDown();
       const heroH = hero.clientHeight || window.innerHeight*0.7;
-      // lift amount (positive -> lift up)
       let lift = Math.round(heroH * 0.10);
       const MAX_LIFT = 110, MIN_LIFT = 10;
       if(lift > MAX_LIFT) lift = MAX_LIFT;
@@ -278,7 +270,6 @@
     setTimeout(adjustHero, 1200);
   })();
 
-  /** Jobs and forms (same as previous version) **/
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
@@ -303,7 +294,6 @@
   function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
-  // candidate file preview
   const candFile = document.getElementById('candResumeFile');
   candFile && candFile.addEventListener('change', function(){ const f=this.files[0]; const el=document.getElementById('candResumeName'); if(!f){ el.textContent=''; return; } el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`; });
 
@@ -311,7 +301,6 @@
   function contactEmployer(e){ e.preventDefault(); alert('Thanks — we will contact you shortly.'); e.target.reset(); }
   function handleGeneralContact(e){ e.preventDefault(); alert('Thanks — we will reply to you soon.'); e.target.reset(); }
 
-  // init
   document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); document.getElementById('year').textContent = new Date().getFullYear(); });
 </script>
 </body>
