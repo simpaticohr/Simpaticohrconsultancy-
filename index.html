@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Simpatico HR Consultancy</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -10,11 +10,11 @@
   :root{
     --header-h:76px;
     --accent:#0063b2;
-    --accent2:#ffb703;
-    --bg:#f8fafc;
-    --text:#0b1220;
+    --accent2:#004a88;
+    --bg:#eaf4ff;
+    --text:#072433;
     --muted:#6b7280;
-    --glass-bg: rgba(255,255,255,0.08);
+    --glass-bg: rgba(255,255,255,0.06);
     --card-shadow: 0 12px 36px rgba(2,6,23,0.12);
     --radius:12px;
   }
@@ -30,9 +30,8 @@
   nav{position:fixed;inset:0 0 auto 0;height:var(--header-h);background:linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88));backdrop-filter:blur(6px);z-index:1200}
   .nav-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 20px;color:#fff}
   .brand{display:flex;gap:12px;align-items:center}
-  .logo-wrap{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent2),var(--accent));flex-shrink:0}
-  .animated-logo{width:40px;height:40px;animation:logoFloat 4s ease-in-out infinite}
-  @keyframes logoFloat{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(3deg)}100%{transform:translateY(0) rotate(0)}}
+  .brand-logo img{ display:block; width:52px; height:52px; border-radius:6px; object-fit:contain; background:transparent }
+  @media(max-width:600px){ .brand-logo img{ width:44px; height:44px } }
 
   nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;align-items:center}
   nav a{color:#eaf4ff;font-weight:600;padding:8px;border-radius:8px}
@@ -43,13 +42,13 @@
   .mobile-toggle{display:none;background:transparent;border:0;color:#fff;font-size:20px}
 
   /* Buttons */
-  .btn{background:linear-gradient(90deg,var(--accent),#0b6fb3);border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(6,38,79,0.12)}
+  .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(6,38,79,0.12)}
   .btn:focus{outline:3px solid rgba(0,99,178,0.18)}
   .btn-ghost{background:transparent;border:1px solid rgba(7,36,51,0.08);padding:10px 12px;border-radius:10px;cursor:pointer}
   .btn-ghost:focus{outline:3px solid rgba(6,38,79,0.08)}
   .btn-light{background:#fff;color:#072433}
 
-  /* HERO: background set via JS (progressive loader) */
+  /* HERO: uses chosen image path for background */
   .hero {
     position:relative;
     height:88vh;
@@ -58,66 +57,41 @@
     align-items:center;
     padding-top:var(--header-h);
     color:#fff;
-    background-color:#0b3550; /* fallback color while image loads */
+    background-image: url('/assets/img/hero-bg.jpg'); /* <- your chosen wallpaper (Path 1) */
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
   }
 
-  /* overlay for readability */
+  /* subtle overlay to help contrast with text */
   .hero-overlay{
-    position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.14));z-index:1;pointer-events:none;backdrop-filter:blur(0.5px)
+    position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.06));z-index:1;pointer-events:none;
   }
 
   .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;align-items:flex-start;gap:28px}
   .hero-left{flex:1;color:#fff}
-  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);padding:26px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:760px}
+  .glass{background:var(--glass-bg);backdrop-filter:blur(4px);padding:26px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:760px}
   .cta-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
 
-  /* Accessible floating cards (replaces old floats) */
-  .accessible-floats { width:420px; position:relative; z-index:3; }
-  .accessible-float{
-    position:absolute;
-    background:#0f1724;
-    color:#fff;
-    padding:12px;
-    border-radius:12px;
-    box-shadow:0 14px 40px rgba(2,6,23,0.32);
-    cursor:pointer;
-    outline:none;
-    width:220px;
-  }
-  .accessible-float:focus{ box-shadow:0 0 0 4px rgba(0,99,178,0.18), 0 14px 40px rgba(2,6,23,0.32); transform:translateY(-4px) }
-  .accessible-float:hover{ transform:translateY(-3px) }
-  .float-1{ right:18px; top:18px; }
-  .float-2{ right:18px; bottom:120px; width:260px; }
-  .float-3{ left:18px; bottom:18px; width:220px; }
-
-  /* Modal styles */
-  .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,0.6); z-index:1400; }
-  .modal[aria-hidden="false"]{ display:flex; }
-  .modal-panel{ background:#fff; color:#072433; border-radius:12px; max-width:520px; width:94%; padding:18px; box-shadow:0 20px 60px rgba(2,6,23,0.3); position:relative; }
-  .modal-close{ background:transparent;border:0;font-size:24px;position:absolute;right:14px;top:8px;cursor:pointer; }
-  .modal input,.modal textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e6eef8;margin-bottom:8px;font-size:14px}
-
-  /* sections / remaining layout (kept from previous versions) */
+  /* sections / remaining layout */
   section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
-  .muted{color:var(--muted)}
+  .muted{color:#dbe9f7}
   .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-  .service{background:#fff;padding:16px;border-radius:12px;border:1px solid #eef2f7}
+  .service{background:rgba(255,255,255,0.08);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:#fff}
   .job-board{display:grid;grid-template-columns:1fr 360px;gap:18px}
   .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7}
-  form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7}
+  .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7;color:var(--text)}
+
+  form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7;color:var(--text)}
   input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;margin-bottom:8px;font-size:14px}
   .file-name{font-size:13px;color:#374151;margin-top:6px}
-  label{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
+  label{font-weight:600;font-size:13px;display:block;margin-bottom:6px;color:var(--text)}
 
   .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
   .how-card{background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7;text-align:left}
   .how-card i{font-size:22px;margin-bottom:8px;color:var(--accent)}
 
-  footer{padding:24px 20px;background:#081224;color:#cbd5e1;margin-top:18px}
+  footer{padding:24px 20px;background:#071726;color:#cbd5e1;margin-top:18px}
 
   @media(max-width:1000px){
     .mobile-toggle{display:block}
@@ -125,14 +99,9 @@
     .hero-inner{flex-direction:column;padding:18px}
     .jobs{grid-template-columns:1fr}
     .services{grid-template-columns:1fr}
-    .accessible-floats{ display:block; width:100%; position:relative; margin-top:12px; }
-    .accessible-float{ position:relative; width:100%; margin-bottom:10px; transform:none }
     .job-board{grid-template-columns:1fr}
     .how-grid{grid-template-columns:1fr}
   }
-
-  /* small, visible focus for keyboard */
-  .focus-visible:focus{ outline: 3px solid rgba(0,99,178,0.18); }
 </style>
 </head>
 <body>
@@ -141,13 +110,10 @@
   <nav aria-label="Primary">
     <div class="nav-inner">
       <div class="brand">
-        <div class="logo-wrap" aria-hidden="true">
-          <svg class="animated-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
-            <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#0063b2"/></linearGradient></defs>
-            <rect width="100" height="100" rx="16" fill="url(#g)"/>
-            <text x="50" y="60" font-family="Poppins,Arial" font-size="30" font-weight="700" text-anchor="middle" fill="#073b4c">SH</text>
-          </svg>
-        </div>
+        <!-- LOGO: use /assets/img/logo.png (move your extracted logo there) -->
+        <a href="/" class="brand-logo" aria-label="Simpatico HR Consultancy">
+          <img src="/assets/img/logo.png" alt="Simpatico HR logo">
+        </a>
         <div>
           <div style="font-weight:700;color:#fff">Simpatico HR</div>
           <div style="font-size:12px;color:#cfe0ff">Recruitment • RPO • Job Portals</div>
@@ -189,27 +155,9 @@
 
             <div class="cta-row">
               <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
-              <button class="btn btn-light" onclick="document.getElementById('employerForm').scrollIntoView({behavior:'smooth'})">Employer Contact</button>
+              <button class="btn btn-light" onclick="openProposal()">Request proposal</button>
               <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
             </div>
-          </div>
-        </div>
-
-        <!-- Accessible floating cards -->
-        <div class="accessible-floats" aria-hidden="false">
-          <div id="float-open-roles" class="accessible-float float-1" role="button" tabindex="0" aria-label="Open roles — jump to jobs section" data-action="openRoles">
-            <strong>Open roles</strong>
-            <div class="muted" style="margin-top:6px">Engineering • Product • HR</div>
-          </div>
-
-          <div id="float-featured" class="accessible-float float-2" role="button" tabindex="0" aria-label="Featured roles — view featured openings" data-action="openFeatured">
-            <strong>Featured</strong>
-            <div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div>
-          </div>
-
-          <div id="float-proposal" class="accessible-float float-3" role="button" tabindex="0" aria-label="Get proposal — open proposal request dialog" data-action="getProposal">
-            <strong>Get proposal</strong>
-            <div class="muted" style="margin-top:6px">Free consultation & SLA</div>
           </div>
         </div>
       </div>
@@ -217,7 +165,7 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title">About</h2>
+      <h2 class="section-title" style="color:#fff">About</h2>
       <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver hiring systems.</p>
     </section>
 
@@ -225,9 +173,9 @@
     <section id="services">
       <h2 class="section-title">Services</h2>
       <div class="services">
-        <div class="service"><h4>RPO</h4><p class="muted">End-to-end recruitment services.</p></div>
-        <div class="service"><h4>Job Portals</h4><p class="muted">Portals with ATS integration.</p></div>
-        <div class="service"><h4>Employer Branding</h4><p class="muted">Positioning & talent attraction.</p></div>
+        <div class="service"><h4>RPO</h4><p>End-to-end recruitment services.</p></div>
+        <div class="service"><h4>Job Portals</h4><p>Portals with ATS integration.</p></div>
+        <div class="service"><h4>Employer Branding</h4><p>Positioning & talent attraction.</p></div>
       </div>
     </section>
 
@@ -255,7 +203,7 @@
       </div>
 
       <div style="margin-top:18px">
-        <button class="btn" onclick="requestProposal()">Request proposal</button>
+        <button class="btn" onclick="openProposal()">Request proposal</button>
       </div>
     </section>
 
@@ -316,11 +264,11 @@
           <div style="margin-top:8px"><button class="btn" type="submit">Send</button></div>
         </form>
 
-        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7">
+        <aside style="padding:12px;background:#fff;border-radius:12px;border:1px solid #eef2f7;color:var(--text)">
           <h4>Office</h4>
-          <div class="muted">Perinthalmanna, Kerala — India</div>
-          <div style="margin-top:8px"><strong>Phone</strong><div class="muted">+91 9544842260</div></div>
-          <div style="margin-top:8px"><strong>Email</strong><div class="muted">simpaticohrconsultancy@gmail.com</div></div>
+          <div style="color:var(--text)">Perinthalmanna, Kerala — India</div>
+          <div style="margin-top:8px"><strong>Phone</strong><div style="color:var(--text)">+91 9544842260</div></div>
+          <div style="margin-top:8px"><strong>Email</strong><div style="color:var(--text)">simpaticohrconsultancy@gmail.com</div></div>
         </aside>
       </div>
     </section>
@@ -349,7 +297,7 @@
 
   <footer>
     <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> Simpatico HR Consultancy</div>
+      <div style="color:#fff">© <span id="year"></span> Simpatico HR Consultancy</div>
       <div class="muted">Designed for Perinthalmanna. All rights reserved.</div>
       <div style="display:flex;gap:8px">
         <a href="https://wa.me/919544842260" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -360,7 +308,7 @@
   </footer>
 
 <script>
-  // Set footer year
+  // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // Mobile nav toggle
@@ -382,7 +330,7 @@
     });
   }
 
-  // Smooth scroll for nav links (including #how)
+  // Smooth scroll for nav links
   document.querySelectorAll('#nav-links a').forEach(a=>{
     a.addEventListener('click', function(e){
       e.preventDefault();
@@ -400,7 +348,7 @@
     });
   });
 
-  // Sample jobs data & render
+  // Jobs data & render
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
@@ -408,21 +356,22 @@
     {id:4,title:'HR Intern',company:'Simpatico',location:'Perinthalmanna',type:'Internship',exp:'0-1 yrs',desc:'Hiring operations.'}
   ];
   function renderJobs(){
-    const list = document.getElementById('jobsList'); list.innerHTML='';
+    const list = document.getElementById('jobsList'); if(!list) return;
+    list.innerHTML='';
     const loc = (document.getElementById('filterLocation').value || '').toLowerCase();
     const type = document.getElementById('filterType').value;
     const filtered = jobsData.filter(j=>{ if(loc && !j.location.toLowerCase().includes(loc)) return false; if(type && j.type !== type) return false; return true; });
     const source = filtered.length?filtered:jobsData;
     source.forEach(job=>{
       const el=document.createElement('div'); el.className='job';
-      el.innerHTML = `<h4>${escapeHtml(job.title)}</h4><div class="muted">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p class="muted">${escapeHtml(job.desc)}</p><div style="margin-top:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn-ghost" onclick="saveJob(${job.id})">Save</button></div>`;
+      el.innerHTML = `<h4>${escapeHtml(job.title)}</h4><div class="muted" style="color:#6b7280">${escapeHtml(job.company)} • ${escapeHtml(job.location)} • ${escapeHtml(job.exp)} • ${escapeHtml(job.type)}</div><p style="color:#374151">${escapeHtml(job.desc)}</p><div style="margin-top:8px"><button class="btn" onclick="applyJob(${job.id})">Apply</button> <button class="btn-ghost" onclick="saveJob(${job.id})">Save</button></div>`;
       list.appendChild(el);
     });
   }
   function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name = prompt('Your full name'); if(!name) return; const email = prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
-  // Candidate registration (file handling demo)
+  // Candidate registration
   const candFileInput = document.getElementById('candResumeFile');
   candFileInput && candFileInput.addEventListener('change', function(){
     const f = this.files[0];
@@ -435,39 +384,9 @@
 
   function contactEmployer(e){ e.preventDefault(); const data = { name:document.getElementById('empName').value, company:document.getElementById('empCompany').value, email:document.getElementById('empEmail').value, phone:document.getElementById('empPhone').value, msg:document.getElementById('empMsg').value }; console.log('employer',data); alert('Thanks '+data.name+' — we will contact you shortly.'); e.target.reset(); }
   function handleGeneralContact(e){ e.preventDefault(); const name=document.getElementById('gName').value; const email=document.getElementById('gEmail').value; alert('Thanks '+name+' — we will reply to '+email); e.target.reset(); }
-  function requestProposal(){ // opens the modal for the same UX as "Get proposal"
-    openProposal();
-  }
 
-  // Escape helper
-  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
-
-  // Floating cards accessibility behaviors & modal logic
-  function qs(sel){ return document.querySelector(sel); }
-  function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
-  function isActivationKey(e){ return e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'; }
-
-  function openRoles(){
-    const el = document.getElementById('jobs');
-    if(el){
-      const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
-      const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
-      window.scrollTo({top, behavior:'smooth'});
-      setTimeout(()=>{ const jl = document.getElementById('jobsList'); if(jl){ jl.setAttribute('tabindex','-1'); jl.focus(); } }, 600);
-    } else { alert('Open roles — jobs section not found.'); }
-  }
-  function openFeatured(){
-    const el = document.getElementById('projects') || document.getElementById('jobs');
-    if(el){
-      const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
-      const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
-      window.scrollTo({top, behavior:'smooth'});
-      setTimeout(()=>{ el.setAttribute('tabindex','-1'); el.focus(); }, 600);
-    } else { alert('Featured — target section not found.'); }
-  }
-
-  // Modal focus management
-  const modal = qs('#proposal-modal');
+  // Modal logic (accessible)
+  const modal = document.getElementById('proposal-modal');
   let lastFocusedBeforeModal = null;
   const firstFocusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
@@ -494,94 +413,29 @@
     }
   }
 
-  // Wire up floating card events
-  qsa('.accessible-float').forEach(el=>{
-    const action = el.getAttribute('data-action');
-    el.addEventListener('click', ()=> {
-      if(action === 'openRoles') openRoles();
-      else if(action === 'openFeatured') openFeatured();
-      else if(action === 'getProposal') openProposal();
-    });
-    el.addEventListener('keydown', (e)=>{
-      if(isActivationKey(e)){ e.preventDefault(); el.click(); }
-    });
-  });
-
-  // Modal controls
-  const modalClose = qs('.modal-close');
-  const modalCancel = qs('#proposalCancel');
+  // Wire up modal close and form
+  const modalClose = document.querySelector('.modal-close');
+  const modalCancel = document.getElementById('proposalCancel');
   modalClose && modalClose.addEventListener('click', closeProposal);
   modalCancel && modalCancel.addEventListener('click', closeProposal);
   if(modal){
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeProposal(); });
   }
-  const proposalForm = qs('#proposalForm');
+  const proposalForm = document.getElementById('proposalForm');
   if(proposalForm){
     proposalForm.addEventListener('submit',(e)=>{
       e.preventDefault();
-      const name = qs('#propName').value || '';
-      const email = qs('#propEmail').value || '';
+      const name = document.getElementById('propName').value || '';
+      const email = document.getElementById('propEmail').value || '';
       closeProposal();
       alert(`Thanks ${name || ''}! We will send a proposal to ${email || 'the provided email'}.`);
       proposalForm.reset();
     });
   }
 
-  // Progressive background loader (WebP preferred; picks mobile variant for small viewports)
-  (function(){
-    const hero = document.querySelector('.hero');
-    if(!hero) return;
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
 
-    // Update these paths if you moved files to assets/ or a CDN
-    const paths = {
-      webp: '/mnt/data/banner_outputs/hero_desktop_1920x700.webp',
-      jpg:  '/mnt/data/banner_outputs/hero_desktop_1920x700.jpg',
-      mobile_webp: '/mnt/data/banner_outputs/hero_mobile_820x360.webp',
-      mobile_jpg:  '/mnt/data/banner_outputs/hero_mobile_820x360.jpg',
-      fallback: '/mnt/data/banner.jpg' // original uploaded image
-    };
-
-    function supportsWebP(){
-      // quick feature-detect
-      try{
-        return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
-      }catch(e){ return false; }
-    }
-
-    function choose(){
-      const isMobile = window.innerWidth <= 820;
-      const useWebP = supportsWebP();
-      if(isMobile){
-        return useWebP ? paths.mobile_webp : paths.mobile_jpg;
-      } else {
-        return useWebP ? paths.webp : paths.jpg;
-      }
-    }
-
-    function setBg(url){
-      // fallback to original if path doesn't exist on server — browsers ignore 404 background images silently
-      hero.style.backgroundImage = `url("${url}")`;
-    }
-
-    // set initial background
-    const initial = choose();
-    setBg(initial);
-
-    // ensure fallback if initial fails (set original at the end)
-    const fallbackImg = new Image();
-    fallbackImg.src = initial;
-    fallbackImg.onerror = ()=>{ setBg(paths.fallback); };
-
-    // update on resize
-    window.addEventListener('resize', debounce(()=>{
-      setBg(choose());
-    }, 250));
-  })();
-
-  // small debounce helper
-  function debounce(fn, t){ let tt; return (...a)=>{ clearTimeout(tt); tt=setTimeout(()=>fn(...a), t); }; }
-
-  // initialize page
+  // init
   document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); });
 </script>
 </body>
