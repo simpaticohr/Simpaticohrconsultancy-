@@ -22,7 +22,7 @@
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
 
-  /* skip link */
+  /* skip link for keyboard users */
   .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
   .skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12);z-index:2000}
 
@@ -47,19 +47,34 @@
   .btn:focus{outline:3px solid rgba(0,99,178,0.18)}
   .btn-ghost{background:transparent;border:1px solid rgba(7,36,51,0.08);padding:10px 12px;border-radius:10px;cursor:pointer}
   .btn-ghost:focus{outline:3px solid rgba(6,38,79,0.08)}
+  .btn-light{background:#fff;color:#072433}
 
-  /* HERO / Banner template area */
-  .hero{position:relative;height:88vh;padding-top:var(--header-h);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:contrast(1.02) saturate(0.95);transform-origin:center;animation:zoom 30s ease-in-out infinite alternate;z-index:0;pointer-events:none}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.22),rgba(0,0,0,0.12));z-index:1;pointer-events:none}
-  @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+  /* HERO: uses your uploaded banner as background */
+  .hero {
+    position:relative;
+    height:88vh;
+    min-height:420px;
+    display:flex;
+    align-items:center;
+    padding-top:var(--header-h);
+    color:#fff;
+    background-image: url('/mnt/data/banner.jpg'); /* <-- path to your uploaded banner */
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
 
-  .hero-content{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;gap:28px;align-items:flex-start}
+  /* dark overlay for text readability */
+  .hero-overlay{
+    position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.14));z-index:1;pointer-events:none;backdrop-filter:blur(0.5px)
+  }
+
+  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;align-items:flex-start}
   .hero-left{flex:1;color:#fff}
-  .glass{background:var(--glass-bg);backdrop-filter:blur(6px);padding:26px;border-radius:var(--radius);box-shadow:var(--card-shadow)}
+  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);padding:26px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:760px}
   .cta-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
 
-  /* floating cards (non-obstructive) */
+  /* floating info (optional) */
   .floating{position:absolute;background:#fff;color:#072433;padding:12px;border-radius:12px;box-shadow:var(--card-shadow);z-index:3;pointer-events:auto}
   .float-1{right:18px;top:18px;width:220px}
   .float-2{right:18px;bottom:120px;width:260px}
@@ -67,35 +82,30 @@
   .float-anim{animation:floaty 6s ease-in-out infinite;animation-delay:0.4s}
   @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
 
-  /* sections */
+  /* Sections, forms, job board (kept from previous) */
   section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
   .muted{color:var(--muted)}
   .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
   .service{background:#fff;padding:16px;border-radius:12px;border:1px solid #eef2f7}
-
-  /* job board */
   .job-board{display:grid;grid-template-columns:1fr 360px;gap:18px}
   .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .job{background:#fff;padding:12px;border-radius:10px;border:1px solid #eef2f7}
-
-  /* forms */
   form{background:#fff;padding:14px;border-radius:12px;border:1px solid #eef2f7}
   input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef8;margin-bottom:8px;font-size:14px}
   .file-name{font-size:13px;color:#374151;margin-top:6px}
   label{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
 
-  /* How section cards */
+  /* how section */
   .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
   .how-card{background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7;text-align:left}
   .how-card i{font-size:22px;margin-bottom:8px;color:var(--accent)}
 
-  /* footer */
   footer{padding:24px 20px;background:#081224;color:#cbd5e1;margin-top:18px}
 
   @media(max-width:1000px){
     .mobile-toggle{display:block}
     nav ul{display:none}
-    .hero-content{flex-direction:column;padding:18px}
+    .hero-inner{flex-direction:column;padding:18px}
     .jobs{grid-template-columns:1fr}
     .services{grid-template-columns:1fr}
     .floating{display:none}
@@ -105,7 +115,6 @@
 </style>
 </head>
 <body>
-
   <a class="skip-link" href="#main">Skip to content</a>
 
   <nav aria-label="Primary">
@@ -132,7 +141,7 @@
         <li role="none"><a role="menuitem" href="#home">Home</a></li>
         <li role="none"><a role="menuitem" href="#about">About</a></li>
         <li role="none"><a role="menuitem" href="#services">Services</a></li>
-        <li role="none"><a role="menuitem" href="#how">How</a></li> <!-- now points to actual section -->
+        <li role="none"><a role="menuitem" href="#how">How</a></li>
         <li role="none"><a role="menuitem" href="#projects">Projects</a></li>
         <li role="none"><a role="menuitem" href="#jobs">Jobs</a></li>
         <li role="none"><a role="menuitem" href="#contactTop">Contact</a></li>
@@ -142,97 +151,85 @@
         <a class="socials" href="https://wa.me/919544842260" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         <a class="socials" href="tel:+919544842260" title="Call" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
         <a class="socials" href="https://www.linkedin.com/company/simpatico-manpower/" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a class="socials" href="#" target="_blank" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
   </nav>
 
-  <!-- Template: Banner / Hero layout
-       - This <template> holds a reusable banner layout.
-       - To switch hero images, update the data-bg attribute on the template instance below,
-         or replace the background URL in the .hero-bg element created from the template.
-       - You can clone this template and insert it elsewhere by calling insertTemplate('banner-template', '#target')
-  -->
-  <template id="banner-template">
-    <section class="hero" role="banner" aria-label="Hero banner (template)">
-      <div class="hero-bg" style="background-image: url('/mnt/data/banner.jpg');" data-bg="/mnt/data/banner.jpg" aria-hidden="true"></div>
+  <!-- HERO: uses your uploaded banner image as background -->
+  <main id="main" tabindex="-1">
+    <header id="home" class="hero" role="banner" aria-label="Hero section">
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-content" aria-hidden="false">
+
+      <div class="hero-inner">
         <div class="hero-left">
           <div class="glass" role="region" aria-label="Main introduction">
             <h1 style="margin:0 0 8px">Simpatico HR Consultancy</h1>
-            <p style="margin:0 0 12px">We build recruitment systems and provide RPO services — from sourcing to onboarding.</p>
+            <p style="margin:0 0 12px">Strategic Human Resources Partners — recruitment systems, RPO & job portals.</p>
+
             <div class="cta-row">
               <button class="btn" onclick="document.getElementById('candidateForm').scrollIntoView({behavior:'smooth'})">Register as Candidate</button>
-              <button class="btn" onclick="document.getElementById('employerForm').scrollIntoView({behavior:'smooth'})" style="background:#fff;color:#072433">Employer Contact</button>
+              <button class="btn btn-light" onclick="document.getElementById('employerForm').scrollIntoView({behavior:'smooth'})">Employer Contact</button>
               <button class="btn" onclick="window.open('https://wa.me/919544842260','_blank')">WhatsApp</button>
             </div>
           </div>
         </div>
 
+        <!-- optional floating info on desktop -->
         <div style="width:420px;position:relative" aria-hidden="true">
-          <div class="floating float-1 float-anim" role="status" aria-live="polite"><strong>Open roles</strong><div class="muted" style="margin-top:6px">Engineering • Product • HR</div></div>
-          <div class="floating float-2 float-anim" role="status" aria-live="polite"><strong>Featured</strong><div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div></div>
-          <div class="floating float-3 float-anim" role="status" aria-live="polite"><strong>Get proposal</strong><div class="muted" style="margin-top:6px">Free consultation & SLA</div></div>
+          <div class="floating float-1 float-anim"><strong>Open roles</strong><div class="muted" style="margin-top:6px">Engineering • Product • HR</div></div>
+          <div class="floating float-2 float-anim"><strong>Featured</strong><div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div></div>
+          <div class="floating float-3 float-anim"><strong>Get proposal</strong><div class="muted" style="margin-top:6px">Free consultation & SLA</div></div>
         </div>
       </div>
-    </section>
-  </template>
-
-  <!-- MAIN: insert the banner template here (default) -->
-  <main id="main" tabindex="-1">
-    <div id="hero-container"></div> <!-- template will be inserted here -->
+    </header>
 
     <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title" class="section-title">About</h2>
+    <section id="about">
+      <h2 class="section-title">About</h2>
       <p class="muted">Simpatico HR Consultancy is located in Perinthalmanna, Kerala. We combine recruitment expertise with HR tech to deliver hiring systems.</p>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" aria-labelledby="services-title">
-      <h2 id="services-title" class="section-title">Services</h2>
-      <div class="services" role="list">
-        <div class="service" role="listitem"><h4>RPO</h4><p class="muted">End-to-end recruitment services.</p></div>
-        <div class="service" role="listitem"><h4>Job Portals</h4><p class="muted">Portals with ATS integration.</p></div>
-        <div class="service" role="listitem"><h4>Employer Branding</h4><p class="muted">Positioning & talent attraction.</p></div>
+    <section id="services">
+      <h2 class="section-title">Services</h2>
+      <div class="services">
+        <div class="service"><h4>RPO</h4><p class="muted">End-to-end recruitment services.</p></div>
+        <div class="service"><h4>Job Portals</h4><p class="muted">Portals with ATS integration.</p></div>
+        <div class="service"><h4>Employer Branding</h4><p class="muted">Positioning & talent attraction.</p></div>
       </div>
     </section>
 
-    <!-- HOW (new and useful) -->
-    <section id="how" aria-labelledby="how-title">
-      <h2 id="how-title" class="section-title">How we work</h2>
+    <!-- HOW -->
+    <section id="how">
+      <h2 class="section-title">How we work</h2>
       <p class="muted">A simple, transparent hiring flow so you know what to expect.</p>
 
-      <div class="how-grid" role="list">
-        <div class="how-card" role="listitem">
+      <div class="how-grid">
+        <div class="how-card">
           <i class="fa-solid fa-magnifying-glass"></i>
           <h4>1. Understand requirements</h4>
-          <p class="muted">We start with a discovery call to understand culture, skills and SLA expectations.</p>
+          <p class="muted">Discovery call to understand culture, skills, and SLA.</p>
         </div>
-
-        <div class="how-card" role="listitem">
+        <div class="how-card">
           <i class="fa-solid fa-people-roof"></i>
           <h4>2. Source & shortlist</h4>
-          <p class="muted">Shortlist candidates using ATS filters, screening calls and skill assessments.</p>
+          <p class="muted">Shortlist candidates using ATS filters, screening calls and tests.</p>
         </div>
-
-        <div class="how-card" role="listitem">
+        <div class="how-card">
           <i class="fa-solid fa-handshake"></i>
           <h4>3. Interview & onboard</h4>
-          <p class="muted">Coordinate interviews, handle offers, and assist with onboarding and compliance.</p>
+          <p class="muted">Coordinate interviews, offers and onboarding support.</p>
         </div>
       </div>
 
       <div style="margin-top:18px">
-        <p class="muted" style="margin:0 0 12px">Want a sample SLA or proposal? Click below to request a tailored PDF.</p>
         <button class="btn" onclick="requestProposal()">Request proposal</button>
       </div>
     </section>
 
-    <!-- JOB BOARD + forms (kept from previous) -->
-    <section id="jobs" aria-labelledby="jobs-title">
-      <h2 id="jobs-title" class="section-title">Job Board</h2>
+    <!-- JOB BOARD + forms -->
+    <section id="jobs">
+      <h2 class="section-title">Job Board</h2>
       <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         <input id="filterLocation" placeholder="Location (e.g. Kochi)" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
         <select id="filterType" style="padding:8px;border-radius:8px;border:1px solid #e6eef8">
@@ -243,15 +240,15 @@
 
       <div class="job-board" style="margin-top:12px">
         <div>
-          <div id="jobsList" class="jobs" aria-live="polite" aria-atomic="true"></div>
+          <div id="jobsList" class="jobs"></div>
         </div>
 
         <aside style="padding:12px">
           <h4>Candidate Registration</h4>
           <form id="candidateForm" onsubmit="registerCandidate(event)">
-            <label for="candName">Full name</label><input id="candName" required aria-required="true">
-            <label for="candEmail">Email</label><input id="candEmail" type="email" required aria-required="true">
-            <label for="candPhone">Phone</label><input id="candPhone" value="+91 9544842260" required aria-required="true">
+            <label for="candName">Full name</label><input id="candName" required>
+            <label for="candEmail">Email</label><input id="candEmail" type="email" required>
+            <label for="candPhone">Phone</label><input id="candPhone" value="+91 9544842260" required>
             <label for="candResumeFile">Resume (PDF / DOC)</label>
             <div style="display:flex;gap:8px;align-items:center">
               <input id="candResumeFile" type="file" accept=".pdf,.doc,.docx" aria-describedby="candResumeName" />
@@ -277,8 +274,8 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contactTop" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="section-title">Contact</h2>
+    <section id="contactTop">
+      <h2 class="section-title">Contact</h2>
       <div style="display:grid;grid-template-columns:1fr 320px;gap:12px">
         <form id="contactForm" onsubmit="handleGeneralContact(event)">
           <label for="gName">Name</label><input id="gName" required>
@@ -310,31 +307,8 @@
   </footer>
 
 <script>
-  // year
+  // populate year
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Insert template helper: clones <template id="..."> into targetSelector
-  function insertTemplate(templateId, targetSelector, options = {}) {
-    const t = document.getElementById(templateId);
-    const target = document.querySelector(targetSelector);
-    if(!t || !target) return;
-    const clone = t.content.cloneNode(true);
-    // apply overrides (e.g., change background)
-    if(options.backgroundUrl) {
-      const bgEl = clone.querySelector('.hero-bg');
-      if(bgEl) {
-        bgEl.style.backgroundImage = `url('${options.backgroundUrl}')`;
-        bgEl.setAttribute('data-bg', options.backgroundUrl);
-      }
-    }
-    target.appendChild(clone);
-  }
-
-  // default: insert banner template into #hero-container
-  insertTemplate('banner-template', '#hero-container', {
-    // change this path to your deployed banner if different
-    backgroundUrl: '/mnt/data/banner.jpg'
-  });
 
   // mobile nav toggle
   const mobileToggle = document.getElementById('mobileToggle');
@@ -353,7 +327,7 @@
     navLinks.style.zIndex = '1300';
   });
 
-  // nav links -> smooth offset scroll; ensures every nav link works (including #how)
+  // smooth scroll for nav links, including #how
   document.querySelectorAll('#nav-links a').forEach(a=>{
     a.addEventListener('click', function(e){
       e.preventDefault();
@@ -363,12 +337,10 @@
       const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
       const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
       window.scrollTo({top,behavior:'smooth'});
-      // close mobile menu if open
       if(window.innerWidth <= 1000){
         navLinks.style.display='none';
         mobileToggle.setAttribute('aria-expanded','false');
       }
-      // set focus for accessibility
       setTimeout(()=>{ el.setAttribute('tabindex','-1'); el.focus(); }, 500);
     });
   });
@@ -403,7 +375,6 @@
     const el = document.getElementById('candResumeName');
     if(!f){ el.textContent=''; return; }
     el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`;
-    // Optionally preview or send file to server using FormData
   });
 
   function clearResume(){
@@ -441,15 +412,11 @@
 
   function handleGeneralContact(e){ e.preventDefault(); const name=document.getElementById('gName').value; const email=document.getElementById('gEmail').value; alert('Thanks '+name+' — we will reply to '+email); e.target.reset(); }
 
-  function requestProposal(){
-    // simple demo action — you can replace with a fetch to your backend or open a modal
-    alert('Thanks — we will prepare a tailored proposal and reach out shortly.');
-  }
+  function requestProposal(){ alert('Thanks — we will prepare a tailored proposal and reach out shortly.'); }
 
-  // small helper to escape content (avoid injection if content comes from external source later)
   function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
 
-  document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); /* ensure candidate file listener attached if dynamic */ });
+  document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); });
 </script>
 </body>
 </html>
