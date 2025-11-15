@@ -29,12 +29,24 @@
 
   /* HERO */
   .hero{position:relative;height:84vh;min-height:420px;padding-top:var(--header-h);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;color:#fff}
-  .hero::before{content:"";position:absolute;inset:0;background-image:url("simpatico_hr_banner.jpg");background-size:cover;background-position:center;filter:brightness(0.78) contrast(1.02);transform-origin:center;animation:bgScale 28s linear infinite;z-index:0}
+  /* <<< changed: shift background image down to hide built-in text inside the JPG */
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:url("simpatico_hr_banner.jpg");
+    background-size:cover;
+    background-position:center bottom; /* moved down so embedded text in image is out of view */
+    filter:brightness(0.78) contrast(1.02);
+    transform-origin:center;
+    animation:bgScale 28s linear infinite;
+    z-index:0;
+  }
   @keyframes bgScale{0%{transform:scale(1) translateY(0)}50%{transform:scale(1.05) translateY(-12px)}100%{transform:scale(1) translateY(0)}}
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.18), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
 
-  /* Move content upward: negative translate + top padding for small screens */
-  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform:translateY(-72px);transition:transform .28s cubic-bezier(.2,.9,.2,1)}
+  /* remove hard-coded lift; JS will compute a responsive lift */
+  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform:translateY(0);transition:transform 330ms cubic-bezier(.2,.9,.2,1)}
   .glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:var(--glass-max);width:100%}
   .title{font-size:36px;font-weight:700;margin:0 0 8px;line-height:1.05}
   .subtitle{margin:0 0 12px;opacity:0.96;color:#e9f3ff}
@@ -43,7 +55,6 @@
   .btn:hover{transform:translateY(-3px);transition:transform .12s}
   .btn-light{background:#fff;color:#072433;padding:10px 14px;border-radius:10px;border:none}
 
-  /* watermark logo at right, subtle */
   .hero-logo-wm{position:absolute;right:6%;top:6%;width:220px;height:220px;opacity:0.06;transform:rotate(-6deg);pointer-events:none;z-index:1}
 
   section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
@@ -62,16 +73,16 @@
 
   @media(max-width:1000px){
     ul#nav-links{display:none}
-    .hero-inner{transform:translateY(-28px);padding:12px}
+    .hero-inner{padding:12px}
     .glass{padding:18px}
     .jobs{grid-template-columns:1fr}
     .job-board{grid-template-columns:1fr}
   }
   @media(max-width:600px){
     .hero{height:62vh;min-height:360px}
-    .hero-inner{transform:translateY(-8px)}
     .title{font-size:22px}
     .hero-logo-wm{display:none}
+    .hero-inner{padding:10px}
   }
 
   /* typing cursor */
@@ -238,6 +249,7 @@
   </footer>
 
 <script>
+  // set year
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // typing animation
@@ -270,7 +282,31 @@
     renderJobs();
   });
 
-  // jobs data & render (same as before)
+  // responsive hero lift: compute a gentle, clamped upward shift so the wallpaper text hides
+  (function(){
+    function adjustHero() {
+      const hero = document.querySelector('.hero');
+      const inner = document.querySelector('.hero-inner');
+      if (!hero || !inner) return;
+      const heroH = hero.clientHeight || window.innerHeight * 0.7;
+      let shift = Math.round(heroH * 0.11); // fraction of height to lift
+      const MAX_SHIFT = 120;
+      const MIN_SHIFT = 14;
+      if (shift > MAX_SHIFT) shift = MAX_SHIFT;
+      if (shift < MIN_SHIFT) shift = MIN_SHIFT;
+      if (window.innerWidth <= 600) shift = Math.round(shift * 0.35) || 8;
+      else if (window.innerWidth <= 1000) shift = Math.round(shift * 0.7);
+      inner.style.transform = `translateY(-${shift}px)`;
+    }
+    function debounce(fn, wait=110){ let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), wait); }; }
+    window.addEventListener('load', adjustHero);
+    window.addEventListener('DOMContentLoaded', adjustHero);
+    window.addEventListener('resize', debounce(adjustHero, 110));
+    setTimeout(adjustHero, 600);
+    setTimeout(adjustHero, 1200);
+  })();
+
+  // jobs data & render
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
@@ -292,7 +328,7 @@
       list.appendChild(el);
     });
   }
-  function applyJob(id){ const job=jobsData.find(j=>j.id===id); const name=prompt('Your full name'); if(!name) return; const email=prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
+  function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name = prompt('Your full name'); if(!name) return; const email = prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
   // candidate file preview & clear
