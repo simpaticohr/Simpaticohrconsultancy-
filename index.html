@@ -13,6 +13,7 @@
     --accent2:#004a88;
     --radius:12px;
     --max-width:1100px;
+    --hero-base-down:40px; /* base downward offset for the glass panel */
   }
   *{box-sizing:border-box}
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;color:#072433;background:#f3f7fb}
@@ -36,16 +37,28 @@
     background-image:url("simpatico_hr_banner.png");
     background-size:cover;
     background-position:center center;
-    filter:brightness(0.9) contrast(1.02);
+    filter:brightness(0.92) contrast(1.02);
     transform-origin:center;
-    animation:bgScale 28s linear infinite;
     z-index:0;
   }
-  @keyframes bgScale{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
   .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.18), rgba(2,6,23,0.06));z-index:1;pointer-events:none}
 
-  /* hero content (glass panel) - lifted responsively by JS */
-  .hero-inner{position:relative;z-index:2;max-width:var(--max-width);width:100%;padding:20px 28px 8px;display:flex;gap:28px;align-items:flex-start;justify-content:flex-start;transform:translateY(0);transition:transform 320ms cubic-bezier(.2,.9,.2,1)}
+  /* hero-inner: start with base down offset (so glass sits lower) */
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:var(--max-width);
+    width:100%;
+    padding:20px 28px 8px;
+    display:flex;
+    gap:28px;
+    align-items:flex-start;
+    justify-content:flex-start;
+    /* default moved down to avoid overlapping logo/people on the banner */
+    transform: translateY(var(--hero-base-down));
+    transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+  }
+
   .glass{background:rgba(255,255,255,0.09);backdrop-filter:blur(6px);padding:22px;border-radius:var(--radius);box-shadow:0 18px 48px rgba(2,6,23,0.14);border:1px solid rgba(255,255,255,0.06);max-width:760px;width:100%}
   .hero-title{font-size:30px;font-weight:700;margin:0 0 8px;color:#fff;line-height:1.05}
   .hero-sub{margin:0 0 12px;color:#e9f3ff}
@@ -113,8 +126,7 @@
       <!-- hero content / glass -->
       <div class="hero-inner" role="region" aria-label="Hero content">
         <div class="glass">
-          <!-- Note: the background banner already contains logo on the palm + people icon.
-               Do NOT add another logo here to avoid duplication. -->
+          <!-- the banner image (simpatico_hr_banner.png) contains the people icon + logo on the palm -->
           <h1 class="hero-title">Strategic Human Resources Partners</h1>
           <p class="hero-sub">We provide RPO, recruitment systems and job portals — from sourcing to onboarding.</p>
 
@@ -216,31 +228,39 @@
   // set year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // hero auto-lift: compute gentle upward shift so glass does not overlap important visuals
+  // hero auto-lift: compute gentle upward shift but applied on top of base downward offset
   (function(){
+    const BASE_DOWN = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hero-base-down')) || 40;
     function adjustHero(){
       const hero = document.querySelector('.hero');
       const inner = document.querySelector('.hero-inner');
       if(!hero || !inner) return;
       const heroH = hero.clientHeight || window.innerHeight*0.7;
-      let shift = Math.round(heroH * 0.10);
-      const MAX = 110, MIN = 10;
-      if(shift > MAX) shift = MAX;
-      if(shift < MIN) shift = MIN;
-      if(window.innerWidth <= 600) shift = Math.round(shift * 0.35) || 8;
-      else if(window.innerWidth <= 1000) shift = Math.round(shift * 0.7);
-      inner.style.transform = `translateY(-${shift}px)`;
+      // shift amount we would normally lift by (positive -> lift up)
+      let lift = Math.round(heroH * 0.10);
+      const MAX_LIFT = 110, MIN_LIFT = 10;
+      if(lift > MAX_LIFT) lift = MAX_LIFT;
+      if(lift < MIN_LIFT) lift = MIN_LIFT;
+      // compute final translateY: base down minus lift
+      let final = BASE_DOWN - lift;
+      // adapt for small screens: reduce lift influence so glass doesn't go too high
+      if(window.innerWidth <= 600){
+        final = Math.round((BASE_DOWN - Math.round(lift * 0.35)));
+      } else if(window.innerWidth <= 1000){
+        final = Math.round((BASE_DOWN - Math.round(lift * 0.7)));
+      }
+      inner.style.transform = `translateY(${final}px)`;
     }
-    function debounce(fn, w=110){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), w); }; }
+    function debounce(fn, wait=110){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), wait); }; }
     window.addEventListener('load', adjustHero);
     window.addEventListener('DOMContentLoaded', adjustHero);
     window.addEventListener('resize', debounce(adjustHero,110));
+    // also call a couple times after load for images/fonts
     setTimeout(adjustHero, 600);
     setTimeout(adjustHero, 1200);
   })();
 
-  // small typing effect removed intentionally to avoid duplicate title (banner already shows company identity)
-  // jobs sample data & renderer
+  // jobs data & render
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
