@@ -22,7 +22,7 @@
   html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
 
-  /* skip link for keyboard users */
+  /* skip link */
   .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
   .skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12);z-index:2000}
 
@@ -49,7 +49,7 @@
   .btn-ghost:focus{outline:3px solid rgba(6,38,79,0.08)}
   .btn-light{background:#fff;color:#072433}
 
-  /* HERO: uses your uploaded banner as background */
+  /* HERO: background set via JS (progressive loader) */
   .hero {
     position:relative;
     height:88vh;
@@ -58,31 +58,49 @@
     align-items:center;
     padding-top:var(--header-h);
     color:#fff;
-    background-image: url('/mnt/data/banner.jpg'); /* <-- path to your uploaded banner */
+    background-color:#0b3550; /* fallback color while image loads */
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
   }
 
-  /* dark overlay for text readability */
+  /* overlay for readability */
   .hero-overlay{
     position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.14));z-index:1;pointer-events:none;backdrop-filter:blur(0.5px)
   }
 
-  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;align-items:flex-start}
+  .hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding:28px;display:flex;align-items:flex-start;gap:28px}
   .hero-left{flex:1;color:#fff}
   .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);padding:26px;border-radius:var(--radius);box-shadow:var(--card-shadow);max-width:760px}
   .cta-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
 
-  /* floating info (optional) */
-  .floating{position:absolute;background:#fff;color:#072433;padding:12px;border-radius:12px;box-shadow:var(--card-shadow);z-index:3;pointer-events:auto}
-  .float-1{right:18px;top:18px;width:220px}
-  .float-2{right:18px;bottom:120px;width:260px}
-  .float-3{left:18px;bottom:18px;width:220px}
-  .float-anim{animation:floaty 6s ease-in-out infinite;animation-delay:0.4s}
-  @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+  /* Accessible floating cards (replaces old floats) */
+  .accessible-floats { width:420px; position:relative; z-index:3; }
+  .accessible-float{
+    position:absolute;
+    background:#0f1724;
+    color:#fff;
+    padding:12px;
+    border-radius:12px;
+    box-shadow:0 14px 40px rgba(2,6,23,0.32);
+    cursor:pointer;
+    outline:none;
+    width:220px;
+  }
+  .accessible-float:focus{ box-shadow:0 0 0 4px rgba(0,99,178,0.18), 0 14px 40px rgba(2,6,23,0.32); transform:translateY(-4px) }
+  .accessible-float:hover{ transform:translateY(-3px) }
+  .float-1{ right:18px; top:18px; }
+  .float-2{ right:18px; bottom:120px; width:260px; }
+  .float-3{ left:18px; bottom:18px; width:220px; }
 
-  /* Sections, forms, job board (kept from previous) */
+  /* Modal styles */
+  .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,0.6); z-index:1400; }
+  .modal[aria-hidden="false"]{ display:flex; }
+  .modal-panel{ background:#fff; color:#072433; border-radius:12px; max-width:520px; width:94%; padding:18px; box-shadow:0 20px 60px rgba(2,6,23,0.3); position:relative; }
+  .modal-close{ background:transparent;border:0;font-size:24px;position:absolute;right:14px;top:8px;cursor:pointer; }
+  .modal input,.modal textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e6eef8;margin-bottom:8px;font-size:14px}
+
+  /* sections / remaining layout (kept from previous versions) */
   section{padding:56px 20px;max-width:1100px;margin:0 auto;scroll-margin-top:calc(var(--header-h) + 12px)}
   .muted{color:var(--muted)}
   .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
@@ -95,7 +113,6 @@
   .file-name{font-size:13px;color:#374151;margin-top:6px}
   label{font-weight:600;font-size:13px;display:block;margin-bottom:6px}
 
-  /* how section */
   .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
   .how-card{background:#fff;padding:18px;border-radius:12px;border:1px solid #eef2f7;text-align:left}
   .how-card i{font-size:22px;margin-bottom:8px;color:var(--accent)}
@@ -108,10 +125,14 @@
     .hero-inner{flex-direction:column;padding:18px}
     .jobs{grid-template-columns:1fr}
     .services{grid-template-columns:1fr}
-    .floating{display:none}
+    .accessible-floats{ display:block; width:100%; position:relative; margin-top:12px; }
+    .accessible-float{ position:relative; width:100%; margin-bottom:10px; transform:none }
     .job-board{grid-template-columns:1fr}
     .how-grid{grid-template-columns:1fr}
   }
+
+  /* small, visible focus for keyboard */
+  .focus-visible:focus{ outline: 3px solid rgba(0,99,178,0.18); }
 </style>
 </head>
 <body>
@@ -155,12 +176,12 @@
     </div>
   </nav>
 
-  <!-- HERO: uses your uploaded banner image as background -->
   <main id="main" tabindex="-1">
+    <!-- HERO -->
     <header id="home" class="hero" role="banner" aria-label="Hero section">
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="hero-inner">
+      <div class="hero-inner" role="region" aria-label="Hero content">
         <div class="hero-left">
           <div class="glass" role="region" aria-label="Main introduction">
             <h1 style="margin:0 0 8px">Simpatico HR Consultancy</h1>
@@ -174,11 +195,22 @@
           </div>
         </div>
 
-        <!-- optional floating info on desktop -->
-        <div style="width:420px;position:relative" aria-hidden="true">
-          <div class="floating float-1 float-anim"><strong>Open roles</strong><div class="muted" style="margin-top:6px">Engineering • Product • HR</div></div>
-          <div class="floating float-2 float-anim"><strong>Featured</strong><div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div></div>
-          <div class="floating float-3 float-anim"><strong>Get proposal</strong><div class="muted" style="margin-top:6px">Free consultation & SLA</div></div>
+        <!-- Accessible floating cards -->
+        <div class="accessible-floats" aria-hidden="false">
+          <div id="float-open-roles" class="accessible-float float-1" role="button" tabindex="0" aria-label="Open roles — jump to jobs section" data-action="openRoles">
+            <strong>Open roles</strong>
+            <div class="muted" style="margin-top:6px">Engineering • Product • HR</div>
+          </div>
+
+          <div id="float-featured" class="accessible-float float-2" role="button" tabindex="0" aria-label="Featured roles — view featured openings" data-action="openFeatured">
+            <strong>Featured</strong>
+            <div class="muted" style="margin-top:6px">Healthcare recruitment — Europe</div>
+          </div>
+
+          <div id="float-proposal" class="accessible-float float-3" role="button" tabindex="0" aria-label="Get proposal — open proposal request dialog" data-action="getProposal">
+            <strong>Get proposal</strong>
+            <div class="muted" style="margin-top:6px">Free consultation & SLA</div>
+          </div>
         </div>
       </div>
     </header>
@@ -294,6 +326,27 @@
     </section>
   </main>
 
+  <!-- Proposal modal -->
+  <div id="proposal-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="proposal-title" aria-hidden="true">
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close proposal dialog">&times;</button>
+      <h3 id="proposal-title">Request a proposal</h3>
+      <p class="muted">Fill this short form and we'll send a tailored SLA & proposal.</p>
+      <form id="proposalForm">
+        <label for="propName">Name</label>
+        <input id="propName" name="name" required>
+        <label for="propEmail">Email</label>
+        <input id="propEmail" name="email" type="email" required>
+        <label for="propMsg">Short message</label>
+        <textarea id="propMsg" name="message" rows="3"></textarea>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button class="btn" type="submit">Request proposal</button>
+          <button class="btn-ghost" type="button" id="proposalCancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
       <div>© <span id="year"></span> Simpatico HR Consultancy</div>
@@ -307,27 +360,29 @@
   </footer>
 
 <script>
-  // populate year
+  // Set footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // mobile nav toggle
+  // Mobile nav toggle
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('nav-links');
-  mobileToggle.addEventListener('click', () => {
-    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-    mobileToggle.setAttribute('aria-expanded', String(!expanded));
-    navLinks.style.display = expanded ? 'none' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.background = 'linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88))';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '76px';
-    navLinks.style.right = '16px';
-    navLinks.style.padding = '12px';
-    navLinks.style.borderRadius = '10px';
-    navLinks.style.zIndex = '1300';
-  });
+  if(mobileToggle){
+    mobileToggle.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.style.display = expanded ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.background = 'linear-gradient(180deg, rgba(0,51,102,0.95), rgba(0,51,102,0.88))';
+      navLinks.style.position = 'absolute';
+      navLinks.style.top = '76px';
+      navLinks.style.right = '16px';
+      navLinks.style.padding = '12px';
+      navLinks.style.borderRadius = '10px';
+      navLinks.style.zIndex = '1300';
+    });
+  }
 
-  // smooth scroll for nav links, including #how
+  // Smooth scroll for nav links (including #how)
   document.querySelectorAll('#nav-links a').forEach(a=>{
     a.addEventListener('click', function(e){
       e.preventDefault();
@@ -345,14 +400,13 @@
     });
   });
 
-  // sample jobs
+  // Sample jobs data & render
   const jobsData = [
     {id:1,title:'Backend Developer',company:'NovaTech',location:'Kochi',type:'Full-time',exp:'2-5 yrs',desc:'Scalable APIs.'},
     {id:2,title:'Frontend Engineer',company:'Finlytics',location:'Bengaluru',type:'Full-time',exp:'1-4 yrs',desc:'React + TypeScript.'},
     {id:3,title:'Data Analyst',company:'MarketIQ',location:'Remote',type:'Contract',exp:'2+ yrs',desc:'SQL, Python.'},
     {id:4,title:'HR Intern',company:'Simpatico',location:'Perinthalmanna',type:'Internship',exp:'0-1 yrs',desc:'Hiring operations.'}
   ];
-
   function renderJobs(){
     const list = document.getElementById('jobsList'); list.innerHTML='';
     const loc = (document.getElementById('filterLocation').value || '').toLowerCase();
@@ -368,7 +422,7 @@
   function applyJob(id){ const job = jobsData.find(j=>j.id===id); const name = prompt('Your full name'); if(!name) return; const email = prompt('Your email'); if(!email) return; alert('Applied for '+job.title+' — we will contact '+email); }
   function saveJob(id){ alert('Saved (demo)'); }
 
-  // candidate registration (handles file input locally)
+  // Candidate registration (file handling demo)
   const candFileInput = document.getElementById('candResumeFile');
   candFileInput && candFileInput.addEventListener('change', function(){
     const f = this.files[0];
@@ -376,46 +430,158 @@
     if(!f){ el.textContent=''; return; }
     el.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`;
   });
+  function clearResume(){ const inp = document.getElementById('candResumeFile'); if(inp) inp.value = ''; const nameEl = document.getElementById('candResumeName'); if(nameEl) nameEl.textContent = ''; }
+  function registerCandidate(e){ e.preventDefault(); const name = document.getElementById('candName').value; const email = document.getElementById('candEmail').value; alert('Thanks '+name+' — we received your registration. We will reach out to '+email); e.target.reset(); clearResume(); }
 
-  function clearResume(){
-    const inp = document.getElementById('candResumeFile');
-    if(inp) inp.value = '';
-    const nameEl = document.getElementById('candResumeName');
-    if(nameEl) nameEl.textContent = '';
-  }
-
-  function registerCandidate(e){
-    e.preventDefault();
-    const name = document.getElementById('candName').value;
-    const email = document.getElementById('candEmail').value;
-    const phone = document.getElementById('candPhone').value;
-    const f = document.getElementById('candResumeFile').files[0];
-    console.log('candidate', {name,email,phone,file: f?f.name:null});
-    alert('Thanks '+name+' — we received your registration. We will reach out to '+email);
-    e.target.reset();
-    clearResume();
-  }
-
-  function contactEmployer(e){
-    e.preventDefault();
-    const data = {
-      name:document.getElementById('empName').value,
-      company:document.getElementById('empCompany').value,
-      email:document.getElementById('empEmail').value,
-      phone:document.getElementById('empPhone').value,
-      msg:document.getElementById('empMsg').value
-    };
-    console.log('employer',data);
-    alert('Thanks '+data.name+' — we will contact you shortly.');
-    e.target.reset();
-  }
-
+  function contactEmployer(e){ e.preventDefault(); const data = { name:document.getElementById('empName').value, company:document.getElementById('empCompany').value, email:document.getElementById('empEmail').value, phone:document.getElementById('empPhone').value, msg:document.getElementById('empMsg').value }; console.log('employer',data); alert('Thanks '+data.name+' — we will contact you shortly.'); e.target.reset(); }
   function handleGeneralContact(e){ e.preventDefault(); const name=document.getElementById('gName').value; const email=document.getElementById('gEmail').value; alert('Thanks '+name+' — we will reply to '+email); e.target.reset(); }
+  function requestProposal(){ // opens the modal for the same UX as "Get proposal"
+    openProposal();
+  }
 
-  function requestProposal(){ alert('Thanks — we will prepare a tailored proposal and reach out shortly.'); }
-
+  // Escape helper
   function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
 
+  // Floating cards accessibility behaviors & modal logic
+  function qs(sel){ return document.querySelector(sel); }
+  function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
+  function isActivationKey(e){ return e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'; }
+
+  function openRoles(){
+    const el = document.getElementById('jobs');
+    if(el){
+      const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
+      const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
+      window.scrollTo({top, behavior:'smooth'});
+      setTimeout(()=>{ const jl = document.getElementById('jobsList'); if(jl){ jl.setAttribute('tabindex','-1'); jl.focus(); } }, 600);
+    } else { alert('Open roles — jobs section not found.'); }
+  }
+  function openFeatured(){
+    const el = document.getElementById('projects') || document.getElementById('jobs');
+    if(el){
+      const header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
+      const top = window.scrollY + el.getBoundingClientRect().top - (header + 12);
+      window.scrollTo({top, behavior:'smooth'});
+      setTimeout(()=>{ el.setAttribute('tabindex','-1'); el.focus(); }, 600);
+    } else { alert('Featured — target section not found.'); }
+  }
+
+  // Modal focus management
+  const modal = qs('#proposal-modal');
+  let lastFocusedBeforeModal = null;
+  const firstFocusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+  function openProposal(){
+    lastFocusedBeforeModal = document.activeElement;
+    modal.setAttribute('aria-hidden','false');
+    const first = modal.querySelector('input,textarea,button');
+    if(first) first.focus();
+    document.addEventListener('keydown', trapModalKeys);
+  }
+  function closeProposal(){
+    modal.setAttribute('aria-hidden','true');
+    if(lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
+    document.removeEventListener('keydown', trapModalKeys);
+  }
+  function trapModalKeys(e){
+    if(e.key === 'Escape'){ closeProposal(); return; }
+    if(e.key === 'Tab'){
+      const focusables = Array.from(modal.querySelectorAll(firstFocusableSelector)).filter(el=>!el.disabled && el.offsetParent !== null);
+      if(focusables.length === 0) { e.preventDefault(); return; }
+      const idx = focusables.indexOf(document.activeElement);
+      if(e.shiftKey && idx === 0){ focusables[focusables.length -1].focus(); e.preventDefault(); }
+      else if(!e.shiftKey && idx === focusables.length -1){ focusables[0].focus(); e.preventDefault(); }
+    }
+  }
+
+  // Wire up floating card events
+  qsa('.accessible-float').forEach(el=>{
+    const action = el.getAttribute('data-action');
+    el.addEventListener('click', ()=> {
+      if(action === 'openRoles') openRoles();
+      else if(action === 'openFeatured') openFeatured();
+      else if(action === 'getProposal') openProposal();
+    });
+    el.addEventListener('keydown', (e)=>{
+      if(isActivationKey(e)){ e.preventDefault(); el.click(); }
+    });
+  });
+
+  // Modal controls
+  const modalClose = qs('.modal-close');
+  const modalCancel = qs('#proposalCancel');
+  modalClose && modalClose.addEventListener('click', closeProposal);
+  modalCancel && modalCancel.addEventListener('click', closeProposal);
+  if(modal){
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeProposal(); });
+  }
+  const proposalForm = qs('#proposalForm');
+  if(proposalForm){
+    proposalForm.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const name = qs('#propName').value || '';
+      const email = qs('#propEmail').value || '';
+      closeProposal();
+      alert(`Thanks ${name || ''}! We will send a proposal to ${email || 'the provided email'}.`);
+      proposalForm.reset();
+    });
+  }
+
+  // Progressive background loader (WebP preferred; picks mobile variant for small viewports)
+  (function(){
+    const hero = document.querySelector('.hero');
+    if(!hero) return;
+
+    // Update these paths if you moved files to assets/ or a CDN
+    const paths = {
+      webp: '/mnt/data/banner_outputs/hero_desktop_1920x700.webp',
+      jpg:  '/mnt/data/banner_outputs/hero_desktop_1920x700.jpg',
+      mobile_webp: '/mnt/data/banner_outputs/hero_mobile_820x360.webp',
+      mobile_jpg:  '/mnt/data/banner_outputs/hero_mobile_820x360.jpg',
+      fallback: '/mnt/data/banner.jpg' // original uploaded image
+    };
+
+    function supportsWebP(){
+      // quick feature-detect
+      try{
+        return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
+      }catch(e){ return false; }
+    }
+
+    function choose(){
+      const isMobile = window.innerWidth <= 820;
+      const useWebP = supportsWebP();
+      if(isMobile){
+        return useWebP ? paths.mobile_webp : paths.mobile_jpg;
+      } else {
+        return useWebP ? paths.webp : paths.jpg;
+      }
+    }
+
+    function setBg(url){
+      // fallback to original if path doesn't exist on server — browsers ignore 404 background images silently
+      hero.style.backgroundImage = `url("${url}")`;
+    }
+
+    // set initial background
+    const initial = choose();
+    setBg(initial);
+
+    // ensure fallback if initial fails (set original at the end)
+    const fallbackImg = new Image();
+    fallbackImg.src = initial;
+    fallbackImg.onerror = ()=>{ setBg(paths.fallback); };
+
+    // update on resize
+    window.addEventListener('resize', debounce(()=>{
+      setBg(choose());
+    }, 250));
+  })();
+
+  // small debounce helper
+  function debounce(fn, t){ let tt; return (...a)=>{ clearTimeout(tt); tt=setTimeout(()=>fn(...a), t); }; }
+
+  // initialize page
   document.addEventListener('DOMContentLoaded', ()=>{ renderJobs(); });
 </script>
 </body>
